@@ -1,7 +1,7 @@
 # program name
 PROG=isa_sim
 # files
-SRC_FILES=
+SRC_FILES=isa_sim.c
 INC_FILES=
 OBJ_FILES=$(SRC_FILES:.c=.o)
 # directories
