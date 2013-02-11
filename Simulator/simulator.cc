@@ -261,12 +261,18 @@ TraceOp DecodeInstruction(const uint32_t instruction)
     break;
 
     case OP_ADD_F: {
-        // TODO
         // bits(31:24) = opcode = 00000100
         // bits(23:20) = dest
         // bits(19:16) = src1
         // bits(11:8) = src2
         // dest = src1 + src2
+        int destination_register_idx; // TODO
+        int source_register_1_idx; // TODO
+        int source_register_2_idx; // TODO
+        ret_trace_op.scalar_registers[0] = destination_register_idx;
+        ret_trace_op.scalar_registers[1] = source_register_1_idx;
+        ret_trace_op.scalar_registers[2] = source_register_2_idx;
+        // TODO test
     }
     break;
 
@@ -286,7 +292,6 @@ TraceOp DecodeInstruction(const uint32_t instruction)
     break;
 
     case OP_VADD: {
-        // TODO
         // bits(31:24) = opcode = 00000010
         // bits(21:16) = dest
         // bits(13:8) = src1
@@ -295,61 +300,92 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // dest[1] = src1[1] + src2[1]
         // dest[2] = src1[2] + src2[2]
         // dest[3] = src1[3] + src2[3]
+        int destination_register_idx; // TODO
+        int source_register_1_idx; // TODO
+        int source_register_2_idx; // TODO
+        ret_trace_op.vector_registers[0] = destination_register_idx;
+        ret_trace_op.vector_registers[1] = source_register_1_idx;
+        ret_trace_op.vector_registers[2] = source_register_2_idx;
+        // TODO test
     }
     break;
 
     case OP_AND_D: {
-        // TODO
         // bits(31:24) = opcode = 00001000
         // bits(23:20) = dest
         // bits(19:16) = src1
         // bits(11:8) = src2
         // dest = src1 & src2
+        int destination_register_idx; // TODO
+        int source_register_1_idx; // TODO
+        int source_register_2_idx; // TODO
+        ret_trace_op.scalar_registers[0] = destination_register_idx;
+        ret_trace_op.scalar_registers[1] = source_register_1_idx;
+        ret_trace_op.scalar_registers[2] = source_register_2_idx;
+        // TODO test
     }
     break;
 
     case OP_ANDI_D: {
-        // TODO
         // bits(31:24) = opcode = 00001001
         // bits(23:20) = dest
         // bits(19:16) = src
         // bits(15:0) = imm16
         // dest = src & imm16
+        int destination_register_idx; // TODO
+        int source_register_idx; // TODO
+        int immediate_value; // TODO
+        ret_trace_op.scalar_registers[0] = destination_register_idx;
+        ret_trace_op.scalar_registers[1] = source_register_idx;
+        ret_trace_op.int_value = immediate_value;
+        // TODO test
     }
     break;
 
     case OP_MOV: {
-        // TODO
         // bits(31:24) = opcode = 00010000
         // bits(19:16) = dest
         // bits(11:8) = src
         // dest = src
+        int destination_register_idx; // TODO
+        int source_register_idx; // TODO
+        ret_trace_op.scalar_registers[0] = destination_register_idx;
+        ret_trace_op.scalar_registers[1] = source_register_idx;
+        // TODO test
     }
     break;
 
     case OP_MOVI_D: {
-        // TODO
         // bits(31:24) = opcode = 00010001
         // bits(19:16) = dest
         // bits(15:0) = imm16
         // dest = imm16
+        int destination_register_idx; // TODO
+        int immediate_value; // TODO
+        ret_trace_op.scalar_registers[0] = destination_register_idx;
+        ret_trace_op.int_value = immediate_value;
+        // TODO test
     }
     break;
 
     case OP_MOVI_F: {
-        // TODO
         // bits(31:24) = opcode = 00010101
         // bits(19:16) = dest
-        // bits(15:0) = imm16
+        // bits(15:0) = imm16 = float
         // dest = imm16
+        int destination_register_idx; // TODO
+        int immediate_value; // TODO
+        ret_trace_op.scalar_registers[0] = destination_register_idx;
+        ret_trace_op.float_value = immediate_value;
+        // TODO test
     }
     break;
 
     case OP_VMOV: {
         // TODO
         // bits(31:24) = opcode = 00010010
-        // bits(21:16) = dest
-        // bits(13:8) = src
+        // bits(21:16) = dest = vector
+        // bits(13:8) = src = vector
         // dest = src
     }
     break;
@@ -357,7 +393,7 @@ TraceOp DecodeInstruction(const uint32_t instruction)
     case OP_VMOVI: {
         // TODO
         // bits(31:24) = opcode = 00010111
-        // bits(21:16) = dest
+        // bits(21:16) = dest = vector
         // bits(15:0) = imm16
         // dest[0] = imm16
         // dest[1] = imm16
@@ -409,22 +445,34 @@ TraceOp DecodeInstruction(const uint32_t instruction)
     break;
 
     case OP_LDB: {
-        // TODO
         // bits(31:24) = opcode = 00101001
         // bits(23:20) = dest
         // bits(19:16) = base
         // bits(15:0) = offset
         // dest = mem[base + offset]
+        int destination_register_idx; // TODO
+        int base_register_idx; // TODO
+        int offset; // TODO
+        ret_trace_op.scalar_registers[0] = destination_register_idx;
+        ret_trace_op.scalar_registers[1] = base_register_idx;
+        ret_trace_op.int_value = offset;
+        // TODO test
     }
     break;
 
     case OP_LDW: {
-        // TODO
         // bits(31:24) = opcode = 00101010
         // bits(23:20) = dest
         // bits(19:16) = base
         // bits(15:0) = offset
         // dest = mem[(base + offset + 1):(base + offset)]
+        int destination_register_idx; // TODO
+        int base_register_idx; // TODO
+        int offset; // TODO
+        ret_trace_op.scalar_registers[0] = destination_register_idx;
+        ret_trace_op.scalar_registers[1] = base_register_idx;
+        ret_trace_op.int_value = offset;
+        // TODO
     }
     break;
 
@@ -450,111 +498,180 @@ TraceOp DecodeInstruction(const uint32_t instruction)
 
     case OP_PUSHMATRIX: {      
         // TODO
+        // bits(31:24) = opcode = 10000000
+        // push(current_matrix)
     }
     break;
 
     case OP_POPMATRIX: {
         // TODO
+        // bits(31:24) = opcode = 10001000
+        // current_matrix = pop()
     }
     break;
 
     case OP_ENDPRIMITIVE: {
         // TODO
+        // bits(31:24) = opcode = 10011000
+        // stop defining primitive
     }
     break;
 
     case OP_LOADIDENTITY: {
         // TODO
+        // bits(31:24) = opcode = 10100000
+        // replace current matrix with identity matrix
     }
     break;
 
     case OP_FLUSH: {
         // TODO
+        // bits(31:24) = opcode = 10110000
+        // empty frame buffer
     }
     break;
 
     case OP_DRAW: {
         // TODO
+        // bits(31:24) = opcode = 10111000
+        // draw frame buffer to screen
     }
     break;
 
     case OP_BEGINPRIMITIVE: {
         // TODO
+        // bits(31:24) = opcode = 10010001
+        // bits(19:16) = type
+        // start defining primitive
+        //
+        // TYPES: 0 = points, 1 = lines, 2 = line strip, 3 = line loop, 4 =
+        // triangles, 5 = triangle strip, 6 = triangle fan, 7 = quad strip, 8 =
+        // polygon
     }
     break;
 
     case OP_JMP: {
         // TODO
+        // bits(31:24) = opcode = 11100000
+        // bits(19:16) = baseR
+        // next PC = baseR
     }
     break;
 
     case OP_JSRR: {
         // TODO
+        // bits(31:24) = opcode = 11111000
+        // bits(19:16) = baseR
+        // r[7] = PC, nextPC = baseR
     }
     break;
 
     case OP_SETVERTEX: {
         // TODO
+        // bits(31:24) = opcode = 01000010
+        // bits(21:16) = vr
+        // set current vertex using vr register (vr[1] = x, vr[2] = y, vr[3] =
+        // z, ignore vr[0])
     }
     break;
 
     case OP_SETCOLOR: {
         // TODO
+        // bits(31:24) = opcode = 01001010
+        // bits(21:16) = vr
+        // set current vertex color using vr register (vr[0] = R, vr[1] = G,
+        // vr[2] = B, ignore vr[3])
     }
     break;
 
     case OP_ROTATE: {
         // TODO
+        // bits(31:24) = opcode = 01010010
+        // bits(21:16) = vr
+        // rotate current matrix using vr register (vr[0] = angle, vr[3] =
+        // z-coord, ignore vr[1] and vr[2])
     }
     break;
 
     case OP_TRANSLATE: {
         // TODO
+        // bits(31:24) = opcode = 01011010
+        // bits(21:16) = vr
+        // translate current matrix using vr register (vr[1] = x displacement,
+        // vr[2] = y displacement, ignore vr[0] and vr[3])
     }
     break;
 
     case OP_SCALE: {
         // TODO
+        // bits(31:24) = opcode = 01100010
+        // bits(21:16) = vr
+        // scale current matrix using vr register (vr[1] = x scale, vr[2] = y
+        // scale, ignore vr[0] and vr[3])
     }
     break;
 
     case OP_BRN: {
         // TODO
+        // bits(31:24) = opcode = 11011100
+        // bits(15:0) = pc_offset
+        // if (CC = 100) nextPC = PC + pc_offset << 2
     }
     break;
 
     case OP_BRZ: {
         // TODO
+        // bits(31:24) = opcode = 11011010
+        // bits(15:0) = pc_offset
+        // if (CC = 010) nextPC = PC + pc_offset << 2
     }
     break;
 
     case OP_BRP: {
         // TODO
+        // bits(31:24) = opcode = 11011001
+        // bits(15:0) = pc_offset
+        // if (CC = 001) nextPC = PC + pc_offset << 2
     }
     break;
 
     case OP_BRNZ: {
         // TODO
+        // bits(31:24) = opcode = 11011110
+        // bits(15:0) = pc_offset
+        // if (CC = 110) nextPC = PC + pc_offset << 2
     }
     break;
 
     case OP_BRNP: {
         // TODO
+        // bits(31:24) = opcode = 11011101
+        // bits(15:0) = pc_offset
+        // if (CC = 101) nextPC = PC + pc_offset <<< 2
     }
     break;
 
     case OP_BRZP: {
         // TODO
+        // bits(31:24) = opcode = 11011011
+        // bits(15:0) = pc_offset
+        // if (CC = 101) nextPC = PC + pc_offset << 2
     }
     break;
 
     case OP_BRNZP: {
         // TODO
+        // bits(31:24) = opcode = 11011111
+        // bits(15:9( = pc_offset
+        // if (CC = 111) nextPC = PC + pc_offset << 2
     }
     break;
 
     case OP_JSR: {
         // TODO
+        // bits(31:24) = opcode = 11110000
+        // bits(15:0) = pc_offset
+        // r[7] = PC, nextPC = PC + pc_offset << 2
     }
     break;
 
