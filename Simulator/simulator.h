@@ -90,7 +90,7 @@ typedef struct VectorRegister_ {
 typedef struct TraceOp_ {
 	int16_t opcode;
 	int16_t scalar_registers[3];
-	int64_t vector_registers[2];
+	int64_t vector_registers[3];
 	int idx;
 	int primitive_type;
 	int int_value;

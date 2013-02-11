@@ -3,6 +3,9 @@
 #include <sstream>
 #include <vector>
 #include <bitset>
+#include <stdint.h>
+#include <cstring>
+#include <limits.h>
 #include "simulator.h"
 
 #define DEBUG
@@ -24,6 +27,7 @@ unsigned int g_instruction_count = 0;
 ////////////////////////////////////////////////////////////////////////
 void SetConditionCodeInt(const int16_t val1, const int16_t val2) 
 {
+    // TODO
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -32,6 +36,7 @@ void SetConditionCodeInt(const int16_t val1, const int16_t val2)
 ////////////////////////////////////////////////////////////////////////
 void SetConditionCodeFloat(const float val1, const float val2) 
 {
+    // TODO
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -253,154 +258,192 @@ TraceOp DecodeInstruction(const uint32_t instruction)
     break;
 
     case OP_VADD: {
+        // TODO
     }
     break;
 
     case OP_AND_D: {
+        // TODO
     }
     break;
 
     case OP_ANDI_D: {
+        // TODO
     }
     break;
 
     case OP_MOV: {
+        // TODO
     }
     break;
 
     case OP_MOVI_D: {
+        // TODO
     }
     break;
 
     case OP_MOVI_F: {
+        // TODO
     }
     break;
 
     case OP_VMOV: {
+        // TODO
     }
     break;
 
     case OP_VMOVI: {
+        // TODO
     }
     break;
 
     case OP_CMP: {
+        // TODO
     }
     break;
 
     case OP_CMPI: {
+        // TODO
     }
     break;
 
     case OP_VCOMPMOV: {
+        // TODO
     }
     break;
 
     case OP_VCOMPMOVI: {
+        // TODO
     }
     break;
 
     case OP_LDB: {
+        // TODO
     }
     break;
 
     case OP_LDW: {
+        // TODO
     }
     break;
 
     case OP_STB: {
+        // TODO
     }
     break;
 
     case OP_STW: {
+        // TODO
     }
     break;
 
     case OP_PUSHMATRIX: {      
+        // TODO
     }
     break;
 
     case OP_POPMATRIX: {
+        // TODO
     }
     break;
 
     case OP_ENDPRIMITIVE: {
+        // TODO
     }
     break;
 
     case OP_LOADIDENTITY: {
+        // TODO
     }
     break;
 
     case OP_FLUSH: {
+        // TODO
     }
     break;
 
     case OP_DRAW: {
+        // TODO
     }
     break;
 
     case OP_BEGINPRIMITIVE: {
+        // TODO
     }
     break;
 
     case OP_JMP: {
+        // TODO
     }
     break;
 
     case OP_JSRR: {
+        // TODO
     }
     break;
 
     case OP_SETVERTEX: {
+        // TODO
     }
     break;
 
     case OP_SETCOLOR: {
+        // TODO
     }
     break;
 
     case OP_ROTATE: {
+        // TODO
     }
     break;
 
     case OP_TRANSLATE: {
+        // TODO
     }
     break;
 
     case OP_SCALE: {
+        // TODO
     }
     break;
 
     case OP_BRN: {
+        // TODO
     }
     break;
 
     case OP_BRZ: {
+        // TODO
     }
     break;
 
     case OP_BRP: {
+        // TODO
     }
     break;
 
     case OP_BRNZ: {
+        // TODO
     }
     break;
 
     case OP_BRNP: {
+        // TODO
     }
     break;
 
     case OP_BRZP: {
+        // TODO
     }
     break;
 
     case OP_BRNZP: {
+        // TODO
     }
     break;
 
     case OP_JSR: {
+        // TODO
     }
     break;
 
@@ -441,34 +484,42 @@ int ExecuteInstruction(const TraceOp &trace_op)
     break;
 
     case OP_ADD_F: {
+        // TODO
     }
     break;
 
     case OP_ADDI_F: {
+        // TODO
     }
     break;
 
     case OP_VADD: {
+        // TODO
     }
     break;
 
     case OP_AND_D: {
+        // TODO
     }
     break;
 
     case OP_ANDI_D: {
+        // TODO
     }
     break;
 
     case OP_MOV: {
+        // TODO
     }
     break;
 
     case OP_MOVI_D: {
+        // TODO
     }
     break;
 
     case OP_MOVI_F: {
+        // TODO
     }
     break;
 
@@ -481,122 +532,152 @@ int ExecuteInstruction(const TraceOp &trace_op)
     break;
 
     case OP_VMOVI: {
+        // TODO
     }
     break;
 
     case OP_CMP: {
+        // TODO
     }
     break;
 
     case OP_CMPI: {
+        // TODO
     }
     break;
 
     case OP_VCOMPMOV: {
+        // TODO
     }
     break;
 
     case OP_VCOMPMOVI: {
+        // TODO
     }
     break;
 
     case OP_LDB: {
+        // TODO
     }
     break;
 
     case OP_LDW: {
+        // TODO
     }
     break;
 
     case OP_STB: {
+        // TODO
     }
     break;
 
     case OP_STW: {
+        // TODO
     }
     break;
 
     case OP_PUSHMATRIX: {
+        // TODO
     }
     break;
 
     case OP_POPMATRIX: {
+        // TODO
     }
     break;
 
     case OP_ENDPRIMITIVE: {
+        // TODO
     }
     break;
 
     case OP_LOADIDENTITY: {
+        // TODO
     }
     break;
 
     case OP_FLUSH: {
+        // TODO
     }
     break;
 
     case OP_DRAW: {
+        // TODO
     }  
     break;
 
     case OP_BEGINPRIMITIVE: {
+        // TODO
     }
     break;
 
     case OP_JMP: {
+        // TODO
     }
     break;
 
     case OP_JSRR: {
+        // TODO
     }
     break;
 
     case OP_SETVERTEX: {
+        // TODO
     }
     break;
 
     case OP_SETCOLOR: {
+        // TODO
     }
     break;
 
     case OP_ROTATE: {
+        // TODO
     }
     break;
 
     case OP_TRANSLATE: {
+        // TODO
     }
     break;
 
     case OP_SCALE: {
+        // TODO
     }
     break;
 
     case OP_BRN: {
+        // TODO
     }
     break;
 
     case OP_BRZ: {
+        // TODO
     }
     break;
 
     case OP_BRP: {
+        // TODO
     }
     break;
 
     case OP_BRNZ: {
+        // TODO
     }
     break;
 
     case OP_BRNP: {
+        // TODO
     }
     break;
 
     case OP_BRZP: {
+        // TODO
     }
     break;
 
     case OP_BRNZP: {
+        // TODO
     }
     break;
 
