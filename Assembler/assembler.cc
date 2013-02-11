@@ -3,7 +3,9 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-
+#include <stdint.h>
+#include <cstring>
+#include <limits.h>
 #include "assembler.h"
 
 using namespace std;
@@ -242,8 +244,8 @@ int main(int argc, char** argv)
 
       case OP_VADD:
         instruction = instruction | ((GetVectorRegisterIdx(tokens[1])<<16)&0x003F0000);
-        instruction = instruction | ((GetScalarRegisterIdx(tokens[2])<< 8)&0x00003F00);
-        instruction = instruction | ((GetScalarRegisterIdx(tokens[3])    )&0x0000003F);
+        instruction = instruction | ((GetVectorRegisterIdx(tokens[2])<< 8)&0x00003F00);
+        instruction = instruction | ((GetVectorRegisterIdx(tokens[3])    )&0x0000003F);
         break;
 
       case OP_MOV:
@@ -280,7 +282,7 @@ int main(int argc, char** argv)
         break;
 
       case OP_CMPI:
-        instruction = instruction | ((GetVectorRegisterIdx(tokens[1])<<16)&0x003F0000);
+        instruction = instruction | ((GetScalarRegisterIdx(tokens[1])<<16)&0x000F0000);
         istringstream(tokens[2]) >> integer_value;
         instruction = instruction | (((int16_t)integer_value)&0x0000FFFF);
         break;
@@ -314,10 +316,18 @@ int main(int argc, char** argv)
         instruction = instruction | ((integer_value<<16)&0x000F0000);
         break;
 
+      case OP_JSR:
+        istringstream(tokens[1]) >> integer_value;
+        instruction = instruction | ((integer_value)&0x0000FFFF);
+        break;
+
       case OP_JMP:
       //case OP_RET:
       case OP_JSRR:
-        instruction = instruction | ((GetScalarRegisterIdx(tokens[1])<<16)&0x000F0000);
+        if (tokens[0].compare("ret") == 0)
+          instruction = instruction | ((0x07<<16)&0x000F0000);
+        else
+          instruction = instruction | ((GetScalarRegisterIdx(tokens[1])<<16)&0x000F0000);
         break;
 
       case OP_SETVERTEX:
