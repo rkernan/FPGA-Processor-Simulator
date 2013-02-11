@@ -28,6 +28,9 @@ unsigned int g_instruction_count = 0;
 void SetConditionCodeInt(const int16_t val1, const int16_t val2) 
 {
     // TODO
+    // if (val1 == val2) CC = Z
+    // if (val1 < val2) CC = N
+    // if (val1 > val2) CC = P
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -37,6 +40,10 @@ void SetConditionCodeInt(const int16_t val1, const int16_t val2)
 void SetConditionCodeFloat(const float val1, const float val2) 
 {
     // TODO
+    // if (val1 == val2) CC = Z
+    // if (val1 < val2) CC = N
+    // if (val1 > val2) CC = P
+
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -224,116 +231,220 @@ TraceOp DecodeInstruction(const uint32_t instruction)
 
   switch (opcode) {
     case OP_ADD_D: {
-      int destination_register_idx = (instruction & 0x00F00000) >> 20;
-      int source_register_1_idx = (instruction & 0x000F0000) >> 16;
-      int source_register_2_idx = (instruction & 0x00000F00) >> 8;
-      ret_trace_op.scalar_registers[0] = destination_register_idx;
-      ret_trace_op.scalar_registers[1] = source_register_1_idx;
-      ret_trace_op.scalar_registers[2] = source_register_2_idx;
+        // bits(31:24) = opcode = 00000000
+        // bits(23:20) = dest
+        // bits(19:16) = src1
+        // bits(11:8) = src2
+        // dest = src1 + src2
+        int destination_register_idx = (instruction & 0x00F00000) >> 20;
+        int source_register_1_idx = (instruction & 0x000F0000) >> 16;
+        int source_register_2_idx = (instruction & 0x00000F00) >> 8;
+        ret_trace_op.scalar_registers[0] = destination_register_idx;
+        ret_trace_op.scalar_registers[1] = source_register_1_idx;
+        ret_trace_op.scalar_registers[2] = source_register_2_idx;
     }
     break;
 
     case OP_ADDI_D: {
-      int destination_register_idx = (instruction & 0x00F00000) >> 20;
-      int source_register_idx_idx = (instruction & 0x000F0000) >> 16;
-      int immediate_value = SignExtension(instruction & 0x0000FFFF);
-      ret_trace_op.scalar_registers[0] = destination_register_idx;
-      ret_trace_op.scalar_registers[1] = source_register_idx_idx;
-      ret_trace_op.int_value = immediate_value;
+        // bits(31:24) = opcode = 00000001
+        // bits(23:20) = dest
+        // bits(19:16) = src
+        // bits(15:0) = imm16
+        // dest = src + imm16
+        int destination_register_idx = (instruction & 0x00F00000) >> 20;
+        int source_register_idx_idx = (instruction & 0x000F0000) >> 16;
+        int immediate_value = SignExtension(instruction & 0x0000FFFF);
+        ret_trace_op.scalar_registers[0] = destination_register_idx;
+        ret_trace_op.scalar_registers[1] = source_register_idx_idx;
+        ret_trace_op.int_value = immediate_value;
     }
     break;
 
     case OP_ADD_F: {
+        // TODO
+        // bits(31:24) = opcode = 00000100
+        // bits(23:20) = dest
+        // bits(19:16) = src1
+        // bits(11:8) = src2
+        // dest = src1 + src2
     }
     break;
 
     case OP_ADDI_F: {
-      int destination_register_idx = (instruction & 0x00F00000) >> 20;
-      int source_register_idx = (instruction & 0x000F0000) >> 16;
-      float immediate_value = DecodeBinaryToFloatingPointNumber(instruction & 0x0000FFFF);
-      ret_trace_op.scalar_registers[0] = destination_register_idx;
-      ret_trace_op.scalar_registers[1] = source_register_idx;
-      ret_trace_op.float_value = immediate_value;
+        // bits(31:24) = opcode = 000000101
+        // bits(23:20) = dest
+        // bits(19:16) = src
+        // bits(15:0) = imm16
+        // dest = src + imm16
+        int destination_register_idx = (instruction & 0x00F00000) >> 20;
+        int source_register_idx = (instruction & 0x000F0000) >> 16;
+        float immediate_value = DecodeBinaryToFloatingPointNumber(instruction & 0x0000FFFF);
+        ret_trace_op.scalar_registers[0] = destination_register_idx;
+        ret_trace_op.scalar_registers[1] = source_register_idx;
+        ret_trace_op.float_value = immediate_value;
     }
     break;
 
     case OP_VADD: {
         // TODO
+        // bits(31:24) = opcode = 00000010
+        // bits(21:16) = dest
+        // bits(13:8) = src1
+        // bits(5:0) = src2
+        // dest[0] = src1[0] + src2[0]
+        // dest[1] = src1[1] + src2[1]
+        // dest[2] = src1[2] + src2[2]
+        // dest[3] = src1[3] + src2[3]
     }
     break;
 
     case OP_AND_D: {
         // TODO
+        // bits(31:24) = opcode = 00001000
+        // bits(23:20) = dest
+        // bits(19:16) = src1
+        // bits(11:8) = src2
+        // dest = src1 & src2
     }
     break;
 
     case OP_ANDI_D: {
         // TODO
+        // bits(31:24) = opcode = 00001001
+        // bits(23:20) = dest
+        // bits(19:16) = src
+        // bits(15:0) = imm16
+        // dest = src & imm16
     }
     break;
 
     case OP_MOV: {
         // TODO
+        // bits(31:24) = opcode = 00010000
+        // bits(19:16) = dest
+        // bits(11:8) = src
+        // dest = src
     }
     break;
 
     case OP_MOVI_D: {
         // TODO
+        // bits(31:24) = opcode = 00010001
+        // bits(19:16) = dest
+        // bits(15:0) = imm16
+        // dest = imm16
     }
     break;
 
     case OP_MOVI_F: {
         // TODO
+        // bits(31:24) = opcode = 00010101
+        // bits(19:16) = dest
+        // bits(15:0) = imm16
+        // dest = imm16
     }
     break;
 
     case OP_VMOV: {
         // TODO
+        // bits(31:24) = opcode = 00010010
+        // bits(21:16) = dest
+        // bits(13:8) = src
+        // dest = src
     }
     break;
 
     case OP_VMOVI: {
         // TODO
+        // bits(31:24) = opcode = 00010111
+        // bits(21:16) = dest
+        // bits(15:0) = imm16
+        // dest[0] = imm16
+        // dest[1] = imm16
+        // dest[2] = imm16
+        // dest[3] = imm16
     }
     break;
 
     case OP_CMP: {
         // TODO
+        // bits(31:24) = opcode = 00011000
+        // bits(19:16) = src1
+        // bits(11:8) = src2
+        // if (src1 == src2) CC = Z
+        // if (src1 < src2) CC = N
+        // if (src1 > src2) CC = P
     }
     break;
 
     case OP_CMPI: {
         // TODO
+        // bits(31:24) = opcode = 00011001
+        // bits(19:16) = src
+        // bits(15:0) = imm16
+        // if (src == imm16) CC = Z
+        // if (src < imm16) CC = N
+        // if (src > imm16) CC = P
     }
     break;
 
     case OP_VCOMPMOV: {
         // TODO
+        // bits(31:24) = opcode = 00100010
+        // bits(23:22) = idx
+        // bits(21:16) = dest = vector
+        // bits(11:8) = src = scalar
+        // dest[idx] = src
     }
     break;
 
     case OP_VCOMPMOVI: {
         // TODO
+        // bits(31:24) = opcode = 00100111
+        // bits(23:22) = idx
+        // bits(21:16) = dest = vector
+        // bits(15:0) = imm16
+        // dest[idx] = imm16
     }
     break;
 
     case OP_LDB: {
         // TODO
+        // bits(31:24) = opcode = 00101001
+        // bits(23:20) = dest
+        // bits(19:16) = base
+        // bits(15:0) = offset
+        // dest = mem[base + offset]
     }
     break;
 
     case OP_LDW: {
         // TODO
+        // bits(31:24) = opcode = 00101010
+        // bits(23:20) = dest
+        // bits(19:16) = base
+        // bits(15:0) = offset
+        // dest = mem[(base + offset + 1):(base + offset)]
     }
     break;
 
     case OP_STB: {
         // TODO
+        // bits(31:24) = opcode = 00110001
+        // bits(23:20) = src
+        // bits(19:16) = base
+        // bits(15:0) = offset
+        // mem[base + offset] = src
     }
     break;
 
     case OP_STW: {
         // TODO
+        // bits(31:24) = opcode = 00110010
+        // bits(23:20) = src
+        // bits(19:16) = base
+        // bits(15:0) = offset
+        // mem[(base + offset + f):(base + offset) = src
     }
     break;
 
