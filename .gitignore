@@ -17,4 +17,7 @@
 *.app
 
 # simulator
-isa_sim
+simulator
+
+# assembler
+assembler
