@@ -398,8 +398,8 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // bits(21:16) = dest = vector
         // bits(13:8) = src = vector
         // dest = src
-        int destination_register_idx; // TODO
-        int source_register_idx; // TODO
+        int destination_register_idx = (instruction & 0x003F0000) >> 16;
+        int source_register_idx = (instruction & 0x00003F00) >> 8;
         ret_trace_op.vector_registers[0] = destination_register_idx;
         ret_trace_op.vector_registers[1] = source_register_idx;
         // TODO test
@@ -414,8 +414,8 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // dest[1] = imm16
         // dest[2] = imm16
         // dest[3] = imm16
-        int destination_register_idx; // TODO
-        int immediate_value; // TODO
+        int destination_register_idx = (instruction & 0x003F0000) >> 16;
+        int immediate_value = SignExtension(instruction & 0x0000FFFF);
         ret_trace_op.vector_registers[0] = destination_register_idx;
         ret_trace_op.float_value = immediate_value;
         // TODO test
@@ -429,8 +429,8 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // if (src1 == src2) CC = Z
         // if (src1 < src2) CC = N
         // if (src1 > src2) CC = P
-        int source_register_1_idx; // TODO
-        int source_register_2_idx; // TODO
+        int source_register_1_idx = (instruction & 0x000F0000) >> 16;
+        int source_register_2_idx = (instruction & 0x00000F00) >> 8;
         ret_trace_op.scalar_registers[0] = source_register_1_idx;
         ret_trace_op.scalar_registers[1] = source_register_2_idx;
         // TODO test
@@ -444,8 +444,8 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // if (src == imm16) CC = Z
         // if (src < imm16) CC = N
         // if (src > imm16) CC = P
-        int source_register_idx; // TODO
-        int immediate_value; // TODO
+        int source_register_idx = (instruction & 0x000F0000) >> 16;
+        int immediate_value = SignExtension(instruction & 0x0000FFFF);
         ret_trace_op.scalar_registers[0] = source_register_idx;
         ret_trace_op.int_value = immediate_value;
         // TODO test
@@ -457,11 +457,11 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // bits(31:24) = opcode = 00100010
         // bits(23:22) = idx
         // bits(21:16) = dest = vector
-        // bits(11:8) = src = scalar
+        // bits(11:8) = src
         // dest[idx] = src
-        int index; // TODO
-        int destination_register_idx; // TODO
-        int source_register_idx; // TODO
+        int index = (instruction & 0x00C00000) >> 22;
+        int destination_register_idx = (instruction & 0x003F0000) >> 16;
+        int source_register_idx = (instruction & 0x00000F00) >> 8;
         ret_trace_op.idx = index;
         ret_trace_op.vector_registers[0] = destination_register_idx;
         ret_trace_op.scalar_registers[0] = source_register_idx;
@@ -475,9 +475,9 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // bits(21:16) = dest = vector
         // bits(15:0) = imm16
         // dest[idx] = imm16
-        int index; // TODO
-        int destination_register_idx; // TODO
-        int immediate_value; // TODO
+        int index = (instruction & 0x00C00000) >> 22;
+        int destination_register_idx = (instruction & 0x003F0000) >> 16;
+        int immediate_value = SignExtension(instruction & 0x0000FFFF);
         ret_trace_op.idx = index;
         ret_trace_op.vector_registers[0] = destination_register_idx;
         ret_trace_op.float_value = immediate_value;
@@ -491,9 +491,9 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // bits(19:16) = base
         // bits(15:0) = offset
         // dest = mem[base + offset]
-        int destination_register_idx; // TODO
-        int base_register_idx; // TODO
-        int offset_value; // TODO
+        int destination_register_idx = (instruction & 0x00F00000) >> 20;
+        int base_register_idx = (instruction & 0x000F0000) >> 16;
+        int offset_value = SignExtension(instruction & 0x0000FFFF);
         ret_trace_op.scalar_registers[0] = destination_register_idx;
         ret_trace_op.scalar_registers[1] = base_register_idx;
         ret_trace_op.int_value = offset_value;
@@ -507,9 +507,9 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // bits(19:16) = base
         // bits(15:0) = offset
         // dest = mem[(base + offset + 1):(base + offset)]
-        int destination_register_idx; // TODO
-        int base_register_idx; // TODO
-        int offset_value; // TODO
+        int destination_register_idx = (instruction & 0x00F00000) >> 20;
+        int base_register_idx = (instruction & 0x000F0000) >> 16;
+        int offset_value = SignExtension(instruction & 0x0000FFFF);
         ret_trace_op.scalar_registers[0] = destination_register_idx;
         ret_trace_op.scalar_registers[1] = base_register_idx;
         ret_trace_op.int_value = offset_value;
@@ -523,9 +523,9 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // bits(19:16) = base
         // bits(15:0) = offset
         // mem[base + offset] = src
-        int source_register_idx; // TODO
-        int base_register_idx; // TODO
-        int offset_value; // TODO
+        int source_register_idx = (instruction & 0x00F00000) >> 20;
+        int base_register_idx = (instruction & 0x000F0000) >> 16;
+        int offset_value = SignExtension(instruction & 0x0000FFFF);
         ret_trace_op.scalar_registers[0] = source_register_idx;
         ret_trace_op.scalar_registers[1] = base_register_idx;
         ret_trace_op.int_value = offset_value;
@@ -539,9 +539,9 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // bits(19:16) = base
         // bits(15:0) = offset
         // mem[(base + offset + f):(base + offset) = src
-        int source_register_idx; // TODO
-        int base_register_idx; // TODO
-        int offset_value; // TODO
+        int source_register_idx = (instruction & 0x00F00000) >> 20;
+        int base_register_idx = (instruction & 0x000F0000) >> 16;
+        int offset_value = SignExtension(instruction & 0x0000FFFF);
         ret_trace_op.scalar_registers[0] = source_register_idx;
         ret_trace_op.scalar_registers[1] = base_register_idx;
         ret_trace_op.int_value = offset_value;
@@ -599,7 +599,7 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // TYPES: 0 = points, 1 = lines, 2 = line strip, 3 = line loop, 4 =
         // triangles, 5 = triangle strip, 6 = triangle fan, 7 = quad strip, 8 =
         // polygon
-        int primitive_type; // TODO
+        int primitive_type = (instruction & 0x000F0000) >> 16;
         ret_trace_op.primitive_type = primitive_type;
         // TODO test
     }
@@ -609,7 +609,7 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // bits(31:24) = opcode = 11100000
         // bits(19:16) = baseR
         // next PC = baseR
-        int base_register_idx; // TODO
+        int base_register_idx = (instruction & 0x000F0000) >> 16;
         ret_trace_op.scalar_registers[0] = base_register_idx;
         // TODO test
     }
@@ -619,7 +619,7 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // bits(31:24) = opcode = 11111000
         // bits(19:16) = baseR
         // r[7] = PC, nextPC = baseR
-        int base_register_idx; // TODO
+        int base_register_idx = (instruction & 0x000F0000) >> 16;
         ret_trace_op.scalar_registers[0] = base_register_idx;
         // TODO test
     }
@@ -630,7 +630,7 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // bits(21:16) = vr
         // set current vertex using vr register (vr[1] = x, vr[2] = y, vr[3] =
         // z, ignore vr[0])
-        int vector_register_idx; // TODO
+        int vector_register_idx = (instruction & 0x003F0000) >> 16;
         ret_trace_op.vector_registers[0] = vector_register_idx;
         // TODO test
     }
@@ -641,7 +641,7 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // bits(21:16) = vr
         // set current vertex color using vr register (vr[0] = R, vr[1] = G,
         // vr[2] = B, ignore vr[3])
-        int vector_register_idx; // TODO
+        int vector_register_idx = (instruction & 0x003F0000) >> 16;
         ret_trace_op.vector_registers[0] = vector_register_idx;
         // TODO test
     }
@@ -653,7 +653,7 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // bits(21:16) = vr
         // rotate current matrix using vr register (vr[0] = angle, vr[3] =
         // z-coord, ignore vr[1] and vr[2])
-        int vector_register_idx; // TODO
+        int vector_register_idx = (instruction & 0x003F0000) >> 16;
         ret_trace_op.vector_registers[0] = vector_register_idx;
         // TODO test
     }
@@ -664,7 +664,7 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // bits(21:16) = vr
         // translate current matrix using vr register (vr[1] = x displacement,
         // vr[2] = y displacement, ignore vr[0] and vr[3])
-        int vector_register_idx; // TODO
+        int vector_register_idx = (instruction & 0x003F0000) >> 16;
         ret_trace_op.vector_registers[0] = vector_register_idx;
         // TODO test
     }
@@ -675,7 +675,7 @@ TraceOp DecodeInstruction(const uint32_t instruction)
         // bits(21:16) = vr
         // scale current matrix using vr register (vr[1] = x scale, vr[2] = y
         // scale, ignore vr[0] and vr[3])
-        int vector_register_idx; // TODO
+        int vector_register_idx = (instruction & 0x003F0000) >> 16;
         ret_trace_op.vector_registers[0] = vector_register_idx;
         // TODO test
     }
