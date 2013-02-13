@@ -722,10 +722,11 @@ int ExecuteInstruction(const TraceOp &trace_op)
         int base_value = g_scalar_registers[trace_op.scalar_registers[1]].int_value;
         int offset = trace_op.int_value;
         if (trace_op.scalar_registers[0] > 7) {
-            float memory_value = 0;
-            memcpy(&memory_value, g_memory + base_value + offset, 1);
-            g_scalar_registers[trace_op.scalar_registers[0]].float_value = memory_value;
-            SetConditionCodeFloat(memory_value, 0);
+            // int memory_value = 0;
+            // memcpy(&memory_value, g_memory + base_value + offset, 1);
+	    // float memory_value_f = DecodeBinaryToFloatingPointNumber(memory_value);
+            // g_scalar_registers[trace_op.scalar_registers[0]].float_value = memory_value_f;
+            // SetConditionCodeFloat(memory_value_f, 0);
         }
         else {
             int memory_value = 0;
@@ -741,10 +742,11 @@ int ExecuteInstruction(const TraceOp &trace_op)
         int base_value = g_scalar_registers[trace_op.scalar_registers[1]].int_value;
         int offset = trace_op.int_value;
         if (trace_op.scalar_registers[0] > 7) {
-            float memory_value = 0;
-            memcpy(&memory_value, g_memory + base_value + offset, 2);
-            g_scalar_registers[trace_op.scalar_registers[0]].float_value = memory_value;
-            SetConditionCodeFloat(memory_value, 0);
+            // int memory_value = 0;
+            // memcpy(&memory_value, g_memory + base_value + offset, 2);
+	    // float memory_value_f = DecodeBinaryToFloatingPointNumber(memory_value);
+            // g_scalar_registers[trace_op.scalar_registers[0]].float_value = memory_value_f;
+            // SetConditionCodeFloat(memory_value_f, 0);
         }
         else {
             int memory_value = 0;
@@ -760,8 +762,9 @@ int ExecuteInstruction(const TraceOp &trace_op)
         int base_value = g_scalar_registers[trace_op.scalar_registers[1]].int_value;
         int offset = trace_op.int_value;
         if (trace_op.scalar_registers[0] > 7) {
-            float source_value = g_scalar_registers[trace_op.scalar_registers[0]].float_value;
-            memcpy(g_memory + base_value + offset, &source_value, 1);
+            // float source_value = g_scalar_registers[trace_op.scalar_registers[0]].float_value;
+	    // int source_value_i = ; // encode function doesn't exist...
+            // memcpy(g_memory + base_value + offset, &source_value_i, 1);
         }
         else {
             int source_value = g_scalar_registers[trace_op.scalar_registers[0]].int_value;
@@ -774,8 +777,9 @@ int ExecuteInstruction(const TraceOp &trace_op)
         int base_value = g_scalar_registers[trace_op.scalar_registers[1]].int_value;
         int offset = trace_op.int_value;
         if (trace_op.scalar_registers[0] > 7) {
-            float source_value = g_scalar_registers[trace_op.scalar_registers[0]].float_value;
-            memcpy(g_memory + base_value + offset, &source_value, 2);
+            // float source_value = g_scalar_registers[trace_op.scalar_registers[0]].float_value;
+	    // int source_value_i = ; // encode function doesn't exist...
+            // memcpy(g_memory + base_value + offset, &source_value_i, 2);
         }
         else {
             int source_value = g_scalar_registers[trace_op.scalar_registers[0]].int_value;
