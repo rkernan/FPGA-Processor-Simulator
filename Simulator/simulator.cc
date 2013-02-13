@@ -299,7 +299,7 @@ TraceOp DecodeInstruction(const uint32_t instruction)
     break;
 
     case OP_AND_D: {
-        int destination_register_idx = (instruction & 0x00F000000) >> 20;
+        int destination_register_idx = (instruction & 0x00F00000) >> 20;
         int source_register_1_idx = (instruction & 0x000F0000) >> 16;
         int source_register_2_idx = (instruction & 0x00000F00) >> 8;
         ret_trace_op.scalar_registers[0] = destination_register_idx;
