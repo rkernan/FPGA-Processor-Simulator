@@ -24,7 +24,7 @@ unsigned int g_instruction_count = 0;
 
 #define CC_N 0x1
 #define CC_Z 0x2
-#define CC_P 0x5
+#define CC_P 0x4
 
 ////////////////////////////////////////////////////////////////////////
 // desc: Set g_condition_code_register depending on the values of val1 and val2
@@ -34,13 +34,13 @@ void SetConditionCodeInt(const int16_t val1, const int16_t val2)
 {
     int cc = 0;
     if (val1 - val2 > 0) {
-        cc |= CC_P;
+        cc = CC_P;
     }
-    if (val1 - val2 < 0) {
-        cc |= CC_N;
+	else if (val1 - val2 < 0) {
+        cc = CC_N;
     }
-    if (val1 - val2 == 0) {
-        cc |= CC_Z;
+	else {
+        cc = CC_Z;
     }
     g_condition_code_register.int_value = cc;
 }
@@ -52,14 +52,14 @@ void SetConditionCodeInt(const int16_t val1, const int16_t val2)
 void SetConditionCodeFloat(const float val1, const float val2) 
 {
     int cc = 0;
-    if (val1 - val2 > 0) {
-        cc |= CC_P;
+    if (val1 - val2 > 0 && abs(val1 - val2) > 0.0001 ) {
+        cc = CC_P;
     }
-    if (val1 - val2 < 0) {
-        cc |= CC_N;
+	else if (val1 - val2 < 0 && abs(val1 - val2) > 0.0001) {
+        cc = CC_N;
     }
-    if (abs(val1 - val2) < 0.0001) {
-        cc |= CC_Z;
+	else {
+        cc = CC_Z;
     }
     g_condition_code_register.int_value = cc;
 }
@@ -352,7 +352,7 @@ TraceOp DecodeInstruction(const uint32_t instruction)
 
     case OP_VMOVI: {
         int destination_register_idx = (instruction & 0x003F0000) >> 16;
-        int immediate_value = SignExtension(instruction & 0x0000FFFF);
+        float immediate_value = DecodeBinaryToFloatingPointNumber(instruction & 0x0000FFFF);
         ret_trace_op.vector_registers[0] = destination_register_idx;
         ret_trace_op.float_value = immediate_value;
     }
@@ -387,7 +387,7 @@ TraceOp DecodeInstruction(const uint32_t instruction)
     case OP_VCOMPMOVI: {
         int index = (instruction & 0x00C00000) >> 22;
         int destination_register_idx = (instruction & 0x003F0000) >> 16;
-        int immediate_value = SignExtension(instruction & 0x0000FFFF);
+        float immediate_value = DecodeBinaryToFloatingPointNumber(instruction & 0x0000FFFF);
         ret_trace_op.idx = index;
         ret_trace_op.vector_registers[0] = destination_register_idx;
         ret_trace_op.float_value = immediate_value;
@@ -629,9 +629,16 @@ int ExecuteInstruction(const TraceOp &trace_op)
     break;
 
     case OP_MOV: {
-        int source_value = g_scalar_registers[trace_op.scalar_registers[1]].int_value;
-        g_scalar_registers[trace_op.scalar_registers[0]].int_value = source_value;
-        SetConditionCodeInt(source_value, 0);
+        if (trace_op.scalar_registers[1] > 7) {
+            float source_value = g_scalar_registers[trace_op.scalar_registers[1]].float_value;
+            g_scalar_registers[trace_op.scalar_registers[0]].float_value = source_value;
+            SetConditionCodeFloat(source_value, 0);
+        }
+        else {
+            int source_value = g_scalar_registers[trace_op.scalar_registers[1]].int_value;
+            g_scalar_registers[trace_op.scalar_registers[0]].int_value = source_value;
+            SetConditionCodeInt(source_value, 0);
+        }
     }
     break;
 
@@ -668,16 +675,30 @@ int ExecuteInstruction(const TraceOp &trace_op)
     break;
 
     case OP_CMP: {
-        int source_value_1 = g_scalar_registers[trace_op.scalar_registers[0]].int_value;
-        int source_value_2 = g_scalar_registers[trace_op.scalar_registers[1]].int_value;
-        SetConditionCodeInt(source_value_1, source_value_2);
+        if (trace_op.scalar_registers[0] > 7) {
+            float source_value_1 = g_scalar_registers[trace_op.scalar_registers[0]].float_value;
+            float source_value_2 = g_scalar_registers[trace_op.scalar_registers[1]].float_value;
+            SetConditionCodeFloat(source_value_1, source_value_2);
+        }
+        else {
+            int source_value_1 = g_scalar_registers[trace_op.scalar_registers[0]].int_value;
+            int source_value_2 = g_scalar_registers[trace_op.scalar_registers[1]].int_value;
+            SetConditionCodeInt(source_value_1, source_value_2);
+        }
     }
     break;
 
     case OP_CMPI: {
-        int source_value = g_scalar_registers[trace_op.scalar_registers[0]].int_value;
-        int immediate_value = trace_op.int_value;
-        SetConditionCodeInt(source_value, immediate_value);
+        if (trace_op.scalar_registers[0] > 7) {
+            float source_value = g_scalar_registers[trace_op.scalar_registers[0]].float_value;
+            float immediate_value = trace_op.float_value;
+            SetConditionCodeFloat(source_value, immediate_value);
+        }
+        else {
+            int source_value = g_scalar_registers[trace_op.scalar_registers[0]].int_value;
+            int immediate_value = trace_op.int_value;
+            SetConditionCodeInt(source_value, immediate_value);
+        }
     }
     break;
 
@@ -700,35 +721,66 @@ int ExecuteInstruction(const TraceOp &trace_op)
     case OP_LDB: {
         int base_value = g_scalar_registers[trace_op.scalar_registers[1]].int_value;
         int offset = trace_op.int_value;
-        g_scalar_registers[trace_op.scalar_registers[0]].int_value = SignExtension(g_memory[base_value + offset]);
+        if (trace_op.scalar_registers[0] > 7) {
+            float memory_value = 0;
+            memcpy(&memory_value, g_memory + base_value + offset, 1);
+            g_scalar_registers[trace_op.scalar_registers[0]].float_value = memory_value;
+            SetConditionCodeFloat(memory_value, 0);
+        }
+        else {
+            int memory_value = 0;
+            memcpy(&memory_value, g_memory + base_value + offset, 1);
+            memory_value = SignExtension(memory_value);
+            g_scalar_registers[trace_op.scalar_registers[0]].int_value = memory_value;
+            SetConditionCodeInt(memory_value, 0);
+        }
     }
     break;
 
     case OP_LDW: {
         int base_value = g_scalar_registers[trace_op.scalar_registers[1]].int_value;
         int offset = trace_op.int_value;
-        int memory_value = (g_memory[base_value + offset + 1] << 8) | g_memory[base_value + offset];
-        g_scalar_registers[trace_op.scalar_registers[0]].int_value = memory_value;
+        if (trace_op.scalar_registers[0] > 7) {
+            float memory_value = 0;
+            memcpy(&memory_value, g_memory + base_value + offset, 2);
+            g_scalar_registers[trace_op.scalar_registers[0]].float_value = memory_value;
+            SetConditionCodeFloat(memory_value, 0);
+        }
+        else {
+            int memory_value = 0;
+            memcpy(&memory_value, g_memory + base_value + offset, 2);
+            memory_value = SignExtension(memory_value);
+            g_scalar_registers[trace_op.scalar_registers[0]].int_value = memory_value;
+            SetConditionCodeInt(memory_value, 0);
+        }
     }
     break;
 
     case OP_STB: {
-        int source_value = g_scalar_registers[trace_op.scalar_registers[0]].int_value;
         int base_value = g_scalar_registers[trace_op.scalar_registers[1]].int_value;
         int offset = trace_op.int_value;
-        unsigned char memory_value = (unsigned char)(source_value);
-        g_memory[base_value + offset] = memory_value;
+        if (trace_op.scalar_registers[0] > 7) {
+            float source_value = g_scalar_registers[trace_op.scalar_registers[0]].float_value;
+            memcpy(g_memory + base_value + offset, &source_value, 1);
+        }
+        else {
+            int source_value = g_scalar_registers[trace_op.scalar_registers[0]].int_value;
+            memcpy(g_memory + base_value + offset, &source_value, 1);
+        }
     }
     break;
 
     case OP_STW: {
-        int source_value = g_scalar_registers[trace_op.scalar_registers[0]].int_value;
         int base_value = g_scalar_registers[trace_op.scalar_registers[1]].int_value;
         int offset = trace_op.int_value;
-        unsigned char memory_value_1 = (source_value & 0xFFFF0000) >> 8;
-        unsigned char memory_value_2 = source_value & 0x0000FFFF;
-        g_memory[base_value + offset + 1] = memory_value_1;
-        g_memory[base_value + offset] = memory_value_2;
+        if (trace_op.scalar_registers[0] > 7) {
+            float source_value = g_scalar_registers[trace_op.scalar_registers[0]].float_value;
+            memcpy(g_memory + base_value + offset, &source_value, 2);
+        }
+        else {
+            int source_value = g_scalar_registers[trace_op.scalar_registers[0]].int_value;
+            memcpy(g_memory + base_value + offset, &source_value, 2);
+        }
     }
     break;
 
@@ -767,7 +819,7 @@ int ExecuteInstruction(const TraceOp &trace_op)
 
     case OP_BRNZ: {
         int offset = trace_op.int_value;
-        if (g_condition_code_register.int_value == (CC_N | CC_Z)) {
+        if (g_condition_code_register.int_value & (CC_N | CC_Z)) {
             ret_next_instruction_idx = offset;
         }
         else {
@@ -778,7 +830,7 @@ int ExecuteInstruction(const TraceOp &trace_op)
 
     case OP_BRNP: {
         int offset = trace_op.int_value;
-        if (g_condition_code_register.int_value == (CC_N | CC_Z)) {
+        if (g_condition_code_register.int_value & (CC_N | CC_P)) {
             ret_next_instruction_idx = offset;
         }
         else {
@@ -789,7 +841,7 @@ int ExecuteInstruction(const TraceOp &trace_op)
 
     case OP_BRZP: {
         int offset = trace_op.int_value;
-        if (g_condition_code_register.int_value == (CC_Z | CC_P)) {
+        if (g_condition_code_register.int_value & (CC_Z | CC_P)) {
             ret_next_instruction_idx = offset;
         }
         else {
@@ -800,12 +852,7 @@ int ExecuteInstruction(const TraceOp &trace_op)
 
     case OP_BRNZP: {
         int offset = trace_op.int_value;
-        if (g_condition_code_register.int_value == (CC_N | CC_Z | CC_P)) {
-            ret_next_instruction_idx = offset;
-        }
-        else {
-            ret_next_instruction_idx = 0;
-        }
+        ret_next_instruction_idx = offset;
     }
     break;
 
