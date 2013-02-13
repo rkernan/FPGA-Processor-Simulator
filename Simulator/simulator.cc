@@ -33,10 +33,10 @@ unsigned int g_instruction_count = 0;
 void SetConditionCodeInt(const int16_t val1, const int16_t val2) 
 {
 	int cc = 0;
-	if (val1 - val2 > 0) {
+	if (val1 > val2) {
 		cc = CC_P;
 	}
-	else if (val1 - val2 < 0) {
+	else if (val1 < val2) {
 		cc = CC_N;
 	}
 	else {
@@ -52,10 +52,10 @@ void SetConditionCodeInt(const int16_t val1, const int16_t val2)
 void SetConditionCodeFloat(const float val1, const float val2) 
 {
 	int cc = 0;
-	if (val1 - val2 > 0 && abs(val1 - val2) > 0.0001 ) {
+	if (val1 > val2 && abs(val1 - val2) > 0.0001 ) {
 		cc = CC_P;
 	}
-	else if (val1 - val2 < 0 && abs(val1 - val2) > 0.0001) {
+	else if (val1 < val2 && abs(val1 - val2) > 0.0001) {
 		cc = CC_N;
 	}
 	else {
