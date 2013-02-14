@@ -1,0 +1,1138 @@
+The contents of the instruction vectors are :
+  00010001000000000000011101111000
+  00001001000100000000100001101101
+  00000001000100011111110111110111
+  00000000001000000000000100000000
+  00011000000000010000001000000000
+  11011010000000000000000000000110
+  11011001000000000000000000000101
+  00001000001100000000000100000000
+  00010101000010001101101011110110
+  00000101100010000101001100101101
+  00010101000010010101110110100000
+  00000100101010000000100100000000
+  00010000000001000000001100000000
+  00010001000001010000000000001011
+  00000000011001000000010100000000
+  00011001000001010000000000001011
+The contents of the g_trace_ops vectors are :
+  opcode: 17, scalar_register[0]: 0, scalar_register[1]: 0, scalar_register[2]: 0, vector_register[0]: 0, vector_register[1]: 0, idx: 0, primitive_index: 0, int_value: 1912, float_value: 0
+  opcode: 9, scalar_register[0]: 1, scalar_register[1]: 0, scalar_register[2]: 0, vector_register[0]: 0, vector_register[1]: 0, idx: 0, primitive_index: 0, int_value: 2157, float_value: 0
+  opcode: 1, scalar_register[0]: 1, scalar_register[1]: 1, scalar_register[2]: 0, vector_register[0]: 0, vector_register[1]: 0, idx: 0, primitive_index: 0, int_value: -521, float_value: 0
+  opcode: 0, scalar_register[0]: 2, scalar_register[1]: 0, scalar_register[2]: 1, vector_register[0]: 0, vector_register[1]: 0, idx: 0, primitive_index: 0, int_value: 0, float_value: 0
+  opcode: 24, scalar_register[0]: 1, scalar_register[1]: 2, scalar_register[2]: 0, vector_register[0]: 0, vector_register[1]: 0, idx: 0, primitive_index: 0, int_value: 0, float_value: 0
+  opcode: 218, scalar_register[0]: 0, scalar_register[1]: 0, scalar_register[2]: 0, vector_register[0]: 0, vector_register[1]: 0, idx: 0, primitive_index: 0, int_value: 6, float_value: 0
+  opcode: 217, scalar_register[0]: 0, scalar_register[1]: 0, scalar_register[2]: 0, vector_register[0]: 0, vector_register[1]: 0, idx: 0, primitive_index: 0, int_value: 5, float_value: 0
+  opcode: 8, scalar_register[0]: 3, scalar_register[1]: 0, scalar_register[2]: 1, vector_register[0]: 0, vector_register[1]: 0, idx: 0, primitive_index: 0, int_value: 0, float_value: 0
+  opcode: 21, scalar_register[0]: 8, scalar_register[1]: 0, scalar_register[2]: 0, vector_register[0]: 0, vector_register[1]: 0, idx: 0, primitive_index: 0, int_value: 0, float_value: -222.75
+  opcode: 5, scalar_register[0]: 8, scalar_register[1]: 8, scalar_register[2]: 0, vector_register[0]: 0, vector_register[1]: 0, idx: 0, primitive_index: 0, int_value: 0, float_value: 57.4062
+  opcode: 21, scalar_register[0]: 9, scalar_register[1]: 0, scalar_register[2]: 0, vector_register[0]: 0, vector_register[1]: 0, idx: 0, primitive_index: 0, int_value: 0, float_value: 360
+  opcode: 4, scalar_register[0]: 64, scalar_register[1]: 8, scalar_register[2]: 9, vector_register[0]: 0, vector_register[1]: 0, idx: 0, primitive_index: 0, int_value: 0, float_value: 0
+  opcode: 16, scalar_register[0]: 4, scalar_register[1]: 3, scalar_register[2]: 0, vector_register[0]: 0, vector_register[1]: 0, idx: 0, primitive_index: 0, int_value: 0, float_value: 0
+  opcode: 17, scalar_register[0]: 5, scalar_register[1]: 0, scalar_register[2]: 0, vector_register[0]: 0, vector_register[1]: 0, idx: 0, primitive_index: 0, int_value: 11, float_value: 0
+  opcode: 0, scalar_register[0]: 6, scalar_register[1]: 4, scalar_register[2]: 5, vector_register[0]: 0, vector_register[1]: 0, idx: 0, primitive_index: 0, int_value: 0, float_value: 0
+  opcode: 25, scalar_register[0]: 5, scalar_register[1]: 0, scalar_register[2]: 0, vector_register[0]: 0, vector_register[1]: 0, idx: 0, primitive_index: 0, int_value: 11, float_value: 0
+--------------------------------------------------
+Instruction Count: 1, Current Instruction's Opcode: 17, Next Instruction's Opcode: 9
+R0:1912, R1:0, R2:0, R3:0, R4:0, R5:0, R6:0, R7:0, R8:0, R9:0, R10:0, R11:0, R12:0, R13:0, R14:0, R15:1
+V0:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V1:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V2:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V3:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V4:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V5:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V6:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V7:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V8:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V9:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V10:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V11:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V12:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V13:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V14:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V15:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V16:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V17:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V18:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V19:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V20:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V21:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V22:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V23:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V24:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V25:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V26:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V27:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V28:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V29:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V30:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V31:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V32:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V33:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V34:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V35:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V36:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V37:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V38:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V39:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V40:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V41:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V42:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V43:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V44:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V45:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V46:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V47:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V48:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V49:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V50:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V51:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V52:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V53:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V54:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V55:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V56:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V57:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V58:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V59:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V60:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V61:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V62:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V63:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+
+--------------------------------------------------
+--------------------------------------------------
+Instruction Count: 2, Current Instruction's Opcode: 9, Next Instruction's Opcode: 1
+R0:1912, R1:104, R2:0, R3:0, R4:0, R5:0, R6:0, R7:0, R8:0, R9:0, R10:0, R11:0, R12:0, R13:0, R14:0, R15:2
+V0:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V1:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V2:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V3:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V4:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V5:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V6:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V7:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V8:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V9:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V10:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V11:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V12:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V13:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V14:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V15:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V16:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V17:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V18:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V19:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V20:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V21:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V22:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V23:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V24:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V25:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V26:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V27:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V28:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V29:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V30:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V31:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V32:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V33:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V34:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V35:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V36:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V37:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V38:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V39:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V40:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V41:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V42:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V43:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V44:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V45:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V46:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V47:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V48:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V49:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V50:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V51:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V52:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V53:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V54:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V55:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V56:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V57:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V58:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V59:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V60:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V61:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V62:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V63:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+
+--------------------------------------------------
+--------------------------------------------------
+Instruction Count: 3, Current Instruction's Opcode: 1, Next Instruction's Opcode: 0
+R0:1912, R1:-417, R2:0, R3:0, R4:0, R5:0, R6:0, R7:0, R8:0, R9:0, R10:0, R11:0, R12:0, R13:0, R14:0, R15:3
+V0:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V1:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V2:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V3:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V4:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V5:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V6:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V7:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V8:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V9:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V10:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V11:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V12:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V13:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V14:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V15:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V16:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V17:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V18:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V19:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V20:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V21:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V22:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V23:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V24:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V25:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V26:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V27:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V28:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V29:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V30:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V31:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V32:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V33:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V34:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V35:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V36:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V37:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V38:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V39:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V40:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V41:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V42:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V43:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V44:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V45:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V46:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V47:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V48:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V49:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V50:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V51:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V52:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V53:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V54:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V55:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V56:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V57:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V58:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V59:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V60:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V61:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V62:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V63:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+
+--------------------------------------------------
+--------------------------------------------------
+Instruction Count: 4, Current Instruction's Opcode: 0, Next Instruction's Opcode: 24
+R0:1912, R1:-417, R2:1495, R3:0, R4:0, R5:0, R6:0, R7:0, R8:0, R9:0, R10:0, R11:0, R12:0, R13:0, R14:0, R15:4
+V0:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V1:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V2:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V3:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V4:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V5:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V6:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V7:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V8:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V9:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V10:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V11:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V12:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V13:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V14:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V15:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V16:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V17:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V18:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V19:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V20:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V21:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V22:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V23:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V24:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V25:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V26:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V27:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V28:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V29:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V30:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V31:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V32:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V33:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V34:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V35:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V36:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V37:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V38:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V39:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V40:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V41:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V42:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V43:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V44:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V45:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V46:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V47:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V48:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V49:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V50:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V51:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V52:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V53:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V54:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V55:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V56:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V57:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V58:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V59:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V60:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V61:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V62:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V63:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+
+--------------------------------------------------
+--------------------------------------------------
+Instruction Count: 5, Current Instruction's Opcode: 24, Next Instruction's Opcode: 218
+R0:1912, R1:-417, R2:1495, R3:0, R4:0, R5:0, R6:0, R7:0, R8:0, R9:0, R10:0, R11:0, R12:0, R13:0, R14:0, R15:5
+V0:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V1:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V2:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V3:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V4:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V5:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V6:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V7:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V8:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V9:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V10:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V11:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V12:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V13:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V14:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V15:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V16:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V17:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V18:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V19:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V20:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V21:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V22:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V23:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V24:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V25:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V26:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V27:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V28:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V29:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V30:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V31:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V32:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V33:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V34:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V35:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V36:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V37:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V38:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V39:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V40:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V41:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V42:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V43:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V44:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V45:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V46:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V47:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V48:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V49:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V50:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V51:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V52:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V53:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V54:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V55:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V56:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V57:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V58:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V59:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V60:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V61:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V62:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V63:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+
+--------------------------------------------------
+--------------------------------------------------
+Instruction Count: 6, Current Instruction's Opcode: 218, Next Instruction's Opcode: 217
+R0:1912, R1:-417, R2:1495, R3:0, R4:0, R5:0, R6:0, R7:0, R8:0, R9:0, R10:0, R11:0, R12:0, R13:0, R14:0, R15:6
+V0:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V1:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V2:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V3:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V4:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V5:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V6:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V7:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V8:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V9:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V10:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V11:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V12:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V13:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V14:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V15:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V16:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V17:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V18:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V19:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V20:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V21:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V22:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V23:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V24:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V25:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V26:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V27:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V28:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V29:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V30:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V31:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V32:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V33:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V34:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V35:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V36:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V37:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V38:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V39:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V40:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V41:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V42:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V43:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V44:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V45:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V46:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V47:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V48:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V49:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V50:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V51:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V52:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V53:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V54:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V55:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V56:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V57:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V58:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V59:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V60:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V61:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V62:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V63:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+
+--------------------------------------------------
+--------------------------------------------------
+Instruction Count: 7, Current Instruction's Opcode: 217, Next Instruction's Opcode: 8
+R0:1912, R1:-417, R2:1495, R3:0, R4:0, R5:0, R6:0, R7:0, R8:0, R9:0, R10:0, R11:0, R12:0, R13:0, R14:0, R15:7
+V0:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V1:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V2:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V3:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V4:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V5:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V6:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V7:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V8:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V9:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V10:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V11:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V12:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V13:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V14:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V15:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V16:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V17:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V18:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V19:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V20:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V21:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V22:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V23:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V24:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V25:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V26:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V27:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V28:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V29:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V30:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V31:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V32:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V33:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V34:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V35:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V36:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V37:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V38:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V39:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V40:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V41:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V42:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V43:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V44:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V45:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V46:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V47:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V48:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V49:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V50:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V51:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V52:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V53:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V54:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V55:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V56:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V57:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V58:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V59:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V60:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V61:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V62:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V63:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+
+--------------------------------------------------
+--------------------------------------------------
+Instruction Count: 8, Current Instruction's Opcode: 8, Next Instruction's Opcode: 21
+R0:1912, R1:-417, R2:1495, R3:1624, R4:0, R5:0, R6:0, R7:0, R8:0, R9:0, R10:0, R11:0, R12:0, R13:0, R14:0, R15:8
+V0:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V1:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V2:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V3:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V4:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V5:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V6:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V7:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V8:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V9:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V10:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V11:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V12:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V13:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V14:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V15:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V16:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V17:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V18:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V19:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V20:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V21:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V22:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V23:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V24:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V25:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V26:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V27:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V28:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V29:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V30:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V31:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V32:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V33:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V34:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V35:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V36:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V37:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V38:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V39:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V40:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V41:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V42:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V43:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V44:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V45:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V46:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V47:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V48:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V49:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V50:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V51:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V52:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V53:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V54:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V55:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V56:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V57:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V58:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V59:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V60:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V61:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V62:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V63:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+
+--------------------------------------------------
+--------------------------------------------------
+Instruction Count: 9, Current Instruction's Opcode: 21, Next Instruction's Opcode: 5
+R0:1912, R1:-417, R2:1495, R3:1624, R4:0, R5:0, R6:0, R7:0, R8:-222.75, R9:0, R10:0, R11:0, R12:0, R13:0, R14:0, R15:9
+V0:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V1:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V2:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V3:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V4:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V5:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V6:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V7:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V8:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V9:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V10:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V11:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V12:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V13:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V14:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V15:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V16:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V17:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V18:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V19:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V20:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V21:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V22:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V23:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V24:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V25:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V26:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V27:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V28:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V29:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V30:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V31:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V32:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V33:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V34:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V35:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V36:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V37:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V38:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V39:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V40:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V41:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V42:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V43:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V44:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V45:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V46:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V47:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V48:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V49:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V50:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V51:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V52:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V53:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V54:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V55:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V56:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V57:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V58:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V59:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V60:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V61:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V62:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V63:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+
+--------------------------------------------------
+--------------------------------------------------
+Instruction Count: 10, Current Instruction's Opcode: 5, Next Instruction's Opcode: 21
+R0:1912, R1:-417, R2:1495, R3:1624, R4:0, R5:0, R6:0, R7:0, R8:-165.344, R9:0, R10:0, R11:0, R12:0, R13:0, R14:0, R15:10
+V0:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V1:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V2:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V3:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V4:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V5:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V6:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V7:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V8:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V9:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V10:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V11:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V12:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V13:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V14:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V15:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V16:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V17:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V18:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V19:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V20:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V21:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V22:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V23:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V24:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V25:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V26:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V27:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V28:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V29:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V30:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V31:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V32:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V33:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V34:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V35:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V36:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V37:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V38:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V39:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V40:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V41:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V42:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V43:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V44:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V45:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V46:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V47:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V48:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V49:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V50:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V51:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V52:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V53:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V54:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V55:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V56:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V57:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V58:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V59:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V60:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V61:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V62:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V63:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+
+--------------------------------------------------
+--------------------------------------------------
+Instruction Count: 11, Current Instruction's Opcode: 21, Next Instruction's Opcode: 4
+R0:1912, R1:-417, R2:1495, R3:1624, R4:0, R5:0, R6:0, R7:0, R8:-165.344, R9:360, R10:0, R11:0, R12:0, R13:0, R14:0, R15:11
+V0:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V1:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V2:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V3:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V4:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V5:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V6:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V7:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V8:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V9:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V10:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V11:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V12:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V13:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V14:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V15:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V16:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V17:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V18:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V19:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V20:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V21:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V22:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V23:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V24:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V25:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V26:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V27:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V28:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V29:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V30:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V31:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V32:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V33:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V34:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V35:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V36:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V37:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V38:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V39:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V40:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V41:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V42:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V43:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V44:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V45:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V46:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V47:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V48:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V49:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V50:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V51:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V52:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V53:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V54:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V55:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V56:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V57:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V58:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V59:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V60:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V61:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V62:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V63:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+
+--------------------------------------------------
+--------------------------------------------------
+Instruction Count: 12, Current Instruction's Opcode: 4, Next Instruction's Opcode: 16
+R0:1912, R1:-417, R2:1495, R3:1624, R4:0, R5:0, R6:0, R7:0, R8:-165.344, R9:360, R10:0, R11:0, R12:0, R13:0, R14:0, R15:12
+V0:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V1:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V2:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V3:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V4:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V5:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V6:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V7:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V8:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V9:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V10:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V11:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V12:Element[0] = 194.656,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V13:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V14:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V15:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V16:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V17:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V18:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V19:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V20:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V21:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V22:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V23:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V24:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V25:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V26:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V27:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V28:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V29:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V30:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V31:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V32:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V33:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V34:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V35:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V36:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V37:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V38:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V39:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V40:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V41:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V42:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V43:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V44:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V45:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V46:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V47:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V48:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V49:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V50:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V51:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V52:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V53:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V54:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V55:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V56:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V57:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V58:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V59:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V60:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V61:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V62:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V63:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+
+--------------------------------------------------
+--------------------------------------------------
+Instruction Count: 13, Current Instruction's Opcode: 16, Next Instruction's Opcode: 17
+R0:1912, R1:-417, R2:1495, R3:1624, R4:1624, R5:0, R6:0, R7:0, R8:-165.344, R9:360, R10:0, R11:0, R12:0, R13:0, R14:0, R15:13
+V0:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V1:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V2:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V3:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V4:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V5:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V6:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V7:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V8:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V9:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V10:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V11:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V12:Element[0] = 194.656,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V13:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V14:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V15:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V16:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V17:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V18:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V19:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V20:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V21:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V22:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V23:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V24:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V25:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V26:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V27:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V28:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V29:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V30:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V31:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V32:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V33:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V34:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V35:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V36:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V37:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V38:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V39:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V40:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V41:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V42:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V43:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V44:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V45:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V46:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V47:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V48:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V49:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V50:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V51:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V52:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V53:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V54:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V55:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V56:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V57:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V58:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V59:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V60:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V61:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V62:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V63:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+
+--------------------------------------------------
+--------------------------------------------------
+Instruction Count: 14, Current Instruction's Opcode: 17, Next Instruction's Opcode: 0
+R0:1912, R1:-417, R2:1495, R3:1624, R4:1624, R5:11, R6:0, R7:0, R8:-165.344, R9:360, R10:0, R11:0, R12:0, R13:0, R14:0, R15:14
+V0:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V1:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V2:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V3:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V4:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V5:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V6:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V7:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V8:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V9:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V10:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V11:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V12:Element[0] = 194.656,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V13:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V14:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V15:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V16:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V17:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V18:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V19:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V20:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V21:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V22:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V23:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V24:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V25:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V26:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V27:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V28:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V29:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V30:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V31:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V32:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V33:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V34:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V35:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V36:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V37:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V38:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V39:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V40:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V41:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V42:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V43:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V44:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V45:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V46:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V47:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V48:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V49:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V50:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V51:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V52:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V53:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V54:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V55:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V56:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V57:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V58:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V59:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V60:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V61:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V62:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V63:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+
+--------------------------------------------------
+--------------------------------------------------
+Instruction Count: 15, Current Instruction's Opcode: 0, Next Instruction's Opcode: 25
+R0:1912, R1:-417, R2:1495, R3:1624, R4:1624, R5:11, R6:1635, R7:0, R8:-165.344, R9:360, R10:0, R11:0, R12:0, R13:0, R14:0, R15:15
+V0:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V1:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V2:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V3:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V4:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V5:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V6:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V7:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V8:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V9:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V10:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V11:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V12:Element[0] = 194.656,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V13:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V14:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V15:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V16:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V17:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V18:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V19:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V20:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V21:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V22:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V23:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V24:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V25:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V26:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V27:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V28:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V29:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V30:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V31:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V32:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V33:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V34:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V35:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V36:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V37:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V38:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V39:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V40:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V41:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V42:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V43:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V44:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V45:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V46:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V47:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V48:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V49:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V50:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V51:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V52:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V53:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V54:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V55:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V56:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V57:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V58:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V59:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V60:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V61:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V62:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V63:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+
+--------------------------------------------------
+--------------------------------------------------
+Instruction Count: 16, Current Instruction's Opcode: 25, Next Instruction's Opcode: 0
+R0:1912, R1:-417, R2:1495, R3:1624, R4:1624, R5:11, R6:1635, R7:0, R8:-165.344, R9:360, R10:0, R11:0, R12:0, R13:0, R14:0, R15:16
+V0:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V1:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V2:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V3:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V4:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V5:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V6:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V7:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V8:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V9:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V10:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V11:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V12:Element[0] = 194.656,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V13:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V14:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V15:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V16:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V17:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V18:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V19:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V20:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V21:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V22:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V23:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V24:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V25:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V26:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V27:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V28:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V29:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V30:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V31:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V32:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V33:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V34:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V35:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V36:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V37:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V38:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V39:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V40:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V41:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V42:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V43:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V44:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V45:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V46:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V47:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V48:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V49:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V50:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V51:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V52:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V53:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V54:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V55:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V56:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V57:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V58:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V59:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V60:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V61:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V62:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+V63:Element[0] = 0,Element[1] = 0,Element[2] = 0,Element[3] = 0
+
+--------------------------------------------------
