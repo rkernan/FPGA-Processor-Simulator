@@ -22,10 +22,11 @@ module datapath(clk, lock);
 	reg [`IR_WIDTH-1:0] Inst_data;
 	reg [15:0] pc_addr;
 	reg [4:0] src1_id, src2_id, dst_id;
-	reg [15:0] imm;
+	reg [15:0] imm, cmp1, cmp2;
 	wire [`OPCODE_WIDTH-1:0] opcode;
 	reg [15:0] reg_out, src1, src2;
 	reg ld_reg; 
+	reg set_cc;
 	reg IR_branch; 
 	reg [15:0] st_mem_addr, data_mem_addr; 
 	// Initialize: PC, IR, and Registers
@@ -63,7 +64,10 @@ module datapath(clk, lock);
 					if (IR[26:24] == `FORMAT_IR) reg_out = src1 + src2;
 					if (IR[26:24] == `FORMAT_II) reg_out = src1 + imm;
 					ld_reg = 1;
-					// TODO set CC
+					// set CC
+					cmp1 = reg_out;
+					cmp2 = 0;
+					set_cc = 1;
 					// TODO test
 				end
 				// and
@@ -71,7 +75,10 @@ module datapath(clk, lock);
 					if (IR[26:24] == `FORMAT_IR) reg_out = src1 & src2;
 					if (IR[26:24] == `FORMAT_II) reg_out = src1 & imm;
 					ld_reg = 1;
-					// TODO set CC
+					// set CC
+					cmp1 = reg_out;
+					cmp2 = 0;
+					set_cc = 1;
 					// TODO test
 				end
 				// mov
@@ -80,14 +87,20 @@ module datapath(clk, lock);
 					if (IR[26:24] == `FORMAT_II) reg_out = imm;
 					ld_reg = 1;
 					dest_id = src1_id;
-					// TODO set CC
+					// set CC
+					cmp1 = reg_out;
+					cmp2 = 0;
+					set_cc = 1;
 					// TODO test
 				end
 				// ld
 				`OP_LD: begin
 					if (IR[26:24] == `FORMAT_LDST_W) reg_out = Data_Mem[src1 + imm];
 					ld_reg = 1;
-					// TODO set CC
+					// set CC
+					cmp1 = reg_out;
+					cmp2 = 0;
+					set_cc = 1;
 					// TODO test
 				end
 				// st
@@ -127,6 +140,19 @@ module datapath(clk, lock);
 	// STORE
 	always @(negedge clk) begin
 		// store register values
-		if (ld_reg) REG_INT[dest_id] = reg_out;
+		if (ld_reg) begin
+			REG_INT[dest_id] = reg_out;
+			ld_reg = 0;
+		end
+		// set Condition Code
+		if (set_cc) begin
+			if (cmp1 < cmp2)
+				CC = CC_N;
+			else if (cmp1 > cmp2)
+				CC = `CC_P;
+			else
+				CC = `CC_Z;
+			set_cc = 0;
+		end
 	end
 endmodule
