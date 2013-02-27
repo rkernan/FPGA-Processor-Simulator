@@ -60,7 +60,8 @@ module datapath(clk, lock);
 			case (IR[31:27])
 				// add
 				`OP_ADD: begin
-					reg_out = src1 + src2;
+					if (IR[26:24] == `FORMAT_IR) reg_out = src1 + src2;
+					if (IR[26:24] == `FORMAT_II) reg_out = src1 + imm;
 					ld_reg = 1;
 				end
 				// and
