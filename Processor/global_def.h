@@ -14,6 +14,8 @@
 
 `define OPCODE_WIDTH 8
 
+`define RET_REG_ID 7
+
 `define FORMAT_IR 3'b000
 `define FORMAT_II 3'b001
 `define FORMAT_FR 3'b100
