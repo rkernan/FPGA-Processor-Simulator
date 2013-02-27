@@ -42,7 +42,7 @@ module datapath(clk, lock);
 	end
 	always @(posedge clk) begin
 		if (lock) begin
-			// INSTRUCTION FETCH
+			// FETCH
 			PC = Next_PC;
 			pc_addr = (PC & 16'hff) >> 2;
 			Inst_data = INST_Mem[pc_addr];
@@ -96,10 +96,11 @@ module datapath(clk, lock);
 					// TODO
 				end
 			endcase
-			// MEMORY ACCESS
-			// TODO
-			// REGISTER WRITE BACK
-			// TODO
 		end
+	end
+	// STORE
+	always @(negedge clk) begin
+		// store register values
+		if (ld_reg) REG_INT[dest_id] = reg_out;
 	end
 endmodule
