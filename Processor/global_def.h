@@ -14,6 +14,16 @@
 
 `define OPCODE_WIDTH 8
 
+`define FORMAT_IR 3'b000
+`define FORMAT_II 3'b001
+`define FORMAT_FR 3'b100
+`define FORMAT_FI 3'b101
+`define FORMAT_VR 3'b010
+`define FORMAT_VI 3'b111
+
+`define FORMAT_LDST_B 3'b001
+`define FORMAT_LDST_W 3'b010
+
 `define OP_ADD      5'b00000
 `define OP_AND      5'b00001
 `define OP_MOV      5'b00010
