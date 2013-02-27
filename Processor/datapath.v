@@ -22,6 +22,7 @@ module datapath(clk, lock);
 	reg [`IR_WIDTH-1:0] Inst_data;
 	reg [15:0] pc_addr;
 	reg [4:0] src1_id, src2_id, dst_id;
+	reg [15:0] imm;
 	wire [`OPCODE_WIDTH-1:0] opcode;
 	reg [15:0] reg_out, src1, src2;
 	reg ld_reg; 
@@ -54,6 +55,7 @@ module datapath(clk, lock);
 			dst_id = IR[23:20];
 			src1 = REG_INT[src1_id];
 			src2 = REG_INT[src2_id];
+			immm = IR[15:0];
 			// EXECUTE
 			case (IR[31:27])
 				// add
