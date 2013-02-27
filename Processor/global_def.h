@@ -16,6 +16,10 @@
 
 `define RET_REG_ID 7
 
+`define CC_N 3'b100
+`define CC_Z 3'b010
+`define CC_P 3'b001
+
 `define FORMAT_IR 3'b000
 `define FORMAT_II 3'b001
 `define FORMAT_FR 3'b100
@@ -50,4 +54,3 @@
 `define OP_LOADIDENTITY   5'b10100
 `define OP_FLUSH          5'b10110
 `define OP_DRAW           5'b10111
-
