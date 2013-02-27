@@ -63,40 +63,63 @@ module datapath(clk, lock);
 					if (IR[26:24] == `FORMAT_IR) reg_out = src1 + src2;
 					if (IR[26:24] == `FORMAT_II) reg_out = src1 + imm;
 					ld_reg = 1;
+					// TODO set CC
+					// TODO test
 				end
 				// and
 				`OP_AND: begin
-					reg_out = src1 & src2;
+					if (IR[26:24] == `FORMAT_IR) reg_out = src1 & src2;
+					if (IR[26:24] == `FORMAT_II) reg_out = src1 & imm;
 					ld_reg = 1;
+					// TODO set CC
+					// TODO test
 				end
 				// mov
 				`OP_MOV: begin
-					reg_out = src2;
+					if (IR[26:24] == `FORMAT_IR) reg_out = src2;
+					if (IR[26:24] == `FORMAT_II) reg_out = imm;
 					ld_reg = 1;
+					dest_id = src1_id;
+					// TODO set CC
+					// TODO test
 				end
 				// ld
 				`OP_LD: begin
-					// TODO
+					if (IR[26:24] == `FORMAT_LDST_W) reg_out = Data_Mem[src1 + imm];
+					ld_reg = 1;
+					// TODO set CC
+					// TODO test
 				end
 				// st
 				`OP_ST: begin
-					// TODO
+					if (IR[26:24] == `FORMAT_LDST_W) Data_Mem[src1 + imm] = REG_INT[dest_id];
+					// TODO test
 				end
 				// br
 				`OP_BR: begin
-					// TODO
+					if (IR[26:24] & CC) Next_PC = Next_PC + imm << 2;
+					// TODO test
 				end
 				// jmp
 				`OP_JMP: begin
-					// TODO
+					Next_PC = src1;
+					// TODO test
 				end
 				// jsr
 				`OP_JSR: begin
-					// TODO
+					reg_out = Next_PC;
+					dest_id = `RET_REG_ID;
+					ld_reg = 1;
+					Next_PC = Next_PC + imm << 2;
+					// TODO test
 				end
 				// jsrr
 				`OP_JSRR: begin
-					// TODO
+					reg_out = Next_PC;
+					dest_id = `RET_REG_ID;
+					ld_reg = 1;
+					Next_PC = src1;
+					// TODO test
 				end
 			endcase
 		end
