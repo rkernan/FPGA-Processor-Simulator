@@ -56,7 +56,7 @@ module datapath(clk, lock);
 			dst_id = IR[23:20];
 			src1 = REG_INT[src1_id];
 			src2 = REG_INT[src2_id];
-			immm = IR[15:0];
+			imm = IR[15:0];
 			// EXECUTE
 			case (IR[31:27])
 				// add
@@ -86,7 +86,7 @@ module datapath(clk, lock);
 					if (IR[26:24] == `FORMAT_IR) reg_out = src2;
 					if (IR[26:24] == `FORMAT_II) reg_out = imm;
 					ld_reg = 1;
-					dest_id = src1_id;
+					dst_id = src1_id;
 					// set CC
 					cmp1 = reg_out;
 					cmp2 = 0;
@@ -105,7 +105,7 @@ module datapath(clk, lock);
 				end
 				// st
 				`OP_ST: begin
-					if (IR[26:24] == `FORMAT_LDST_W) Data_Mem[src1 + imm] = REG_INT[dest_id];
+					if (IR[26:24] == `FORMAT_LDST_W) Data_Mem[src1 + imm] = REG_INT[dst_id];
 					// TODO test
 				end
 				// br
@@ -121,7 +121,7 @@ module datapath(clk, lock);
 				// jsr
 				`OP_JSR: begin
 					reg_out = Next_PC;
-					dest_id = `RET_REG_ID;
+					dst_id = `RET_REG_ID;
 					ld_reg = 1;
 					Next_PC = Next_PC + imm << 2;
 					// TODO test
@@ -129,7 +129,7 @@ module datapath(clk, lock);
 				// jsrr
 				`OP_JSRR: begin
 					reg_out = Next_PC;
-					dest_id = `RET_REG_ID;
+					dst_id = `RET_REG_ID;
 					ld_reg = 1;
 					Next_PC = src1;
 					// TODO test
@@ -141,13 +141,13 @@ module datapath(clk, lock);
 	always @(negedge clk) begin
 		// store register values
 		if (ld_reg) begin
-			REG_INT[dest_id] = reg_out;
+			REG_INT[dst_id] = reg_out;
 			ld_reg = 0;
 		end
 		// set Condition Code
 		if (set_cc) begin
 			if (cmp1 < cmp2)
-				CC = CC_N;
+				CC = `CC_N;
 			else if (cmp1 > cmp2)
 				CC = `CC_P;
 			else
