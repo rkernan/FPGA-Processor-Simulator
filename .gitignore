@@ -21,3 +21,6 @@ simulator
 
 # assembler
 assembler
+
+# submissions
+*.tar.gz
