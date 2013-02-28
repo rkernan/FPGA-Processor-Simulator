@@ -1,7 +1,7 @@
 movi.d r0 3
 movi.d r1 5
 movi.d r2 -5
-movi.d r6 15
+movi.d r6 60
 jsrr r6
 add.d r5 r5 r0
 add.d r5 r5 r0
