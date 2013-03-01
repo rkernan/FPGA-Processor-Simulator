@@ -7,11 +7,11 @@ module datapath(clk, lock);
 	reg signed [`REG_WIDTH-1:0] REG_INT[`INT_REG_NUM-1:0];
 	reg [`PC_ADDR_WIDTH-1:0] PC;
 	reg [`REG_WIDTH-1:0] REG_FP[`FP_REG_NUM-1:0];
-	reg [2:0] CC; //PZN
+	reg [2:0] CC;
 	reg [`IR_WIDTH:0] IR;
 	// Initialize: Memory
 	initial begin
-		$readmemh("test4.hex", INST_Mem);
+		$readmemh("test0.hex", INST_Mem);
 		$readmemh("datamem.hex", Data_Mem);
 	end
 	// Define: Instruction Memory and Data Memory
@@ -124,7 +124,7 @@ module datapath(clk, lock);
 				end
 				// br
 				`OP_BR: begin
-					if (IR[26:24] & CC[2:0]) begin
+					if (IR[26:24] & {CC[0], CC[1], CC[2]}) begin
 						Next_PC = Next_PC + (imm << 2);
 					end
 				end
