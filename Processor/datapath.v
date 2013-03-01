@@ -11,7 +11,7 @@ module datapath(clk, lock);
 	reg [`IR_WIDTH-1:0] IR;
 	// Initialize: Memory
 	initial begin
-		$readmemh("test7.hex", INST_Mem);
+		$readmemh("instructions.hex", INST_Mem);
 		$readmemh("datamem.hex", Data_Mem);
 	end
 	// Define: Instruction Memory and Data Memory

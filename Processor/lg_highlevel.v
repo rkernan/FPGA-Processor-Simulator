@@ -4,7 +4,7 @@ module lg_highlevel();
 	reg myclock;
 	initial begin
 		myclock = 0;
-		#5000 $finish;
+		#2000 $finish;
 	end
 	always begin
 		#20 myclock = ~myclock;
