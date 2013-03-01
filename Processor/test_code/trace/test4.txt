@@ -1,0 +1,78 @@
+0 : movi.d r0 1912
+	r0 = 1912
+	cc = P
+	next_PC = 4
+4 : andi.d r1 r0 2157
+	r0 = 1912
+	r1 = 104
+	cc = P
+	next_PC = 8
+8 : addi.d r1 r1 -521
+	r0 = 1912
+	r1 = -417
+	cc = N
+	next_PC = 12
+12: movi.d r3 1
+	r0 = 1912
+	r1 = -417
+	r3 = 1
+	cc = P
+	next_PC = 16
+16: add.d r2 r0 r1
+	r0 = 1912
+	r1 = -417
+	r2 = 1495
+	r3 = 1
+	cc = P
+	next_PC = 20
+20: brn 11
+	r0 = 1912
+	r1 = -417
+	r2 = 1495
+	r3 = 1
+	cc = P
+	next_PC = 24
+24: brp 7
+	r0 = 1912
+	r1 = -417
+	r2 = 1495
+	r3 = 1
+	cc = P
+	next_PC = 56
+56: mov r4 r3
+	r0 = 1912
+	r1 = -417
+	r2 = 1495
+	r3 = 1
+	r4 = 1
+	cc = P
+	next_PC = 60
+60: movi.d r5 11
+	r0 = 1912
+	r1 = -417
+	r2 = 1495
+	r3 = 1
+	r4 = 1
+	r5 = 11
+	cc = P
+	next_PC = 60
+64: add.d r6 r4 r5
+	r0 = 1912
+	r1 = -417
+	r2 = 1495
+	r3 = 1
+	r4 = 1
+	r5 = 11
+	r6 = 12
+	cc = P
+	next_PC = 60
+68: add.d r6 r0 r1
+	r0 = 1912
+	r1 = -417
+	r2 = 1495
+	r3 = 1
+	r4 = 1
+	r5 = 11
+	r6 = 1495
+	cc = P
+	next_PC = 60

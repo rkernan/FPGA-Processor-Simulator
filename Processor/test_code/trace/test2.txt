@@ -1,0 +1,49 @@
+0 : addi.d r0 r0 167
+	r0 = 167
+	cc = P
+	next_PC = 4
+4 : andi.d r1 r0 36
+	r0 = 167
+	r1 = 36
+	cc = P
+	next_PC = 8
+8 : add.d r2 r0 r1
+	r0 = 167
+	r1 = 36
+	r2 = 203
+	cc = P
+	next_PC = 12
+12: and.d r3 r0 r1
+	r0 = 167
+	r1 = 36
+	r2 = 203
+	r3 = 36
+	cc = P
+	next_PC = 16
+16: mov r4 r3
+	r0 = 167
+	r1 = 36
+	r2 = 203
+	r3 = 36
+	r4 = 36
+	cc = P
+	next_PC = 20
+20: movi.d r5 11
+	r0 = 167
+	r1 = 36
+	r2 = 203
+	r3 = 36
+	r4 = 36
+	r5 = 11
+	cc = P
+	next_PC = 24
+24: add.d r6 r4 r5
+	r0 = 167
+	r1 = 36
+	r2 = 203
+	r3 = 36
+	r4 = 36
+	r5 = 11
+	r6 = 47
+	cc = P
+	next_PC = 28

@@ -1,0 +1,68 @@
+0: movi.d r1 10
+	r1 = 10
+	cc = P
+	next_PC = 4
+4: addi.d r1 r1 -1
+	r1 = 9
+	cc = P
+	next_PC = 8
+8: brp -2
+	r1 = 9
+	cc = P
+	next_PC = 4
+4: addi.d r1 r1 -1
+	r1 = 8
+	cc = P
+	next_PC = 8
+8: brp -2
+	r1 = 8
+	cc = P
+	next_PC = 4
+4: addi.d r1 r1 -1
+	r1 = 7
+	cc = P
+	next_PC = 8
+8: brp -2
+	r1 = 7
+	cc = P
+	next_PC = 4
+4: addi.d r1 r1 -1
+	r1 = 6
+	cc = P
+	next_PC = 8
+8: brp -2
+	r1 = 6
+	cc = P
+	next_PC = 4
+4: addi.d r1 r1 -1
+	r1 = 5
+	cc = P
+	next_PC = 8
+8: brp -2
+	r1 = 4
+	cc = P
+	next_PC = 4
+4: addi.d r1 r1 -1
+	r1 = 3
+	cc = P
+	next_PC = 8
+8: brp -2
+	r1 = 2
+	cc = P
+	next_PC = 4
+4: addi.d r1 r1 -1
+	r1 = 1
+	cc = P
+	next_PC = 8
+8: brp -2
+	r1 = 1
+	cc = P
+	next_PC = 4
+4: addi.d r1 r1 -1
+	r1 = 0
+	cc = Z
+	next_PC = 8
+8: brp -2
+	r1 = 0
+	cc = P
+	next_PC = 12

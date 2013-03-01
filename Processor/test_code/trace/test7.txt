@@ -1,0 +1,217 @@
+0 : movi.d r0 3
+	r0 = 3
+	cc = P
+	next_PC = 4
+4 : movi.d r1 5
+	r0 = 3
+	r1 = 5
+	cc = P
+	next_PC = 8
+8 : movi.d r2 -5
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	cc = N
+	nxt_PC = 12
+12: movi.d r6 60
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r6 = 60
+	cc = P
+	next_PC = 16
+16: jsrr r6
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r6 = 60
+	r7 = 20
+	cc = P
+	next_PC = 60
+60: add.d r5 r5 r2
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r5 = -5
+	r6 = 60
+	r7 = 20
+	cc = N
+	next_PC = 64
+64: add.d r5 r5 r2
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r5 = -5
+	r6 = 60
+	r7 = 20
+	cc = N
+	next_PC = 68
+68: add.d r5 r5 r2
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r5 = -5
+	r6 = 60
+	r7 = 20
+	cc = N
+	next_PC = 72
+72: add.d r5 r5 r2
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r5 = -5
+	r6 = 60
+	r7 = 20
+	cc = N
+	next_PC = 76
+76: add.d r5 r5 r2
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r5 = -5
+	r6 = 60
+	r7 = 20
+	cc = N
+	next_PC = 80
+80: add.d r5 r5 r2
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r5 = -5
+	r6 = 60
+	r7 = 20
+	cc = N
+	next_PC = 84
+84: add.d r3 r0 r2
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r3 = -2
+	r5 = -5
+	r6 = 60
+	r7 = 20
+	cc = N
+	next_PC = 88
+88: add.d r4 r0 r2
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r3 = -2
+	r5 = -5
+	r6 = 60
+	r7 = 20
+	cc = N
+	next_PC = 88
+92: ret
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r3 = -2
+	r5 = -5
+	r6 = 60
+	r7 = 20
+	cc = N
+	next_PC = 20
+20: add.d r5 r5 r0
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r3 = -2
+	r5 = -2
+	r6 = 60
+	r7 = 20
+	cc = N
+	next_PC = 24
+24: add.d r5 r5 r0
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r3 = -2
+	r5 = 1
+	r6 = 60
+	r7 = 20
+	cc = P
+	next_PC = 28
+28: add.d r5 r5 r0
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r3 = -2
+	r5 = 4
+	r6 = 60
+	r7 = 20
+	cc = P
+	next_PC = 32
+32: add.d r5 r5 r0
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r3 = -2
+	r5 = 7
+	r6 = 60
+	r7 = 20
+	cc = P
+	next_PC = 36
+36: add.d r5 r5 r0
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r3 = -2
+	r5 = 10
+	r6 = 60
+	r7 = 20
+	cc = P
+	next_PC = 40
+40: add.d r5 r5 r0
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r3 = -2
+	r5 = 13
+	r6 = 60
+	r7 = 20
+	cc = P
+	next_PC = 44
+44: add.d r5 r5 r0
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r3 = -2
+	r5 = 16
+	r6 = 60
+	r7 = 20
+	cc = P
+	next_PC = 48
+48: add.d r4 r0 r1
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r3 = -2
+	r4 = 8
+	r5 = 16
+	r6 = 60
+	r7 = 20
+	cc = P
+	next_PC = 52
+52: add.d r4 r0 r2
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r3 = -2
+	r4 = 8
+	r5 = 16
+	r6 = 60
+	r7 = 20
+	cc = P
+	next_PC = 56
+56: jsr 9
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r3 = -2
+	r4 = 8
+	r5 = 16
+	r6 = 60
+	r7 = 56
+	cc = P
+	next_PC = 96

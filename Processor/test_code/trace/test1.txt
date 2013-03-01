@@ -1,0 +1,33 @@
+0 : addi.d r0 r0 1
+	r0 = 1
+	cc = P
+	next_PC = 4
+4 : addi.d r1 r0 2
+	r0 = 1
+	r1 = 3
+	cc = P
+	next_PC = 8
+8 : add.d  r2 r0 r1
+	r0 = 1
+	r1 = 3
+	r2 = 4
+	cc = P
+	next_PC = 12
+12: movi.d r0 3
+	r0 = 3
+	r1 = 3
+	r2 = 4
+	cc= P
+	next_PC = 16
+16: movi.d r1 4
+	r0 = 3
+	r1 = 4
+	r2 = 4
+	cc = P
+	next_PC = 20
+20: add.d  r2 r0 r1
+	r0 = 3
+	r1 = 4
+	r2 = 7
+	cc = P
+	next_PC = 24

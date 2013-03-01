@@ -1,0 +1,80 @@
+0 : movi.d r0 3
+	r0 = 3
+	cc = P
+	next_PC = 4
+4 : movi.d r1 5
+	r0 = 3
+	r1 = 5
+	cc = P
+	next_PC = 8
+8 : movi.d r2 -5
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	cc = N
+	next_PC = 12
+12: jsr 9
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	cc = N
+	next_PC = 52
+52: add.d r5 r1 r2
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r5 = 0
+	cc = Z
+	next_PC = 56
+56: add.d r5 r1 r2
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r5 = 0
+	cc = Z
+	next_PC = 60
+60: add.d r5 r1 r2
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r5 = 0
+	cc = Z
+	next_PC = 64
+64: add.d r5 r1 r2
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r5 = 0
+	cc = Z
+	next_PC = 68
+68: add.d r5 r1 r2
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r5 = 0
+	cc = Z
+	next_PC = 72
+72: add.d r5 r1 r2
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r5 = 0
+	cc = Z
+	next_PC = 76
+76: add.d r3 r0 r2
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r3 = -2
+	r5 = 0
+	cc = N
+	next_PC = 80
+80: add.d r4 r0 r1
+	r0 = 3
+	r1 = 5
+	r2 = -5
+	r3 = -2
+	r4 = 8
+	r5 = 0
+	cc = P
+	next_PC = 84
