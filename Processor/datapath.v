@@ -8,10 +8,10 @@ module datapath(clk, lock);
 	reg [`PC_ADDR_WIDTH-1:0] PC;
 	reg [`REG_WIDTH-1:0] REG_FP[`FP_REG_NUM-1:0];
 	reg [2:0] CC;
-	reg [`IR_WIDTH:0] IR;
+	reg [`IR_WIDTH-1:0] IR;
 	// Initialize: Memory
 	initial begin
-		$readmemh("test0.hex", INST_Mem);
+		$readmemh("test7.hex", INST_Mem);
 		$readmemh("datamem.hex", Data_Mem);
 	end
 	// Define: Instruction Memory and Data Memory
@@ -135,7 +135,7 @@ module datapath(clk, lock);
 				end
 				// jsr
 				`OP_JSR: begin
-					reg_out = PC;
+					reg_out = Next_PC;
 					dst_id = `RET_REG_ID;
 					ld_reg = 1;
 					Next_PC = Next_PC + (imm << 2);
@@ -143,7 +143,7 @@ module datapath(clk, lock);
 				end
 				// jsrr
 				`OP_JSRR: begin
-					reg_out = PC;
+					reg_out = Next_PC;
 					dst_id = `RET_REG_ID;
 					ld_reg = 1;
 					Next_PC = src1;

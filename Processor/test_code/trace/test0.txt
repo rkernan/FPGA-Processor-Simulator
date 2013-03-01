@@ -1,3 +1,5 @@
+!!OOPS, skipped a few, should be 20 instructions
+
 0: movi.d r1 10
 	r1 = 10
 	cc = P
