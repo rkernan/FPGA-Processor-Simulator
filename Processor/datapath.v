@@ -7,11 +7,11 @@ module datapath(clk, lock);
 	reg signed [`REG_WIDTH-1:0] REG_INT[`INT_REG_NUM-1:0];
 	reg [`PC_ADDR_WIDTH-1:0] PC;
 	reg [`REG_WIDTH-1:0] REG_FP[`FP_REG_NUM-1:0];
-	reg [2:0] CC;
+	reg [2:0] CC; //PZN
 	reg [`IR_WIDTH:0] IR;
 	// Initialize: Memory
 	initial begin
-		$readmemh("instructions.hex", INST_Mem);
+		$readmemh("test4.hex", INST_Mem);
 		$readmemh("datamem.hex", Data_Mem);
 	end
 	// Define: Instruction Memory and Data Memory
@@ -57,6 +57,9 @@ module datapath(clk, lock);
 			imm = IR[15:0];
 			src1 = REG_INT[src1_id];
 			src2 = REG_INT[src2_id];
+			IR_branch = 0;
+			set_cc = 0;
+			ld_reg = 0;
 			// EXECUTE
 			case (IR[31:27])
 				// add
@@ -120,10 +123,33 @@ module datapath(clk, lock);
 					end
 				end
 				// br
-				`OP_BR: begin
+				`OP_BR: begin	//ISA said IR[26:24] == NZP and CC == PZN. I changed the CC values back to PZN. Also CC can hold only 1 condition.
 					if (IR[26:24] & CC[2:0]) begin
 						Next_PC = Next_PC + (imm << 2);
 					end
+					//set Branch_PC that will set the Next_PC when IR_branch ==1
+					if (IR[26:24] == 3'b001)  begin			//P
+						if (CC == 3'b100) Next_PC = Branch_PC;
+					end
+					else if (IR[26:24] == 3'b010)  begin	//Z
+						if (CC == 3'b010) Next_PC = Branch_PC;
+					end
+					else if (IR[26:24] == 3'b100)  begin	//N
+						if (CC == 3'b001) Next_PC = Branch_PC;
+					end
+					else if (IR[26:24] == 3'b011)  begin	//ZP
+						if (CC == 3'b010 || CC == 3'b100) Next_PC = Branch_PC;
+					end
+					else if (IR[26:24] == 3'b101)  begin	//NP
+						if (CC == 3'b001 || CC == 3'b100) Next_PC = Branch_PC;
+					end
+					else if (IR[26:24] == 3'b110)  begin	//NZ
+						if (CC == 3'b010 || CC == 3'b001) Next_PC = Branch_PC;
+					end
+					else if (IR[26:24] == 3'b111)  begin	//NZP
+						if (CC == 3'b001 || CC == 3'b010 || CC == 3'b100) Next_PC = Branch_PC;
+					end
+//					if (IR_branch) Next_PC = Branch_PC;
 				end
 				// jmp
 				`OP_JMP: begin
@@ -132,7 +158,7 @@ module datapath(clk, lock);
 				end
 				// jsr
 				`OP_JSR: begin
-					reg_out = Next_PC;
+					reg_out = PC;
 					dst_id = `RET_REG_ID;
 					ld_reg = 1;
 					Next_PC = Next_PC + (imm << 2);
@@ -140,7 +166,7 @@ module datapath(clk, lock);
 				end
 				// jsrr
 				`OP_JSRR: begin
-					reg_out = Next_PC;
+					reg_out = PC;
 					dst_id = `RET_REG_ID;
 					ld_reg = 1;
 					Next_PC = src1;
@@ -148,6 +174,7 @@ module datapath(clk, lock);
 				end
 			endcase
 		end
+
 	end
 	// STORE
 	always @(negedge clk) begin
@@ -166,5 +193,10 @@ module datapath(clk, lock);
 				CC = `CC_Z;
 			set_cc = 0;
 		end
+	
 	end
+	// STORE
+//	always @(negedge clk) begin
+		
+//	end
 endmodule

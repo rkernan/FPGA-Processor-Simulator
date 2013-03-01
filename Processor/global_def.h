@@ -16,9 +16,9 @@
 
 `define RET_REG_ID 7
 
-`define CC_N 3'b100
+`define CC_N 3'b001
 `define CC_Z 3'b010
-`define CC_P 3'b001
+`define CC_P 3'b100
 
 `define FORMAT_IR 3'b000
 `define FORMAT_II 3'b001
