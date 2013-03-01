@@ -123,33 +123,10 @@ module datapath(clk, lock);
 					end
 				end
 				// br
-				`OP_BR: begin	//ISA said IR[26:24] == NZP and CC == PZN. I changed the CC values back to PZN. Also CC can hold only 1 condition.
+				`OP_BR: begin
 					if (IR[26:24] & CC[2:0]) begin
 						Next_PC = Next_PC + (imm << 2);
 					end
-					//set Branch_PC that will set the Next_PC when IR_branch ==1
-					if (IR[26:24] == 3'b001)  begin			//P
-						if (CC == 3'b100) Next_PC = Branch_PC;
-					end
-					else if (IR[26:24] == 3'b010)  begin	//Z
-						if (CC == 3'b010) Next_PC = Branch_PC;
-					end
-					else if (IR[26:24] == 3'b100)  begin	//N
-						if (CC == 3'b001) Next_PC = Branch_PC;
-					end
-					else if (IR[26:24] == 3'b011)  begin	//ZP
-						if (CC == 3'b010 || CC == 3'b100) Next_PC = Branch_PC;
-					end
-					else if (IR[26:24] == 3'b101)  begin	//NP
-						if (CC == 3'b001 || CC == 3'b100) Next_PC = Branch_PC;
-					end
-					else if (IR[26:24] == 3'b110)  begin	//NZ
-						if (CC == 3'b010 || CC == 3'b001) Next_PC = Branch_PC;
-					end
-					else if (IR[26:24] == 3'b111)  begin	//NZP
-						if (CC == 3'b001 || CC == 3'b010 || CC == 3'b100) Next_PC = Branch_PC;
-					end
-//					if (IR_branch) Next_PC = Branch_PC;
 				end
 				// jmp
 				`OP_JMP: begin
