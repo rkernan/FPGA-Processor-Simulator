@@ -9,12 +9,14 @@ module Execute(
   I_Src2Value,
   I_DestRegIdx,
   I_Imm,
+  I_DestValue,
   I_FetchStall,
   I_DepStall,
   O_LOCK,
   O_ALUOut,
   O_Opcode,
   O_DestRegIdx,
+  O_DestValue,
   O_FetchStall,
   O_DepStall
 );
@@ -32,6 +34,7 @@ input [3:0] I_DestRegIdx;
 input [`REG_WIDTH-1:0] I_Src1Value;
 input [`REG_WIDTH-1:0] I_Src2Value;
 input [`REG_WIDTH-1:0] I_Imm;
+input [`REG_WIDTH-1:0] I_DestValue;
 input I_FetchStall;
 input I_DepStall;
 
@@ -40,6 +43,7 @@ output reg O_LOCK;
 output reg [`REG_WIDTH-1:0] O_ALUOut;
 output reg [`OPCODE_WIDTH-1:0] O_Opcode;
 output reg [3:0] O_DestRegIdx;
+output reg [`REG_WIDTH-1:0] O_DestValue;
 output reg O_FetchStall;
 output reg O_DepStall;
 

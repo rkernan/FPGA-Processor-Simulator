@@ -77,6 +77,7 @@ wire [`OPCODE_WIDTH-1:0] Opcode_DE;
 wire [`REG_WIDTH-1:0] Src1Value_DE;
 wire [`REG_WIDTH-1:0] Src2Value_DE;
 wire [3:0] DestRegIdx_DE;
+wire [`REG_WIDTH-1:0] DestValue_DE;
 wire [`REG_WIDTH-1:0] Imm_DE;
 wire FetchStall_DE;
 wire DepStall_DE;
@@ -100,6 +101,7 @@ Decode Decode0(
   .O_Src1Value(Src1Value_DE),
   .O_Src2Value(Src2Value_DE),
   .O_DestRegIdx(DestRegIdx_DE),
+  .O_DestValue(DestValue_DE),
   .O_Imm(Imm_DE)
 );
 
@@ -107,6 +109,7 @@ wire LOCK_EM;
 wire [`REG_WIDTH-1:0] ALUOut_EM;
 wire [`OPCODE_WIDTH-1:0] Opcode_EM;
 wire [3:0] DestRegIdx_EM;
+wire [`REG_WIDTH-1:0] DestValue_EM;
 wire FetchStall_EM;
 wire DepStall_EM;
 
@@ -119,6 +122,7 @@ Execute Execute0(
   .I_Src1Value(Src1Value_DE),
   .I_Src2Value(Src2Value_DE),
   .I_DestRegIdx(DestRegIdx_DE),
+  .I_DestValue(DestValue_DE),
   .I_Imm(Imm_DE),
   .I_DepStall(DepStall_DE),
   .O_LOCK(LOCK_EM),
@@ -126,6 +130,7 @@ Execute Execute0(
   .O_ALUOut(ALUOut_EM),
   .O_Opcode(Opcode_EM),
   .O_DestRegIdx(DestRegIdx_EM),
+  .O_DestValue(DestValue_EM),
   .O_DepStall(DepStall_EM)
 );
 
@@ -144,6 +149,7 @@ Memory Memory0(
   .I_ALUOut(ALUOut_EM),
   .I_Opcode(Opcode_EM),
   .I_DestRegIdx(DestRegIdx_EM),
+  .I_DestValue(DestValue_EM),
   .I_DepStall(DepStall_EM),
   .O_BranchPC(BranchPC_FM),
   .O_BranchAddrSelect(BranchAddrSelect_FM),

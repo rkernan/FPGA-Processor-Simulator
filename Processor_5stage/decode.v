@@ -15,6 +15,7 @@ module Decode(
   O_Src1Value,
   O_Src2Value,
   O_DestRegIdx,
+  O_DestValue,
   O_Imm,
   O_FetchStall,
   O_DepStall,
@@ -45,6 +46,7 @@ output reg [`OPCODE_WIDTH-1:0] O_Opcode;
 output reg [`REG_WIDTH-1:0] O_Src1Value;
 output reg [`REG_WIDTH-1:0] O_Src2Value;
 output reg [3:0] O_DestRegIdx;
+output reg [`REG_WIDTH-1:0] O_DestValue;
 output reg [`REG_WIDTH-1:0] O_Imm;
 output reg O_FetchStall;
 

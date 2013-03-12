@@ -6,6 +6,7 @@ module Memory(
   I_ALUOut,
   I_Opcode,
   I_DestRegIdx,
+  I_DestValue,
   I_FetchStall,
   I_DepStall,
   O_LOCK,
@@ -29,6 +30,7 @@ input I_LOCK;
 input [`REG_WIDTH-1:0] I_ALUOut;
 input [`OPCODE_WIDTH-1:0] I_Opcode;
 input [3:0] I_DestRegIdx;
+input [`REG_WIDTH-1:0] I_DestValue;
 input I_FetchStall;
 input I_DepStall;
 
