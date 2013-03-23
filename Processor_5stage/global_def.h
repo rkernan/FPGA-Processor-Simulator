@@ -1,3 +1,7 @@
+`define ADDRLEDR 1020 // 10'h3FC
+`define ADDRLEDG 1021 // 10'h3FD
+`define ADDRHEX  1022 // 10'h3FE
+
 `define BUS_WIDTH 32
 
 `define REG_WIDTH 16
@@ -11,7 +15,7 @@
 `define NUM_VRF 64 // THE NUMBER OF REGISTERS IN VECTOR REGISTER FILE 
 
 `define INST_WIDTH 32
-`define DATA_WIDTH 8
+`define DATA_WIDTH 16
 `define INST_MEM_SIZE 1024 
 `define DATA_MEM_SIZE 1024
 

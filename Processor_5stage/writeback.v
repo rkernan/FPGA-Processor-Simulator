@@ -76,7 +76,7 @@ assign O_WriteBackData =
        // TODO: Complete other instructions
        /////////////////////////////////////////////
        (I_Opcode == `OP_LDB   ) ? (I_MemOut) : 
-       (32'h00000000)
+       (16'h0000)
       ) : (1'b0)
     ) : (1'b0);
 

@@ -4,7 +4,8 @@
 
 module lg_highlevel(
   CLOCK_27, 
-  KEY, 
+  CLOCK_50,
+  LEDR, LEDG,
   HEX0, HEX1, HEX2, HEX3 
 );
 
@@ -12,8 +13,10 @@ module lg_highlevel(
 // INPUT/OUTPUT DEFINITION GOES HERE
 ////////////////////////////////////
 //
-input	[1:0]	CLOCK_27;
-input	[3:0]	KEY;
+input	 [1:0] CLOCK_27;
+input	 CLOCK_50;
+output [9:0] LEDR;
+output [7:0] LEDG;
 output [6:0] HEX0, HEX1, HEX2, HEX3;
 
 /////////////////////////////////////////
@@ -39,10 +42,26 @@ wire pll_c0;
 wire pll_locked;
 
 pll pll0(
-  .inclk0 ( test_clock ),
+  .inclk0 ( CLOCK_50 ),
   .c0     ( pll_c0 ),
   .locked ( pll_locked )
 );
+
+reg clk; // 1 Hz
+
+reg [31:0] counter;
+always @(posedge pll_c0) begin
+  if (pll_locked == 0) begin
+    counter <= 0;
+    clk <= 0;
+  end else begin 
+    counter <= counter + 1;
+    if (counter == 32'd10000000) begin
+      counter <= 0;
+      clk <= ~clk;
+    end
+  end
+end
 
 wire LOCK_FD;
 wire [`PC_WIDTH-1:0] PC_FD;
@@ -55,7 +74,7 @@ wire BranchStallSignal_FD;
 wire FetchStall_FD;
 
 Fetch Fetch0(
-  .I_CLOCK(test_clock),
+  .I_CLOCK(clk),
   .I_LOCK(pll_locked),
   .I_BranchPC(BranchPC_FM),
   .I_BranchAddrSelect(BranchAddrSelect_FM),
@@ -83,7 +102,7 @@ wire FetchStall_DE;
 wire DepStall_DE;
 
 Decode Decode0(
-  .I_CLOCK(test_clock),
+  .I_CLOCK(clk),
   .I_LOCK(LOCK_FD),
   .I_FetchStall(FetchStall_FD),
   .I_PC(PC_FD),
@@ -114,7 +133,7 @@ wire FetchStall_EM;
 wire DepStall_EM;
 
 Execute Execute0(
-  .I_CLOCK(test_clock),
+  .I_CLOCK(clk),
   .I_LOCK(LOCK_DE),
   .I_FetchStall(FetchStall_DE),
   .I_PC(PC_DE),
@@ -143,7 +162,7 @@ wire FetchStall_MW;
 wire DepStall_MW;
 
 Memory Memory0(
-  .I_CLOCK(test_clock),
+  .I_CLOCK(clk),
   .I_LOCK(LOCK_EM),
   .I_FetchStall(FetchStall_EM),
   .I_ALUOut(ALUOut_EM),
@@ -159,11 +178,17 @@ Memory Memory0(
   .O_Opcode(Opcode_MW),
   .O_MemOut(MemOut_MW),
   .O_DestRegIdx(DestRegIdx_MW),
-  .O_DepStall(DepStall_MW)
+  .O_DepStall(DepStall_MW),
+  .O_LEDR(LEDR),
+  .O_LEDG(LEDG),
+  .O_HEX0(HEX0),
+  .O_HEX1(HEX1),
+  .O_HEX2(HEX2),
+  .O_HEX3(HEX3)
 );
 
 Writeback Writeback0(
-  .I_CLOCK(test_clock),
+  .I_CLOCK(clk),
   .I_LOCK(LOCK_MW),
   .I_FetchStall(FetchStall_MW),
   .I_ALUOut(ALUOut_MW),
@@ -175,11 +200,5 @@ Writeback Writeback0(
   .O_WriteBackRegIdx(WriteBackRegIdx_WD),
   .O_WriteBackData(WritebackData_WD)
 );
-
-// Just for timing analysis
-SevenSeg sseg0(.IN(ALUOut_EM[ 3: 0]),.OUT(HEX0));
-SevenSeg sseg1(.IN(ALUOut_EM[ 7: 4]),.OUT(HEX1));
-SevenSeg sseg2(.IN(ALUOut_EM[11: 8]),.OUT(HEX2));
-SevenSeg sseg3(.IN(ALUOut_EM[15:12]),.OUT(HEX3));
 
 endmodule // module lg_highlevel
