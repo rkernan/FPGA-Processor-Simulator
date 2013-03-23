@@ -61,16 +61,57 @@ output reg O_DepStall;
 // ## Note ##
 // - Do the appropriate ALU operations.
 /////////////////////////////////////////
-always @(negedge I_CLOCK)
-begin
+always @(negedge I_CLOCK) begin
   O_LOCK <= I_LOCK;
   O_FetchStall <= I_FetchStall;
 
-  if (I_LOCK == 1'b1) 
-  begin
+  if (I_LOCK == 1'b1)  begin
     /////////////////////////////////////////////
     // TODO: Complete here 
     /////////////////////////////////////////////
+//    OP_ADD_D
+//    OP_ADDI_D
+//    OP_ADD_F
+//    OP_ADDI_F
+//    OP_VADD
+//    OP_AND_D
+//    OP_ANDI_D
+//    OP_MOV
+//    OP_MOVI_D
+//    OP_MOVI_F
+//    OP_VMOV
+//    OP_VMOVI
+//    OP_CMP
+//    OP_CMPI
+//    OP_VCOMPMOV
+//    OP_VCOMPMOVI
+//    OP_LDB
+//    OP_LDW
+//    OP_STB
+//    OP_STW
+//    OP_SETVERTEX
+//    OP_SETCOLOR
+//    OP_ROTATE
+//    OP_TRANSLATE
+//    OP_SCALE
+//    OP_PUSHMATRIX
+//    OP_POPMATRIX
+//    OP_BEGINPRIMITIVE
+//    OP_ENDPRIMITIVE
+//    OP_LOADIDENTITY
+//    OP_FLUSH
+//    OP_DRAW
+//    OP_BRN
+//    OP_BRZ
+//    OP_BRP
+//    OP_BRNZ
+//    OP_BRNP
+//    OP_BRZP
+//    OP_BRNZP
+//    OP_JMP
+//    OP_RET
+//    OP_JSR
+//    OP_JSRR
   end // if (I_LOCK == 1'b1)
 end // always @(negedge I_CLOCK)
 

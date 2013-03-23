@@ -82,19 +82,16 @@ reg [2:0] ConditionalCode; // Set based on the written-back result
 //
 reg[7:0] trav;
 
-initial
-begin
-  for (trav = 0; trav < `NUM_RF; trav = trav + 1'b1)
-  begin
+initial begin
+  for (trav = 0; trav < `NUM_RF; trav = trav + 1'b1) begin
     RF[trav] = 0;
     RF_VALID[trav] = 1;  
-  end 
-
-  for (trav = 0; trav < `NUM_VRF; trav = trav + 1'b1)
-  begin
+  end
+  
+  for (trav = 0; trav < `NUM_VRF; trav = trav + 1'b1) begin
     VRF[trav] = 0;
     VRF_VALID[trav] = 1;  
-  end 
+  end
 
   ConditionalCode = 0;
 
@@ -119,6 +116,7 @@ assign __DepStallSignal =
      /////////////////////////////////////////////
      // TODO: Complete other instructions
      /////////////////////////////////////////////
+     // Not sure how this works. Why are we checking branch above?
      (1'b0)
     ) : (1'b0);
 
@@ -151,13 +149,24 @@ assign O_BranchStallSignal =
 // 1. To write data back into the register file
 // 2. Update Conditional Code to the following branch instruction to refer
 /////////////////////////////////////////
-always @(posedge I_CLOCK)
-begin
-  if (I_LOCK == 1'b1)
-  begin
+always @(posedge I_CLOCK) begin
+  if (I_LOCK == 1'b1) begin
     /////////////////////////////////////////////
     // TODO: Complete here 
     /////////////////////////////////////////////
+    if (I_WriteBackEnable) begin
+      // write data
+      RF[I_WriteBackRegIdx] <= I_WriteBackData;
+      RF_VALID[I_WriteBackRegIdx] <= 1;
+      // set CC
+      if (I_WriteBackData > 0) begin
+        ConditionalCode <= 3'b001;
+      end else if (I_WriteBackData < 0) begin
+        ConditionalCode <= 3'b100;
+      end else begin
+        ConditionalCode <= 3'b010;
+      end
+    end
   end // if (I_LOCK == 1'b1)
 end // always @(posedge I_CLOCK)
 
@@ -167,16 +176,77 @@ end // always @(posedge I_CLOCK)
 // 1. To read data from the register file
 // 2. To update valid bit for the corresponding register (for both writeback instruction and current instruction) 
 /////////////////////////////////////////
-always @(negedge I_CLOCK)
-begin
+always @(negedge I_CLOCK) begin
   O_LOCK <= I_LOCK;
   O_FetchStall <= I_FetchStall;
 
-  if (I_LOCK == 1'b1)
-  begin
+  if (I_LOCK == 1'b1) begin
     /////////////////////////////////////////////
     // TODO: Complete here 
     /////////////////////////////////////////////
+    if (!I_FetchStall) begin
+      // send PC on
+      O_PC <= I_PC;
+      // get Opcode
+      O_Opcode <= I_IR[31:24];
+      // decode IR
+      case (I_IR[31:30])
+        `OP_ADD_D: begin
+          O_DestRegIdx <= I_IR[23:20];
+          O_Src1Value <= RF[I_IR[19:16]];
+          O_Src2Value <= RF[I_IR[11:8]];
+        end
+        `OP_ADDI_D: begin
+          O_DestRegIdx <= I_IR[23:20];
+          O_Src1Value <= RF[I_IR[19:16]];
+          O_Imm <= RF[I_IR[15:0]];
+        end
+        `OP_AND_D: begin
+          O_DestRegIdx <= I_IR[23:20];
+          O_Src1Value <= RF[I_IR[19:16]];
+          O_Src2Value <= RF[I_IR[11:8]];
+        end
+        `OP_ANDI_D: begin
+          O_DestRegIdx <= I_IR[23:20];
+          O_Src1Value <= RF[I_IR[19:16]];
+          O_Imm <= RF[I_IR[15:0]];
+        end
+        `OP_MOV: begin
+          O_DestRegIdx <= I_IR[19:16];
+          O_DestValue <= RF[I_IR[11:8]];
+        end
+        `OP_MOVI_D: begin
+          O_DestRegIdx <= I_IR[19:16];
+          O_DestValue <= I_IR[15:0];
+        end
+        `OP_LDW: begin
+          O_DestRegIdx <= I_IR[23:20];
+          O_Src1Value <= RF[I_IR[19:16]];
+          O_Imm <= I_IR[15:0];
+        end
+        `OP_STW: begin
+          O_Src1Value <= RF[I_IR[23:20]];
+          O_Src2Value <= RF[I_IR[19:16]];
+          O_Imm <= I_IR[15:0];
+        end
+        `OP_BRN, `OP_BRZ, `OP_BRP, `OP_BRNZ, `OP_BRNP, `OP_BRZP, `OP_BRNZP: begin
+          O_Imm <= I_IR[15:0];
+        end
+        `OP_JMP: begin
+          O_Src1Value <= RF[I_IR[19:16]];
+        end
+        `OP_JSR: begin
+          O_Imm <= I_IR[15:0];
+          O_DestRegIdx <= 7;
+          O_DestValue <= I_PC;
+        end
+        `OP_JSRR: begin
+          O_Src1Value <= I_IR[15:0];
+          O_DestRegIdx <= 7;
+          O_DestValue <= I_PC;
+        end
+      endcase
+    end
   end // if (I_LOCK == 1'b1)
 end // always @(negedge I_CLOCK)
 

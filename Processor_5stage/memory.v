@@ -68,8 +68,7 @@ reg[`DATA_WIDTH-1:0] DataMem[0:`INST_MEM_SIZE-1];
 // INITIAL STATEMENT GOES HERE
 /////////////////////////////////////////
 //
-initial 
-begin
+initial begin
   $readmemh("data.hex", DataMem);
 end
 
@@ -83,18 +82,16 @@ end
 // 1. Do the appropriate memory operations.
 // 2. Provide Branch Target Address and Selection Signal to the fetch stage.
 /////////////////////////////////////////
-always @(negedge I_CLOCK)
-begin
+always @(negedge I_CLOCK) begin
   O_LOCK <= I_LOCK;
   O_FetchStall <= I_FetchStall;
 
-  if (I_LOCK == 1'b1)
-  begin
+  if (I_LOCK == 1'b1) begin
     /////////////////////////////////////////////
     // TODO: Complete here 
     /////////////////////////////////////////////
-  end else // if (I_LOCK == 1'b1)
-  begin
+	 
+  end else begin // if (I_LOCK == 1'b1)
     O_BranchAddrSelect <= 1'b0;
   end // if (I_LOCK == 1'b1)
 end // always @(negedge I_CLOCK)
@@ -119,8 +116,7 @@ SevenSeg sseg3(.OUT(O_HEX0), .IN(HexOut[3:0]));
 reg [9:0] LedROut;
 reg [7:0] LedGOut;
 
-always @(negedge I_CLOCK)
-begin
+always @(negedge I_CLOCK) begin
   if (I_LOCK == 0) begin
     HexOut <= 16'hDEAD;
     LedGOut <= 8'b11111111;

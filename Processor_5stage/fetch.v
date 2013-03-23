@@ -52,11 +52,9 @@ reg[`PC_WIDTH-1:0] PC;
 // INITIAL/ASSIGN STATEMENT GOES HERE
 /////////////////////////////////////////
 //
-initial 
-begin
+initial begin
   $readmemh("test0.hex", InstMem);
   PC = 16'h0;
-
   O_LOCK = 1'b0;
   O_PC = 16'h4;
   O_IR = 32'hFF000000;
@@ -72,20 +70,28 @@ end
 // 1. Update output values (O_FetchStall, O_PC, O_IR) and PC.
 // 2. You should be careful about STALL signals.
 /////////////////////////////////////////
-always @(negedge I_CLOCK)
-begin      
+always @(negedge I_CLOCK) begin
   O_LOCK <= I_LOCK;
 
-  if (I_LOCK == 0)
-  begin
+  if (I_LOCK == 0) begin
     PC <= 0;
     O_IR <= InstMem[PC[`PC_WIDTH-1:2]];
     O_PC <= 16'h4;
-  end else // if (I_LOCK == 0)
-  begin
+  end else begin // if (I_LOCK == 0)
     /////////////////////////////////////////////
     // TODO: Complete here
     /////////////////////////////////////////////
+    if (I_BranchStallSignal) begin
+      // Stall Fetch
+      O_FetchStall <= 1;
+    end else begin
+      if (I_BranchAddrSelect) begin
+        PC <= I_BranchPC;
+      end
+      // Get IR and Increment PC
+      O_IR <= InstMem[PC[`PC_WIDTH-1:2]];
+      O_PC <= PC + 16'h4;
+    end
   end // if (I_LOCK == 0)
 end // always @(negedge I_CLOCK)
 
