@@ -64,54 +64,71 @@ output reg O_DepStall;
 always @(negedge I_CLOCK) begin
   O_LOCK <= I_LOCK;
   O_FetchStall <= I_FetchStall;
+  O_DepStall <= I_DepStall;
 
   if (I_LOCK == 1'b1)  begin
     /////////////////////////////////////////////
     // TODO: Complete here 
     /////////////////////////////////////////////
-//    OP_ADD_D
-//    OP_ADDI_D
-//    OP_ADD_F
-//    OP_ADDI_F
-//    OP_VADD
-//    OP_AND_D
-//    OP_ANDI_D
-//    OP_MOV
-//    OP_MOVI_D
-//    OP_MOVI_F
-//    OP_VMOV
-//    OP_VMOVI
-//    OP_CMP
-//    OP_CMPI
-//    OP_VCOMPMOV
-//    OP_VCOMPMOVI
-//    OP_LDB
-//    OP_LDW
-//    OP_STB
-//    OP_STW
-//    OP_SETVERTEX
-//    OP_SETCOLOR
-//    OP_ROTATE
-//    OP_TRANSLATE
-//    OP_SCALE
-//    OP_PUSHMATRIX
-//    OP_POPMATRIX
-//    OP_BEGINPRIMITIVE
-//    OP_ENDPRIMITIVE
-//    OP_LOADIDENTITY
-//    OP_FLUSH
-//    OP_DRAW
-//    OP_BRN
-//    OP_BRZ
-//    OP_BRP
-//    OP_BRNZ
-//    OP_BRNP
-//    OP_BRZP
-//    OP_BRNZP
-//    OP_JMP
-//    OP_RET
-//    OP_JSR
-//    OP_JSRR
+    if (!I_DepStall & !I_FetchStall) begin
+      // send Opcode on
+      O_Opcode <=I_Opcode;
+      // execute IR
+      case (I_Opcode)
+        `OP_ADD_D: begin
+          O_ALUOut <= I_Src1Value + I_Src2Value;
+          O_DestRegIdx <= I_DestRegIdx;
+        end
+        `OP_ADDI_D: begin
+          O_ALUOut <= I_Src1Value + I_Imm;
+          O_DestRegIdx <= I_DestRegIdx;
+        end
+        `OP_AND_D: begin
+          O_ALUOut <= I_Src1Value & I_Src2Value;
+          O_DestRegIdx <= I_DestRegIdx;
+        end
+        `OP_ANDI_D: begin
+          O_ALUOut <= I_Src1Value & I_Imm;
+          O_DestRegIdx <= I_DestRegIdx;
+        end
+        `OP_MOV: begin
+          O_DestValue <= I_DestValue;
+          O_DestRegIdx <= I_DestRegIdx;
+        end
+        `OP_MOVI_D: begin
+          O_DestValue <= I_DestValue;
+          O_DestRegIdx <= I_DestRegIdx;
+        end
+        `OP_LDW: begin
+          O_ALUOut <= I_Src1Value + I_Imm;
+          O_DestRegIdx <= I_DestRegIdx;
+        end
+        `OP_STW: begin
+          O_ALUOut <= I_Src1Value + I_Imm;
+          O_DestValue <= I_DestValue;
+        end
+        `OP_BRN, `OP_BRZ, `OP_BRP, `OP_BRNZ, `OP_BRNP, `OP_BRZP, `OP_BRNZP: begin
+          // When should the branch be handled?
+          // TODO Implement branch.
+        end
+        `OP_JMP: begin
+          // When should the branch be handled?
+          // TODO Implement branch.
+        end
+        `OP_JSR: begin
+          O_DestValue <= I_DestValue;
+          O_DestRegIdx <= I_DestRegIdx;
+          // When should the branch be handled?
+          // TODO Implement branch.
+        end
+        `OP_JSRR: begin
+          O_DestValue <= I_DestValue;
+          O_DestRegIdx <= I_DestRegIdx;
+          // When should the branch be handled?
+          // TODO Implement branch.
+        end
+      endcase
+    end
   end // if (I_LOCK == 1'b1)
 end // always @(negedge I_CLOCK)
 

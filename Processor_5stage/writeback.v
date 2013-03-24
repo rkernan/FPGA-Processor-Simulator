@@ -41,13 +41,22 @@ output [`REG_WIDTH-1:0] O_WriteBackData;
 assign O_WriteBackEnable = 
   ((I_LOCK == 1'b1) && (I_FetchStall == 1'b0)) ? 
     ((I_DepStall == 1'b0) ?
-      ((I_Opcode == `OP_ADD_D ) ? (1'b1) :
-       (I_Opcode == `OP_ADDI_D) ? (1'b1) :
-       (I_Opcode == `OP_MOVI_D) ? (1'b1) :
+      (//(I_Opcode == `OP_ADD_D ) ? (1'b1) :
+       //(I_Opcode == `OP_ADDI_D) ? (1'b1) :
+       //(I_Opcode == `OP_MOVI_D) ? (1'b1) :
        /////////////////////////////////////////////
        // TODO: Complete other instructions
        /////////////////////////////////////////////
-       (I_Opcode == `OP_JSRR  ) ? (1'b0) : 
+       //(I_Opcode == `OP_JSRR  ) ? (1'b0) : 
+       (I_Opcode == `OP_ADD_D ) ? (1'b1) :
+       (I_Opcode == `OP_ADDI_D) ? (1'b1) :
+       (I_Opcode == `OP_AND_D ) ? (1'b1) :
+       (I_Opcode == `OP_ANDI_D) ? (1'b1) :
+       (I_Opcode == `OP_MOV   ) ? (1'b1) :
+       (I_Opcode == `OP_MOVI_D) ? (1'b1) :
+       (I_Opcode == `OP_LDW   ) ? (1'b1) :
+       (I_Opcode == `OP_JSR   ) ? (1'b1) :
+       (I_Opcode == `OP_JSRR  ) ? (1'b1) :
        (1'b0)
       ) : (1'b0)
     ) : (1'b0);
@@ -55,13 +64,22 @@ assign O_WriteBackEnable =
 assign O_WriteBackRegIdx = 
   ((I_LOCK == 1'b1) && (I_FetchStall == 1'b0)) ? 
     ((I_DepStall == 1'b0) ?
-      ((I_Opcode == `OP_ADD_D ) ? (I_DestRegIdx) :
-       (I_Opcode == `OP_ADDI_D) ? (I_DestRegIdx) :
-       (I_Opcode == `OP_MOVI_D) ? (I_DestRegIdx) :
+      (//(I_Opcode == `OP_ADD_D ) ? (I_DestRegIdx) :
+       //(I_Opcode == `OP_ADDI_D) ? (I_DestRegIdx) :
+       //(I_Opcode == `OP_MOVI_D) ? (I_DestRegIdx) :
        /////////////////////////////////////////////
        // TODO: Complete other instructions
        /////////////////////////////////////////////
-       (I_Opcode == `OP_LDB   ) ? (I_DestRegIdx) : 
+       //(I_Opcode == `OP_LDB   ) ? (I_DestRegIdx) : 
+       (I_Opcode == `OP_ADD_D ) ? (I_DestRegIdx) :
+       (I_Opcode == `OP_ADDI_D) ? (I_DestRegIdx) :
+       (I_Opcode == `OP_AND_D ) ? (I_DestRegIdx) :
+       (I_Opcode == `OP_ANDI_D) ? (I_DestRegIdx) :
+       (I_Opcode == `OP_MOV   ) ? (I_DestRegIdx) :
+       (I_Opcode == `OP_MOVI_D) ? (I_DestRegIdx) :
+       (I_Opcode == `OP_LDW   ) ? (I_DestRegIdx) :
+       (I_Opcode == `OP_JSR   ) ? (I_DestRegIdx) :
+       (I_Opcode == `OP_JSRR  ) ? (I_DestRegIdx) :
        (4'h0)
       ) : (1'b0)
     ) : (1'b0);
@@ -69,13 +87,22 @@ assign O_WriteBackRegIdx =
 assign O_WriteBackData = 
   ((I_LOCK == 1'b1) && (I_FetchStall == 1'b0)) ? 
     ((I_DepStall == 1'b0) ?
-      ((I_Opcode == `OP_ADD_D ) ? (I_ALUOut) :
-       (I_Opcode == `OP_ADDI_D) ? (I_ALUOut) :
-       (I_Opcode == `OP_MOVI_D) ? (I_ALUOut) :
+      (//(I_Opcode == `OP_ADD_D ) ? (I_ALUOut) :
+       //(I_Opcode == `OP_ADDI_D) ? (I_ALUOut) :
+       //(I_Opcode == `OP_MOVI_D) ? (I_ALUOut) :
        /////////////////////////////////////////////
        // TODO: Complete other instructions
        /////////////////////////////////////////////
-       (I_Opcode == `OP_LDB   ) ? (I_MemOut) : 
+       //(I_Opcode == `OP_LDB   ) ? (I_MemOut) : 
+       (I_Opcode == `OP_ADD_D ) ? (I_ALUOut) :
+       (I_Opcode == `OP_ADDI_D) ? (I_ALUOut) :
+       (I_Opcode == `OP_AND_D ) ? (I_ALUOut) :
+       (I_Opcode == `OP_ANDI_D) ? (I_ALUOut) :
+       (I_Opcode == `OP_MOV   ) ? (I_ALUOut) :
+       (I_Opcode == `OP_MOVI_D) ? (I_ALUOut) :
+       (I_Opcode == `OP_LDW   ) ? (I_MemOut) :
+       (I_Opcode == `OP_JSR   ) ? (I_ALUOut) :
+       (I_Opcode == `OP_JSRR  ) ? (I_ALUOut) :
        (16'h0000)
       ) : (1'b0)
     ) : (1'b0);

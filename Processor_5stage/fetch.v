@@ -90,7 +90,7 @@ always @(negedge I_CLOCK) begin
       end
       // Get IR and Increment PC
       O_IR <= InstMem[PC[`PC_WIDTH-1:2]];
-      O_PC <= PC + 16'h4;
+      O_PC <= PC + 1 << 2;
     end
   end // if (I_LOCK == 0)
 end // always @(negedge I_CLOCK)
