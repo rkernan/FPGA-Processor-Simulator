@@ -91,7 +91,7 @@ always @(negedge I_CLOCK) begin
     /////////////////////////////////////////////
     // TODO: Complete here 
     /////////////////////////////////////////////
-	  if (!I_DepStall & !I_FetchStall) begin
+	  if (I_DepStall != 1 && I_FetchStall != 1) begin
       // send Opcode on
       O_Opcode <=I_Opcode;
       // memory access IR
@@ -137,26 +137,22 @@ always @(negedge I_CLOCK) begin
           DataMem[I_ALUOut] <= I_DestValue;
         end
         `OP_BRN, `OP_BRZ, `OP_BRP, `OP_BRNZ, `OP_BRNP, `OP_BRZP, `OP_BRNZP: begin
-          // When should the branch be handled?
-          // TODO Implement branch.
+          // TODO
         end
         `OP_JMP: begin
-          // When should the branch be handled?
-          // TODO Implement branch.
+          // TODO
         end
         `OP_JSR: begin
           // pass values on
           O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
-          // When should the branch be handled?
-          // TODO Implement branch.
+          // TODO
         end
         `OP_JSRR: begin
           // pass values on
           O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
-          // When should the branch be handled?
-          // TODO Implement branch.
+          // TODO
         end
       endcase
     end
