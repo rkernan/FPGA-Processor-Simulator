@@ -72,39 +72,55 @@ always @(negedge I_CLOCK) begin
     /////////////////////////////////////////////
     if (!I_DepStall & !I_FetchStall) begin
       // send Opcode on
-      O_Opcode <=I_Opcode;
+      O_Opcode <= I_Opcode;
       // execute IR
       case (I_Opcode)
         `OP_ADD_D: begin
+          // add
           O_ALUOut <= I_Src1Value + I_Src2Value;
+          // pass values on
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_ADDI_D: begin
+          // add immediate
           O_ALUOut <= I_Src1Value + I_Imm;
+          // pass values in
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_AND_D: begin
+          // and
           O_ALUOut <= I_Src1Value & I_Src2Value;
+          // pass values on
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_ANDI_D: begin
+          // and immediate
           O_ALUOut <= I_Src1Value & I_Imm;
+          // pass values on
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_MOV: begin
-          O_DestValue <= I_DestValue;
+          // move
+          O_ALUOut <= I_Src1Value;
+          // pass values on
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_MOVI_D: begin
-          O_DestValue <= I_DestValue;
+          // move immediate
+          O_ALUOut <= I_Src1Value;
+          // pass values on
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_LDW: begin
+          // calculate memory address
           O_ALUOut <= I_Src1Value + I_Imm;
+          // pass values on
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_STW: begin
+          // calculate memory address
           O_ALUOut <= I_Src1Value + I_Imm;
+          // pass values on
           O_DestValue <= I_DestValue;
         end
         `OP_BRN, `OP_BRZ, `OP_BRP, `OP_BRNZ, `OP_BRNP, `OP_BRZP, `OP_BRNZP: begin
@@ -116,13 +132,15 @@ always @(negedge I_CLOCK) begin
           // TODO Implement branch.
         end
         `OP_JSR: begin
-          O_DestValue <= I_DestValue;
+          // pass values on
+          O_ALUOut <= I_Src1Value;
           O_DestRegIdx <= I_DestRegIdx;
           // When should the branch be handled?
           // TODO Implement branch.
         end
         `OP_JSRR: begin
-          O_DestValue <= I_DestValue;
+          // pass values on
+          O_ALUOut <= I_Src1Value;
           O_DestRegIdx <= I_DestRegIdx;
           // When should the branch be handled?
           // TODO Implement branch.

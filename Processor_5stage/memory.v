@@ -97,34 +97,43 @@ always @(negedge I_CLOCK) begin
       // memory access IR
       case (I_Opcode)
         `OP_ADD_D: begin
+          // pass values on
           O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_ADDI_D: begin
+          // pass values on
           O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_AND_D: begin
+          // pass values on
           O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_ANDI_D: begin
+          // pass values on
           O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_MOV: begin
-          O_ALUOut <= I_DestValue;
+          // pass values on
+          O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_MOVI_D: begin
-          O_ALUOut <= I_DestValue;
+          // pass values on
+          O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_LDW: begin
+          // load memory value
           O_MemOut <= DataMem[I_ALUOut];
+          // pass values on
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_STW: begin
+          // store value in memory
           DataMem[I_ALUOut] <= I_DestValue;
         end
         `OP_BRN, `OP_BRZ, `OP_BRP, `OP_BRNZ, `OP_BRNP, `OP_BRZP, `OP_BRNZP: begin
@@ -136,13 +145,15 @@ always @(negedge I_CLOCK) begin
           // TODO Implement branch.
         end
         `OP_JSR: begin
-          O_BranchPC <= I_DestValue;
+          // pass values on
+          O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
           // When should the branch be handled?
           // TODO Implement branch.
         end
         `OP_JSRR: begin
-          O_BranchPC <= I_DestValue;
+          // pass values on
+          O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
           // When should the branch be handled?
           // TODO Implement branch.

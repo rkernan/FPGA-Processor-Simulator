@@ -110,7 +110,7 @@ end // initial
 wire __DepStallSignal;
 assign __DepStallSignal = 
   (I_LOCK == 1'b1) ? 
-    ((I_IR[31:24] == `OP_ADDI_D    ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) : 
+    (//(I_IR[31:24] == `OP_ADDI_D    ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) : 
      //(I_IR[31:24] == `OP_MOVI_D    ) ? (1'b0) : 
      //(I_IR[31:24] == `OP_BRN       ) ? (ConditionalCode != 3'b100) : // Why do we check a branch for a DepStall???
      /////////////////////////////////////////////
@@ -166,7 +166,7 @@ always @(posedge I_CLOCK) begin
     if (I_WriteBackEnable) begin
       // write data
       RF[I_WriteBackRegIdx] <= I_WriteBackData;
-      RF_VALID[I_WriteBackRegIdx] <= 1;
+      RF_VALID[I_WriteBackRegIdx] = 1;
       // set CC
       if (I_WriteBackData > 0) begin
         ConditionalCode <= 3'b001;
@@ -202,8 +202,8 @@ always @(negedge I_CLOCK) begin
       case (I_IR[31:30])
         `OP_ADD_D: begin
           // TODO Invalidate destination.
-          //RF_VALID[I_IR[23:20]] <= 0;
-          // read registers
+          //RF_VALID[I_IR[23:20]] = 0;
+          // read values
           O_DestRegIdx <= I_IR[23:20];
           O_Src1Value <= RF[I_IR[19:16]];
           O_Src2Value <= RF[I_IR[11:8]];
@@ -211,7 +211,7 @@ always @(negedge I_CLOCK) begin
         `OP_ADDI_D: begin
           // TODO Invalidate destination.
           //RF_VALID[I_IR[23:20]] <= 0;
-          // read registers
+          // read values
           O_DestRegIdx <= I_IR[23:20];
           O_Src1Value <= RF[I_IR[19:16]];
           O_Imm <= RF[I_IR[15:0]];
@@ -219,7 +219,7 @@ always @(negedge I_CLOCK) begin
         `OP_AND_D: begin
           // TODO Invalidate destination.
           //RF_VALID[I_IR[23:20]] <= 0;
-          // read registers
+          // read values
           O_DestRegIdx <= I_IR[23:20];
           O_Src1Value <= RF[I_IR[19:16]];
           O_Src2Value <= RF[I_IR[11:8]];
@@ -227,7 +227,7 @@ always @(negedge I_CLOCK) begin
         `OP_ANDI_D: begin
           // TODO Invalidate destination.
           //RF_VALID[I_IR[23:20]] <= 0;
-          // read registers
+          // read values
           O_DestRegIdx <= I_IR[23:20];
           O_Src1Value <= RF[I_IR[19:16]];
           O_Imm <= RF[I_IR[15:0]];
@@ -235,27 +235,27 @@ always @(negedge I_CLOCK) begin
         `OP_MOV: begin
           // TODO Invalidate destination.
           //RF_VALID[I_IR[19:16]] <= 0;
-          // read registers
+          // read values
           O_DestRegIdx <= I_IR[19:16];
-          O_DestValue <= RF[I_IR[11:8]];
+          O_Src1Value <= RF[I_IR[11:8]];
         end
         `OP_MOVI_D: begin
           // TODO Invalidate destination.
           //RF_VALID[I_IR[19:16]] <= 0;
-          // read registers
+          // read values
           O_DestRegIdx <= I_IR[19:16];
-          O_DestValue <= I_IR[15:0];
+          O_Imm <= I_IR[15:0];
         end
         `OP_LDW: begin
           // TODO Invalidate destination.
           //RF_VALID[I_IR[23:20]] <= 0;
-          // read registers
+          // read values
           O_DestRegIdx <= I_IR[23:20];
           O_Src1Value <= RF[I_IR[19:16]];
           O_Imm <= I_IR[15:0];
         end
         `OP_STW: begin
-          // read registers
+          // read values
           O_DestValue <= RF[I_IR[23:20]];
           O_Src1Value <= RF[I_IR[19:16]];
           O_Imm <= I_IR[15:0];
@@ -273,7 +273,7 @@ always @(negedge I_CLOCK) begin
           //RF_VALID[7] <= 0;
           // read registers
           O_DestRegIdx <= 7;
-          O_DestValue <= I_PC;
+          O_Src1Value <= I_PC;
           // When should the branch be handled?
           // TODO Implement branch.
         end
@@ -282,9 +282,10 @@ always @(negedge I_CLOCK) begin
           //RF_VALID[7] <= 0;
           // read registers
           O_DestRegIdx <= 7;
-          O_DestValue <= I_PC;
+          O_Src1Value <= I_PC;
           // When should the branch be handled?
           // TODO Implement branch.
+          // branch
         end
       endcase
     end
