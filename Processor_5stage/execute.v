@@ -124,22 +124,26 @@ always @(negedge I_CLOCK) begin
           O_DestValue <= I_DestValue;
         end
         `OP_BRN, `OP_BRZ, `OP_BRP, `OP_BRNZ, `OP_BRNP, `OP_BRZP, `OP_BRNZP: begin
-          // TODO
+          // pass new PC value
+          O_DestValue <= I_DestValue;
         end
         `OP_JMP: begin
-          // TODO
+          // pass new PC value
+          O_DestValue <= I_DestValue;
         end
         `OP_JSR: begin
           // pass values on
           O_ALUOut <= I_Src1Value;
           O_DestRegIdx <= I_DestRegIdx;
-          // TODO
+          // pass new PC value
+          O_DestValue <= I_DestValue;
         end
         `OP_JSRR: begin
           // pass values on
           O_ALUOut <= I_Src1Value;
           O_DestRegIdx <= I_DestRegIdx;
-          // TODO
+          // pass new PC
+          O_DestValue <= I_DestValue;
         end
       endcase
     end

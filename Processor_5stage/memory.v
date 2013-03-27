@@ -137,22 +137,30 @@ always @(negedge I_CLOCK) begin
           DataMem[I_ALUOut] <= I_DestValue;
         end
         `OP_BRN, `OP_BRZ, `OP_BRP, `OP_BRNZ, `OP_BRNP, `OP_BRZP, `OP_BRNZP: begin
-          // TODO
+          // branch
+          O_BranchAddrSelect <= 1;
+          O_BranchPC <= I_DestValue;
         end
         `OP_JMP: begin
-          // TODO
+          // branch
+          O_BranchAddrSelect <= 1;
+          O_BranchPC <= I_DestValue;
         end
         `OP_JSR: begin
           // pass values on
           O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
-          // TODO
+          // branch
+          O_BranchAddrSelect <= 1;
+          O_BranchPC <= I_DestValue;
         end
         `OP_JSRR: begin
           // pass values on
           O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
-          // TODO
+          // branch
+          O_BranchAddrSelect <= 1;
+          O_BranchPC <= I_DestValue;
         end
       endcase
     end

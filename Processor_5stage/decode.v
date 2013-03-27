@@ -232,7 +232,6 @@ always @(posedge I_CLOCK) begin
       end
       `OP_BRN, `OP_BRZ, `OP_BRP, `OP_BRNZ, `OP_BRNP, `OP_BRZP, `OP_BRNZP: begin
         // Relies on CC, so should ALWAYS wait for dependencies to resolve.
-        
       end
       `OP_JMP: begin
         // check for RAW
@@ -323,12 +322,20 @@ always @(negedge I_CLOCK) begin
           O_Imm <= I_IR[15:0];
         end
         `OP_BRN, `OP_BRZ, `OP_BRP, `OP_BRNZ, `OP_BRNP, `OP_BRZP, `OP_BRNZP: begin
-          // TODO Implement branch.
+          // check CC
+          if (ConditionalCode & I_IR[26:24]) begin
+            O_FetchStall <= 1;
+            // update PC
+            O_DestValue <= I_PC + $signed(I_IR[15:0]) << 2;
+          end else begin
+            O_DestValue <= I_PC;
+          end
         end
         `OP_JMP: begin
           // stall
           O_FetchStall <= 1;
-          // TODO Implement branch.
+          // branch
+          O_DestValue <= RF[I_IR[19:16]];
         end
         `OP_JSR: begin
           // read registers
@@ -336,7 +343,8 @@ always @(negedge I_CLOCK) begin
           O_Src1Value <= I_PC;
           // stall
           O_FetchStall <= 1;
-          // TODO Implement branch.
+          // branch
+          O_DestValue <= I_PC + $signed(I_IR[15:0]) << 2;
         end
         `OP_JSRR: begin
           // read registers
@@ -344,7 +352,8 @@ always @(negedge I_CLOCK) begin
           O_Src1Value <= I_PC;
           // stall
           O_FetchStall <= 1;
-          // TODO Implement branch.
+          // branch
+          O_DestValue <= RF[I_IR[19:16]];
         end
       endcase
     end
