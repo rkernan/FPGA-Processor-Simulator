@@ -42,7 +42,8 @@ wire pll_c0;
 wire pll_locked;
 
 pll pll0(
-  .inclk0 ( CLOCK_50 ),
+  // .inclk0 ( CLOCK_50 ),
+  .inclk0 ( test_clock ),
   .c0     ( pll_c0 ),
   .locked ( pll_locked )
 );
@@ -56,7 +57,7 @@ always @(posedge pll_c0) begin
     clk <= 0;
   end else begin 
     counter <= counter + 1;
-    if (counter == 32'd10000000) begin
+    if (counter == 32'd10) begin
       counter <= 0;
       clk <= ~clk;
     end
