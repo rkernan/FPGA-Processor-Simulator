@@ -1,0 +1,176 @@
+OP_ADD_D
+  Fetch:
+  Decode:
+    O_DestRegIdx
+    O_Src1Value
+    O_Src2Value
+  Execute:
+    O_ALUOut = I_Src1Value + I_Src2Value
+    O_DestRegIdx = I_DestRegIdx
+  Memory:
+    O_ALUOut = I_ALUOut
+    O_DestRegIdx = I_DestRegIdx
+  Writeback:
+    O_WriteBackEanble = 1
+    O_WriteBackIdx = I_DestRegIdx
+    O_WriteBackData = I_ALUOut
+  
+OP_ADDI_D
+  Fetch:
+  Decode:
+    O_DestRegIdx
+    O_Src1Value
+    O_Imm
+  Execute:
+    O_ALUOut = I_Src1Value + I_Imm
+    O_DestRegIdx = I_DestRegIdx
+  Memory:
+    O_ALUOut = I_ALUOut
+    O_DestRegIdx = I_DestRegIdx
+  Writeback:
+    O_WriteBackEnable = 1
+    O_WriteBackIdx = I_DestRegIdx
+    O_WriteBackData = I_ALUOut
+  
+OP_AND_D
+  Fetch:
+  Decode:
+    O_DestRegIdx
+    O_Src1Value
+    O_Src2Value
+  Execute:
+    O_ALUOut = I_Src1Value & I_Src2Value
+    O_DestRegIdx = I_DestRegIdx
+  Memory:
+    O_ALUOut = I_ALUOut
+    O_DestRegIdx = I_DestRegIdx
+  Writeback:
+    O_WriteBackEanble = 1
+    O_WriteBackIdx = I_DestRegIdx
+    O_WriteBackData = I_ALUOut
+  
+OP_ANDI_D
+  Fetch:
+  Decode:
+    O_DestRegIdx
+    O_Src1Value
+    O_Imm
+  Execute:
+    O_ALUOut = I_Src1Value & I_Imm
+    O_DestRegIdx = I_DestRegIdx
+  Memory:
+    O_ALUOut = I_ALUOut
+    O_DestRegIdx = I_DestRegIdx
+  Writeback:
+    O_WriteBackEnable = 1
+    O_WriteBackIdx = I_DestRegIdx
+    O_WriteBackData = I_ALUOut
+  
+OP_MOV
+  Fetch:
+  Decode:
+    O_DestRegIdx
+    O_Src1Value
+  Execute:
+    O_ALUOut = I_Src1Value
+    O_DestRegIdx = I_DestRegIdx
+  Memory:
+    O_ALUOut = I_ALUOut
+    O_DestRegIdx = I_DestRegIdx
+  Writeback:
+    O_WriteBackEnable = 1
+    O_WriteBackIdx = I_DestRegIdx
+    O_WriteBackData = I_ALUOut
+  
+OP_MOVI_D
+  Fetch:
+  Decode:
+    O_DestRegIdx
+    O_Imm
+  Execute:
+    O_ALUOut = I_Imm
+    O_DestRegIdx = I_DestRegIdx
+  Memory:
+    O_ALUOut = I_ALUOut
+    O_DestRegIdx = I_DestRegIdx
+  Writeback:
+    O_WriteBackEnable = 1
+    O_WriteBackIdx = I_DestRegIdx
+    O_WriteBackData = I_ALUOut
+    
+OP_LDW
+  Fetch:
+  Decode:
+    O_DestRegIdx
+    O_Src1Value
+    O_Imm
+  Execute:
+    O_ALUOut = I_Src1Value + I_Imm
+    O_DestRegIdx = I_DestRegIdx
+  Memory:
+    O_MemOut = DataMem[O_ALUOut]
+    O_DestRegIdx = I_DestRegIdx
+  Writeback:
+    O_WriteBackEnable = 1
+    O_WriteBackIdx = I_DestRegIdx
+    O_WriteBackData = I_MemOut
+    
+OP_STW
+  Fetch:
+  Decode:
+    O_DestValue
+    O_Src1Value
+    O_Imm
+  Execute:
+    O_ALUOut = I_Src1Value + I_Imm
+    O_DestValue = I_DestValue
+  Memory:
+    DataMem[ALUOut] = I_DestValue
+  Writeback:
+    O_WriteBackEnable = 0
+
+OP_BR
+  Fetch:
+  Decode:
+  Execute:
+  Memory:
+  Writeback:
+  
+OP_JMP
+  Fetch:
+  Decode:
+  Execute:
+  Memory:
+  Writeback
+  
+OP_JSR
+  Fetch:
+  Decode:
+    O_DestRegIdx
+    O_Src1Value
+  Execute:
+    O_ALUOut = I_Src1Value
+    O_DestRegIdx = I_DestRegIdx
+  Memory:
+    O_ALUOut = I_ALUOut
+    O_DestRegIdx = I_DestRegIdx
+  Writeback:
+    O_WriteBackEnable = 1
+    O_WriteBackIdx = I_DestRegIdx
+    O_WriteBackData = I_ALUOut
+    
+OP_JSRR
+  Fetch:
+  Decode:
+    O_DestRegIdx
+    O_DestValue
+  Execute:
+    O_ALUOut = I_Src1Value
+    O_DestRegIdx = I_DestRegIdx
+  Memory:
+    O_ALUOut = I_ALUOut
+    O_DestRegIdx = I_DestRegIdx
+  Writeback:
+    O_WriteBackEnable = 1
+    O_WriteBackIdx = I_DestRegIdx
+    O_WriteBackData = I_ALUOut

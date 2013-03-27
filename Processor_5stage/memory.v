@@ -91,61 +91,76 @@ always @(negedge I_CLOCK) begin
     /////////////////////////////////////////////
     // TODO: Complete here 
     /////////////////////////////////////////////
-	  if (!I_DepStall & !I_FetchStall) begin
+	  if (I_DepStall != 1 && I_FetchStall != 1) begin
       // send Opcode on
       O_Opcode <=I_Opcode;
       // memory access IR
       case (I_Opcode)
         `OP_ADD_D: begin
+          // pass values on
           O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_ADDI_D: begin
+          // pass values on
           O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_AND_D: begin
+          // pass values on
           O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_ANDI_D: begin
+          // pass values on
           O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_MOV: begin
-          O_ALUOut <= I_DestValue;
+          // pass values on
+          O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_MOVI_D: begin
-          O_ALUOut <= I_DestValue;
+          // pass values on
+          O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_LDW: begin
+          // load memory value
           O_MemOut <= DataMem[I_ALUOut];
+          // pass values on
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_STW: begin
+          // store value in memory
           DataMem[I_ALUOut] <= I_DestValue;
         end
         `OP_BRN, `OP_BRZ, `OP_BRP, `OP_BRNZ, `OP_BRNP, `OP_BRZP, `OP_BRNZP: begin
-          // When should the branch be handled?
-          // TODO Implement branch.
+          // branch
+          O_BranchAddrSelect <= 1;
+          O_BranchPC <= I_DestValue;
         end
         `OP_JMP: begin
-          // When should the branch be handled?
-          // TODO Implement branch.
+          // branch
+          O_BranchAddrSelect <= 1;
+          O_BranchPC <= I_DestValue;
         end
         `OP_JSR: begin
-          O_BranchPC <= I_DestValue;
+          // pass values on
+          O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
-          // When should the branch be handled?
-          // TODO Implement branch.
+          // branch
+          O_BranchAddrSelect <= 1;
+          O_BranchPC <= I_DestValue;
         end
         `OP_JSRR: begin
-          O_BranchPC <= I_DestValue;
+          // pass values on
+          O_ALUOut <= I_ALUOut;
           O_DestRegIdx <= I_DestRegIdx;
-          // When should the branch be handled?
-          // TODO Implement branch.
+          // branch
+          O_BranchAddrSelect <= 1;
+          O_BranchPC <= I_DestValue;
         end
       endcase
     end

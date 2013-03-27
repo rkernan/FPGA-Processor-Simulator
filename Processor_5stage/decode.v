@@ -70,8 +70,10 @@ reg [`REG_WIDTH-1:0] RF[0:`NUM_RF-1]; // Scalar Register File (R0-R7: Integer, R
 reg [`VREG_WIDTH-1:0] VRF[0:`NUM_VRF-1]; // Vector Register File
 
 // Valid bits for tracking the register dependence information
-reg RF_VALID[0:`NUM_RF-1]; // Valid bits for Scalar Register File
-reg VRF_VALID[0:`NUM_VRF-1]; // Valid bits for Vector Register File
+//reg RF_VALID[0:`NUM_RF-1]; // Valid bits for Scalar Register File
+reg [0:`NUM_RF-1] RF_VALID;
+//reg VRF_VALID[0:`NUM_VRF-1]; // Valid bits for Vector Register File
+reg [0:`NUM_VRF-1] VRF_VALID;
 
 wire [`REG_WIDTH-1:0] Imm32; // Sign-extended immediate value
 reg [2:0] ConditionalCode; // Set based on the written-back result
@@ -110,22 +112,30 @@ end // initial
 wire __DepStallSignal;
 assign __DepStallSignal = 
   (I_LOCK == 1'b1) ? 
-    ((I_IR[31:24] == `OP_ADDI_D    ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) : 
+    (//(I_IR[31:24] == `OP_ADDI_D    ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) : 
      //(I_IR[31:24] == `OP_MOVI_D    ) ? (1'b0) : 
      //(I_IR[31:24] == `OP_BRN       ) ? (ConditionalCode != 3'b100) : // Why do we check a branch for a DepStall???
      /////////////////////////////////////////////
      // TODO: Complete other instructions
      /////////////////////////////////////////////
-     (I_IR[31:24] == `OP_ADD_D ) ? (RF_VALID[I_IR[19:16]] != 1 || RF_VALID[I_IR[11:8]] != 1) :
-     (I_IR[31:24] == `OP_ADDI_D) ? (RF_VALID[I_IR[19:16]] != 1                             ) :
-     (I_IR[31:24] == `OP_AND_D ) ? (RF_VALID[I_IR[19:16]] != 1 || RF_VALID[I_IR[11:8]] != 1) :
-     (I_IR[31:24] == `OP_ANDI_D) ? (RF_VALID[I_IR[19:16]] != 1                             ) :
-     (I_IR[31:24] == `OP_MOV   ) ? (RF_VALID[I_IR[11:8 ]] != 1                             ) :
-     (I_IR[31:24] == `OP_LDW   ) ? (RF_VALID[I_IR[19:16]] != 1                             ) :
-     (I_IR[31:24] == `OP_STW   ) ? (RF_VALID[I_IR[19:16]] != 1                             ) :
-     (I_IR[31:24] == `OP_JMP   ) ? (RF_VALID[I_IR[19:16]] != 1                             ) :
-     (I_IR[31:24] == `OP_JSRR  ) ? (RF_VALID[I_IR[19:16]] != 1                             ) :
-     // This seems way too simple to be correct (compared to above). I must be missing something.
+     (I_IR[31:24] == `OP_ADD_D     ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
+     (I_IR[31:24] == `OP_ADD_D     ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[11:8 ]) ? (1'b0) : (RF_VALID[I_IR[11:8 ]] != 1)) : (RF_VALID[I_IR[11:8 ]] != 1)) :
+     (I_IR[31:24] == `OP_ADDI_D    ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
+     (I_IR[31:24] == `OP_AND_D     ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
+     (I_IR[31:24] == `OP_AND_D     ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[11:8 ]) ? (1'b0) : (RF_VALID[I_IR[11:8 ]] != 1)) : (RF_VALID[I_IR[11:8 ]] != 1)) :
+     (I_IR[31:24] == `OP_ANDI_D    ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
+     (I_IR[31:24] == `OP_MOV       ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[11:8 ]) ? (1'b0) : (RF_VALID[I_IR[11:8 ]] != 1)) : (RF_VALID[I_IR[11:8 ]] != 1)) :
+     (I_IR[31:24] == `OP_LDW       ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
+     (I_IR[31:24] == `OP_STW       ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
+     (I_IR[31:24] == `OP_JMP       ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
+     (I_IR[31:24] == `OP_JSRR      ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
+     (I_IR[31:24] == `OP_BRN       ) ? (!(~RF_VALID[0:`NUM_RF-1] == 0)) :
+     (I_IR[31:24] == `OP_BRZ       ) ? (!(~RF_VALID[0:`NUM_RF-1] == 0)) :
+     (I_IR[31:24] == `OP_BRP       ) ? (!(~RF_VALID[0:`NUM_RF-1] == 0)) :
+     (I_IR[31:24] == `OP_BRNZ      ) ? (!(~RF_VALID[0:`NUM_RF-1] == 0)) :
+     (I_IR[31:24] == `OP_BRNP      ) ? (!(~RF_VALID[0:`NUM_RF-1] == 0)) :
+     (I_IR[31:24] == `OP_BRZP      ) ? (!(~RF_VALID[0:`NUM_RF-1] == 0)) :
+     (I_IR[31:24] == `OP_BRNZP     ) ? (!(~RF_VALID[0:`NUM_RF-1] == 0)) :
      (1'b0)
     ) : (1'b0);
 
@@ -163,10 +173,10 @@ always @(posedge I_CLOCK) begin
     /////////////////////////////////////////////
     // TODO: Complete here 
     /////////////////////////////////////////////
-    if (I_WriteBackEnable) begin
+    if (I_WriteBackEnable == 1) begin
       // write data
       RF[I_WriteBackRegIdx] <= I_WriteBackData;
-      RF_VALID[I_WriteBackRegIdx] <= 1;
+      RF_VALID[I_WriteBackRegIdx] = 1;
       // set CC
       if (I_WriteBackData > 0) begin
         ConditionalCode <= 3'b001;
@@ -176,6 +186,71 @@ always @(posedge I_CLOCK) begin
         ConditionalCode <= 3'b010;
       end
     end
+    // dependency stall
+    O_DepStall <= O_DepStallSignal;
+    // invalidate destinations
+    case (I_IR[31:30])
+      `OP_ADD_D: begin
+        if (O_DepStallSignal == 0) begin
+          // Invalidate destination.
+          RF_VALID[I_IR[23:20]] = 0;
+        end else begin
+          O_DepStall <= 1;
+        end
+      end
+      `OP_ADDI_D: begin
+        if (O_DepStallSignal == 0) begin
+          // Invalidate destination.
+          RF_VALID[I_IR[23:20]] = 0;
+        end
+      end
+      `OP_AND_D: begin
+        if (O_DepStallSignal == 0) begin
+          // Invalidate destination.
+          RF_VALID[I_IR[23:20]] = 0;
+        end
+      end
+      `OP_ANDI_D: begin
+        if (O_DepStallSignal == 0) begin
+          // Invalidate destination.
+          RF_VALID[I_IR[23:20]] = 0;
+        end
+      end
+      `OP_MOV: begin
+        if (O_DepStallSignal == 0) begin
+          // Invalidate destination.
+          RF_VALID[I_IR[19:16]] = 0;
+        end
+      end
+      `OP_MOVI_D: begin
+        // Invalidate destination.
+        RF_VALID[I_IR[19:16]] = 0;
+      end
+      `OP_LDW: begin
+        // Invalidate destination.
+        RF_VALID[I_IR[23:20]] = 0;
+      end
+      `OP_BRN, `OP_BRZ, `OP_BRP, `OP_BRNZ, `OP_BRNP, `OP_BRZP, `OP_BRNZP: begin
+        // Relies on CC, so should ALWAYS wait for dependencies to resolve.
+      end
+      `OP_JMP: begin
+        // check for RAW
+        if (O_DepStallSignal == 0) begin
+          RF_VALID[I_IR[19:16]] = 0;
+        end
+      end
+      `OP_JSR: begin
+        // Invalidate destination.
+        RF_VALID[7] = 0;
+      end
+      `OP_JSRR: begin
+        // check for RAW
+        if (O_DepStallSignal == 0) begin
+          // Invalidate destination.
+          RF_VALID[7] = 0;
+        end
+      end
+    endcase
   end // if (I_LOCK == 1'b1)
 end // always @(posedge I_CLOCK)
 
@@ -193,7 +268,7 @@ always @(negedge I_CLOCK) begin
     /////////////////////////////////////////////
     // TODO: Complete here 
     /////////////////////////////////////////////
-    if (!I_FetchStall) begin
+    if (I_FetchStall != 1 && O_DepStall != 1) begin
       // send PC on
       O_PC <= I_PC;
       // get Opcode
@@ -201,90 +276,84 @@ always @(negedge I_CLOCK) begin
       // decode IR
       case (I_IR[31:30])
         `OP_ADD_D: begin
-          // TODO Invalidate destination.
-          //RF_VALID[I_IR[23:20]] <= 0;
-          // read registers
+          // read values
           O_DestRegIdx <= I_IR[23:20];
           O_Src1Value <= RF[I_IR[19:16]];
           O_Src2Value <= RF[I_IR[11:8]];
         end
         `OP_ADDI_D: begin
-          // TODO Invalidate destination.
-          //RF_VALID[I_IR[23:20]] <= 0;
-          // read registers
+          // read values
           O_DestRegIdx <= I_IR[23:20];
           O_Src1Value <= RF[I_IR[19:16]];
           O_Imm <= RF[I_IR[15:0]];
         end
         `OP_AND_D: begin
-          // TODO Invalidate destination.
-          //RF_VALID[I_IR[23:20]] <= 0;
-          // read registers
+          // read values
           O_DestRegIdx <= I_IR[23:20];
           O_Src1Value <= RF[I_IR[19:16]];
           O_Src2Value <= RF[I_IR[11:8]];
         end
         `OP_ANDI_D: begin
-          // TODO Invalidate destination.
-          //RF_VALID[I_IR[23:20]] <= 0;
-          // read registers
+          // read values
           O_DestRegIdx <= I_IR[23:20];
           O_Src1Value <= RF[I_IR[19:16]];
           O_Imm <= RF[I_IR[15:0]];
         end
         `OP_MOV: begin
-          // TODO Invalidate destination.
-          //RF_VALID[I_IR[19:16]] <= 0;
-          // read registers
+          // read values
           O_DestRegIdx <= I_IR[19:16];
-          O_DestValue <= RF[I_IR[11:8]];
+          O_Src1Value <= RF[I_IR[11:8]];
         end
         `OP_MOVI_D: begin
-          // TODO Invalidate destination.
-          //RF_VALID[I_IR[19:16]] <= 0;
-          // read registers
+          // read values
           O_DestRegIdx <= I_IR[19:16];
-          O_DestValue <= I_IR[15:0];
+          O_Imm <= I_IR[15:0];
         end
         `OP_LDW: begin
-          // TODO Invalidate destination.
-          //RF_VALID[I_IR[23:20]] <= 0;
-          // read registers
+          // read values
           O_DestRegIdx <= I_IR[23:20];
           O_Src1Value <= RF[I_IR[19:16]];
           O_Imm <= I_IR[15:0];
         end
         `OP_STW: begin
-          // read registers
+          // read values
           O_DestValue <= RF[I_IR[23:20]];
           O_Src1Value <= RF[I_IR[19:16]];
           O_Imm <= I_IR[15:0];
         end
         `OP_BRN, `OP_BRZ, `OP_BRP, `OP_BRNZ, `OP_BRNP, `OP_BRZP, `OP_BRNZP: begin
-          // When should the branch be handled?
-          // TODO Implement branch.
+          // check CC
+          if (ConditionalCode & I_IR[26:24]) begin
+            O_FetchStall <= 1;
+            // update PC
+            O_DestValue <= I_PC + $signed(I_IR[15:0]) << 2;
+          end else begin
+            O_DestValue <= I_PC;
+          end
         end
         `OP_JMP: begin
-          // When should the branch be handled?
-          // TODO Implement branch.
+          // stall
+          O_FetchStall <= 1;
+          // branch
+          O_DestValue <= RF[I_IR[19:16]];
         end
         `OP_JSR: begin
-          // TODO Invalidate destination.
-          //RF_VALID[7] <= 0;
           // read registers
           O_DestRegIdx <= 7;
-          O_DestValue <= I_PC;
-          // When should the branch be handled?
-          // TODO Implement branch.
+          O_Src1Value <= I_PC;
+          // stall
+          O_FetchStall <= 1;
+          // branch
+          O_DestValue <= I_PC + $signed(I_IR[15:0]) << 2;
         end
         `OP_JSRR: begin
-          // TODO Invalidate destination.
-          //RF_VALID[7] <= 0;
           // read registers
           O_DestRegIdx <= 7;
-          O_DestValue <= I_PC;
-          // When should the branch be handled?
-          // TODO Implement branch.
+          O_Src1Value <= I_PC;
+          // stall
+          O_FetchStall <= 1;
+          // branch
+          O_DestValue <= RF[I_IR[19:16]];
         end
       endcase
     end
