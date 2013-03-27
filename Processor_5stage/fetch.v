@@ -54,6 +54,7 @@ reg[`PC_WIDTH-1:0] PC;
 //
 initial begin
   $readmemh("test0.hex", InstMem);
+  // $readmemh("grading_asm.hex", InstMem);
   PC = 16'h0;
   O_LOCK = 1'b0;
   O_PC = 16'h4;
