@@ -175,10 +175,8 @@ always @(posedge I_CLOCK) begin
     /////////////////////////////////////////////
     if (I_WriteBackEnable == 1) begin
       $display("WB: R[%d] = (%d)", I_WriteBackRegIdx, I_WriteBackData);
-      $display("WB: Validate R[%d]", I_WriteBackRegIdx);
       // write data
       RF[I_WriteBackRegIdx] <= I_WriteBackData;
-      RF_VALID[I_WriteBackRegIdx] <= 1;
       // set CC
       if ($signed(I_WriteBackData) > 0) begin
         ConditionalCode <= 3'b001;
@@ -190,60 +188,6 @@ always @(posedge I_CLOCK) begin
     end else begin
       // nop
     end
-    // invalidate destinations
-    case (I_IR[31:24])
-      `OP_ADD_D: begin
-        $display("ID: Invalidate R[%d]", I_IR[23:20]);
-        // Invalidate destination.
-        RF_VALID[I_IR[23:20]] <= 0;
-      end
-      `OP_ADDI_D: begin
-        $display("ID: Invalidate R[%d]", I_IR[23:20]);
-        // Invalidate destination.
-        RF_VALID[I_IR[23:20]] <= 0;
-      end
-      `OP_AND_D: begin
-        $display("ID: Invalidate R[%d]", I_IR[23:20]);
-        // Invalidate destination.
-        RF_VALID[I_IR[23:20]] <= 0;
-      end
-      `OP_ANDI_D: begin
-        $display("ID: Invalidate R[%d]", I_IR[23:20]);
-        // Invalidate destination.
-        RF_VALID[I_IR[23:20]] <= 0;
-      end
-      `OP_MOV: begin
-        $display("ID: Invalidate R[%d]", I_IR[19:16]);
-        // Invalidate destination.
-        RF_VALID[I_IR[19:16]] <= 0;
-      end
-      `OP_MOVI_D: begin
-        $display("ID: Invalidate R[%d]", I_IR[19:16]);
-        // Invalidate destination.
-        RF_VALID[I_IR[19:16]] <= 0;
-      end
-      `OP_LDW: begin
-        $display("ID: Invalidate R[%d]", I_IR[23:20]);
-        // Invalidate destination.
-        RF_VALID[I_IR[23:20]] <= 0;
-      end
-      `OP_BRN, `OP_BRZ, `OP_BRP, `OP_BRNZ, `OP_BRNP, `OP_BRZP, `OP_BRNZP: begin
-        // nothing to do
-      end
-      `OP_JMP: begin
-        // nothing to do
-      end
-      `OP_JSR: begin
-        $display("ID: Invalidate R[%d]", 7);
-        // Invalidate destination.
-        RF_VALID[7] = 0;
-      end
-      `OP_JSRR: begin
-        $display("ID: Invalidate R[%d]", 7);
-        // Invalidate destination.
-        RF_VALID[7] = 0;
-      end
-    endcase
   end // if (I_LOCK == 1'b1)
 end // always @(posedge I_CLOCK)
 
@@ -262,9 +206,14 @@ always @(negedge I_CLOCK) begin
     // TODO: Complete here 
     /////////////////////////////////////////////
     O_DepStall <= 0;
-    if (I_FetchStall == 1) begin
+    if (I_FetchStall == 1 || __DepStallSignal == 1) begin
       // nop
     end else begin
+      // validate registers
+      if (I_WriteBackEnable == 1) begin
+        $display("WB: Validate RF[%d]", I_WriteBackRegIdx);
+        RF_VALID[I_WriteBackRegIdx] <= 1;
+      end
       // send PC on
       O_PC <= I_PC;
       // get Opcode
@@ -273,68 +222,61 @@ always @(negedge I_CLOCK) begin
       case (I_IR[31:24])
         `OP_ADD_D: begin
           $display("ID: add.d RF[%d] RF[%d] RF[%d]", I_IR[23:20], I_IR[19:16], I_IR[11:8]);
-          // check for valid data
-          if (RF_VALID[I_IR[19:16]] != 1 || RF_VALID[I_IR[11:8]] != 1) begin
-            O_DepStall <= 1;
-          end else begin
-            // read values
-            O_DestRegIdx <= I_IR[23:20];
-            O_Src1Value <= RF[I_IR[19:16]];
-            O_Src2Value <= RF[I_IR[11:8]];
-          end
+          // read values
+          O_DestRegIdx <= I_IR[23:20];
+          O_Src1Value <= RF[I_IR[19:16]];
+          O_Src2Value <= RF[I_IR[11:8]];
+          // invalidate registers
+          $display("ID: Invalidate RF[%d]", I_IR[23:20]);
+          RF_VALID[I_IR[23:20]] <= 0;
         end
         `OP_ADDI_D: begin
           $display("ID: addi.d RF[%d] RF[%d] (%d)", I_IR[23:20], I_IR[19:16], $signed(I_IR[15:0]));
-          // check for valid data
-          if (RF_VALID[I_IR[19:16]] != 1) begin
-            O_DepStall <= 1;
-          end else begin
-            // read values
-            O_DestRegIdx <= I_IR[23:20];
-            O_Src1Value <= RF[I_IR[19:16]];
-            O_Imm <= Imm32;
-          end
+          // read values
+          O_DestRegIdx <= I_IR[23:20];
+          O_Src1Value <= RF[I_IR[19:16]];
+          O_Imm <= Imm32;
+          // invalidate registers
+          $display("ID: Invalidate RF[%d]", I_IR[23:20]);
+          RF_VALID[I_IR[23:20]] <= 0;
         end
         `OP_AND_D: begin
           $display("ID: and.d RF[%d] RF[%d] RF[%d]", I_IR[23:20], I_IR[19:16], I_IR[11:8]);
-          // check for valid data
-          if (RF_VALID[I_IR[19:16]] != 1 || RF_VALID[I_IR[11:8]] != 1) begin
-            O_DepStall <= 1;
-          end else begin
-            // read values
-            O_DestRegIdx <= I_IR[23:20];
-            O_Src1Value <= RF[I_IR[19:16]];
-            O_Src2Value <= RF[I_IR[11:8]];
-          end
+          // read values
+          O_DestRegIdx <= I_IR[23:20];
+          O_Src1Value <= RF[I_IR[19:16]];
+          O_Src2Value <= RF[I_IR[11:8]];
+          // invalidate registers
+          $display("ID: Invalidate RF[%d]", I_IR[23:20]);
+          RF_VALID[I_IR[23:20]] <= 0;
         end
         `OP_ANDI_D: begin
           $display("ID: andi.d RF[%d] RF[%d] (%d)", I_IR[23:20], I_IR[19:16], $signed(I_IR[15:0]));
-          // check for valid data
-          if (RF_VALID[I_IR[19:16]] != 1) begin
-            O_DepStall <= 1;
-          end else begin
-            // read values
-            O_DestRegIdx <= I_IR[23:20];
-            O_Src1Value <= RF[I_IR[19:16]];
-            O_Imm <= Imm32;
-          end
+          // read values
+          O_DestRegIdx <= I_IR[23:20];
+          O_Src1Value <= RF[I_IR[19:16]];
+          O_Imm <= Imm32;
+          // invalidate registers
+          $display("ID: Invalidate RF[%d]", I_IR[23:20]);
+          RF_VALID[I_IR[23:20]] <= 0;
         end
         `OP_MOV: begin
           $display("ID: mov RF[%d] RF[%d]", I_IR[19:16], I_IR[11:8]);
-          // check for valid data
-          if (RF_VALID[I_IR[11:8]] != 1) begin
-            O_DepStall <= 1;
-          end else begin
-            // read values
-            O_DestRegIdx <= I_IR[19:16];
-            O_Src1Value <= RF[I_IR[11:8]];
-          end
+          // read values
+          O_DestRegIdx <= I_IR[19:16];
+          O_Src1Value <= RF[I_IR[11:8]];
+          // invalidate registers
+          $display("ID: Invalidate RF[%d]", I_IR[19:16]);
+          RF_VALID[I_IR[19:16]] <= 0;
         end
         `OP_MOVI_D: begin
           $display("ID: movi.d RF[%d] (%d)", I_IR[19:16], $signed(I_IR[15:0]));
           // read values
           O_DestRegIdx <= I_IR[19:16];
           O_Imm <= Imm32;
+          // invalidate registers
+          $display("ID: Invalidate RF[%d]", I_IR[19:16]);
+          RF_VALID[I_IR[19:16]] <= 0;
         end
         `OP_LDW: begin
           $display("ID: ldw RF[%d] RF[%d] (%d)", I_IR[23:20], I_IR[19:16], $signed(I_IR[15:0]));
@@ -342,46 +284,33 @@ always @(negedge I_CLOCK) begin
           O_DestRegIdx <= I_IR[23:20];
           O_Src1Value <= RF[I_IR[19:16]];
           O_Imm <= Imm32;
+          // invalidate registers
+          $display("ID: Invalidate RF[%d]", I_IR[23:20]);
+          RF_VALID[I_IR[23:20]] <= 0;
         end
         `OP_STW: begin
           $display("ID: stw RF[%d] RF[%d] (%d)", I_IR[23:20], I_IR[19:16], $signed(I_IR[15:0]));
-          // check for valid data
-          if (RF_VALID[I_IR[19:16]] != 1) begin
-            O_DepStall <= 1;
-          end else begin
-            // read values
-            O_DestValue <= RF[I_IR[23:20]];
-            O_Src1Value <= RF[I_IR[19:16]];
-            O_Imm <= Imm32;
-          end
+          // read values
+          O_DestValue <= RF[I_IR[23:20]];
+          O_Src1Value <= RF[I_IR[19:16]];
+          O_Imm <= Imm32;
         end
         `OP_BRN, `OP_BRZ, `OP_BRP, `OP_BRNZ, `OP_BRNP, `OP_BRZP, `OP_BRNZP: begin
           $display("ID: br(%d%d%d)", I_IR[26], I_IR[25], I_IR[24]);
-          // check for valid data
-          if (~RF_VALID[0:`NUM_RF-1] != 0) begin
-            $display("DEP STALL!");
-            //O_DepStall <= 1;
+          // check CC
+          if (ConditionalCode & I_IR[26:24]) begin
+            // update PC
+            $display("    branching");
+            O_DestValue <= I_PC + ($signed(Imm32) << 2);
           end else begin
-            // check CC
-            if (ConditionalCode & I_IR[26:24]) begin
-              // update PC
-              $display("    branching");
-              O_DestValue <= I_PC + ($signed(Imm32) << 2);
-            end else begin
-              $display("    not branching");
-              O_DestValue <= I_PC;
-            end
+            $display("    not branching");
+            O_DestValue <= I_PC;
           end
         end
         `OP_JMP: begin
           $display("ID: jmp RF[%d]", I_IR[19:16]);
-          // check for valid data
-          if (RF_VALID[I_IR[19:16]] != 1) begin
-            O_DepStall <= 1;
-          end else begin
-            // branch
-            O_DestValue <= RF[I_IR[19:16]];
-          end
+          // branch
+          O_DestValue <= RF[I_IR[19:16]];
         end
         `OP_JSR: begin
           $display("ID: jsr (%d)", $signed(I_IR[15:0]));
@@ -390,19 +319,20 @@ always @(negedge I_CLOCK) begin
           O_Src1Value <= I_PC;
           // branch
           O_DestValue <= I_PC + ($signed(Imm32) << 2);
+          // invalidate registers
+          $display("ID: Invalidate RF[%d]", 7);
+          RF_VALID[7] <= 0;
         end
         `OP_JSRR: begin
           $display("ID: jsrr RF[%d]", I_IR[19:16]);
-          // check for valid data
-          if (RF_VALID[I_IR[19:16]] != 1) begin
-            O_DepStall <= 1;
-          end else begin
-            // read registers
-            O_DestRegIdx <= 7;
-            O_Src1Value <= I_PC;
-            // branch
-            O_DestValue <= RF[I_IR[19:16]];
-          end
+          // read registers
+          O_DestRegIdx <= 7;
+          O_Src1Value <= I_PC;
+          // branch
+          O_DestValue <= RF[I_IR[19:16]];
+          // invalidate registers
+          $display("ID: Invalidate RF[%d]", 7);
+          RF_VALID[7] <= 0;
         end
       endcase
     end

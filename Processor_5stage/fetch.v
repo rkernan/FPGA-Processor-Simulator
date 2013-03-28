@@ -83,7 +83,6 @@ always @(negedge I_CLOCK) begin
     // TODO: Complete here
     /////////////////////////////////////////////
     $display("");
-    //O_FetchStall <= (I_BranchStallSignal || I_DepStallSignal) ? (1'b1) : (1'b0);
     O_FetchStall <= ((I_BranchStallSignal == 1 && I_BranchAddrSelect != 1) || I_DepStallSignal == 1) ? (1'b1) : (1'b0);
     if ((I_BranchStallSignal == 1  && I_BranchAddrSelect != 1) || I_DepStallSignal == 1) begin
       //nop
