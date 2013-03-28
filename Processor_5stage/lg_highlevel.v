@@ -26,11 +26,12 @@ output [6:0] HEX0, HEX1, HEX2, HEX3;
 reg test_clock;
 initial begin
   test_clock = 1;
-  #10000 $finish;
+//  #10000 $finish;
+  #200 $finish;
 end
 
 always begin 
-  #20 test_clock = ~test_clock;
+  #1 test_clock = ~test_clock;
 end
 
 /////////////////////////////////////////
@@ -42,7 +43,7 @@ wire pll_c0;
 wire pll_locked;
 
 pll pll0(
-  // .inclk0 ( CLOCK_50 ),
+//  .inclk0 ( CLOCK_50 ),
   .inclk0 ( test_clock ),
   .c0     ( pll_c0 ),
   .locked ( pll_locked )
@@ -57,7 +58,7 @@ always @(posedge pll_c0) begin
     clk <= 0;
   end else begin 
     counter <= counter + 1;
-    if (counter == 32'd10) begin
+    if (counter == 32'd1) begin
       counter <= 0;
       clk <= ~clk;
     end

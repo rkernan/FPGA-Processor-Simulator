@@ -53,8 +53,8 @@ reg[`PC_WIDTH-1:0] PC;
 /////////////////////////////////////////
 //
 initial begin
-  $readmemh("test0.hex", InstMem);
-  // $readmemh("grading_asm.hex", InstMem);
+//  $readmemh("test0.hex", InstMem);
+  $readmemh("grading_asm.hex", InstMem);
   PC = 16'h0;
   O_LOCK = 1'b0;
   O_PC = 16'h4;
@@ -73,7 +73,7 @@ end
 /////////////////////////////////////////
 always @(negedge I_CLOCK) begin
   O_LOCK <= I_LOCK;
-
+  
   if (I_LOCK == 0) begin
     PC <= 0;
     O_IR <= InstMem[PC[`PC_WIDTH-1:2]];
@@ -82,16 +82,30 @@ always @(negedge I_CLOCK) begin
     /////////////////////////////////////////////
     // TODO: Complete here
     /////////////////////////////////////////////
-    if (I_BranchStallSignal) begin
-      // Stall Fetch
-      O_FetchStall <= 1;
+    $display("");
+    //O_FetchStall <= (I_BranchStallSignal || I_DepStallSignal) ? (1'b1) : (1'b0);
+    O_FetchStall <= ((I_BranchStallSignal == 1 && I_BranchAddrSelect != 1) || I_DepStallSignal == 1) ? (1'b1) : (1'b0);
+    if ((I_BranchStallSignal == 1  && I_BranchAddrSelect != 1) || I_DepStallSignal == 1) begin
+      //nop
     end else begin
-      if (I_BranchAddrSelect) begin
-        PC <= I_BranchPC;
+      if (I_DepStallSignal == 1) begin
+        // don't increment PC
+        $display("IF: PC = PC");
+        O_PC <= PC + 16'h4;
+        O_IR <= InstMem[PC[`PC_WIDTH-1:2]];
+      end else begin
+        if (I_BranchAddrSelect == 1) begin
+          $display("IF: PC = BranchPC + (1 << 2)");
+          O_PC <= I_BranchPC + 16'h4;
+          O_IR <= InstMem[PC[`PC_WIDTH-1:2]];
+          PC <= I_BranchPC;
+        end else begin
+          $display("IF: PC = PC + (1 << 2)");
+          O_PC <= PC + 16'h8;
+          O_IR <= InstMem[PC[`PC_WIDTH-1:2]];
+          PC <= PC + 16'h4;
+        end
       end
-      // Get IR and Increment PC
-      O_IR <= InstMem[PC[`PC_WIDTH-1:2]];
-      O_PC <= PC + 1 << 2;
     end
   end // if (I_LOCK == 0)
 end // always @(negedge I_CLOCK)
