@@ -118,28 +118,28 @@ assign __DepStallSignal =
      /////////////////////////////////////////////
      // TODO: Complete other instructions
      /////////////////////////////////////////////
-     (I_IR[31:24] == `OP_ADD_D     ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
-     (I_IR[31:24] == `OP_ADD_D     ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[11:8 ]) ? (1'b0) : (RF_VALID[I_IR[11:8 ]] != 1)) : (RF_VALID[I_IR[11:8 ]] != 1)) :
+     (I_IR[31:24] == `OP_ADD_D     ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[11:8]) ? (1'b0) : (RF_VALID[I_IR[11:8]] != 1)) : (RF_VALID[I_IR[23:20]] != 1)))) :
      (I_IR[31:24] == `OP_ADDI_D    ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
-     (I_IR[31:24] == `OP_AND_D     ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
-     (I_IR[31:24] == `OP_AND_D     ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[11:8 ]) ? (1'b0) : (RF_VALID[I_IR[11:8 ]] != 1)) : (RF_VALID[I_IR[11:8 ]] != 1)) :
+     (I_IR[31:24] == `OP_AND_D     ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[11:8]) ? (1'b0) : (RF_VALID[I_IR[11:8]] != 1)) : (RF_VALID[I_IR[23:20]] != 1)))) :
      (I_IR[31:24] == `OP_ANDI_D    ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
      (I_IR[31:24] == `OP_MOV       ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[11:8 ]) ? (1'b0) : (RF_VALID[I_IR[11:8 ]] != 1)) : (RF_VALID[I_IR[11:8 ]] != 1)) :
      (I_IR[31:24] == `OP_LDW       ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
-     (I_IR[31:24] == `OP_STW       ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
+     (I_IR[31:24] == `OP_STW       ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[23:20]) ? (1'b0) : (RF_VALID[I_IR[23:20]] != 1)) : (RF_VALID[I_IR[23:20]] != 1)))) :
      (I_IR[31:24] == `OP_JMP       ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
      (I_IR[31:24] == `OP_JSRR      ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
-     (I_IR[31:24] == `OP_BRN       ) ? (!(~RF_VALID[0:`NUM_RF-1] == 0)) :
-     (I_IR[31:24] == `OP_BRZ       ) ? (!(~RF_VALID[0:`NUM_RF-1] == 0)) :
-     (I_IR[31:24] == `OP_BRP       ) ? (!(~RF_VALID[0:`NUM_RF-1] == 0)) :
-     (I_IR[31:24] == `OP_BRNZ      ) ? (!(~RF_VALID[0:`NUM_RF-1] == 0)) :
-     (I_IR[31:24] == `OP_BRNP      ) ? (!(~RF_VALID[0:`NUM_RF-1] == 0)) :
-     (I_IR[31:24] == `OP_BRZP      ) ? (!(~RF_VALID[0:`NUM_RF-1] == 0)) :
-     (I_IR[31:24] == `OP_BRNZP     ) ? (!(~RF_VALID[0:`NUM_RF-1] == 0)) :
+     (I_IR[31:24] == `OP_BRN       ) ? ((!RF_VALID[0] || !RF_VALID[1] || !RF_VALID[2] || !RF_VALID[3] || !RF_VALID[4] || !RF_VALID[5] || !RF_VALID[6] || !RF_VALID[7]) ? (1'b1) : (1'b0)) :
+     (I_IR[31:24] == `OP_BRZ       ) ? ((!RF_VALID[0] || !RF_VALID[1] || !RF_VALID[2] || !RF_VALID[3] || !RF_VALID[4] || !RF_VALID[5] || !RF_VALID[6] || !RF_VALID[7]) ? (1'b1) : (1'b0)) :
+     (I_IR[31:24] == `OP_BRP       ) ? ((!RF_VALID[0] || !RF_VALID[1] || !RF_VALID[2] || !RF_VALID[3] || !RF_VALID[4] || !RF_VALID[5] || !RF_VALID[6] || !RF_VALID[7]) ? (1'b1) : (1'b0)) :
+     (I_IR[31:24] == `OP_BRNZ      ) ? ((!RF_VALID[0] || !RF_VALID[1] || !RF_VALID[2] || !RF_VALID[3] || !RF_VALID[4] || !RF_VALID[5] || !RF_VALID[6] || !RF_VALID[7]) ? (1'b1) : (1'b0)) :
+     (I_IR[31:24] == `OP_BRNP      ) ? ((!RF_VALID[0] || !RF_VALID[1] || !RF_VALID[2] || !RF_VALID[3] || !RF_VALID[4] || !RF_VALID[5] || !RF_VALID[6] || !RF_VALID[7]) ? (1'b1) : (1'b0)) :
+     (I_IR[31:24] == `OP_BRZP      ) ? ((!RF_VALID[0] || !RF_VALID[1] || !RF_VALID[2] || !RF_VALID[3] || !RF_VALID[4] || !RF_VALID[5] || !RF_VALID[6] || !RF_VALID[7]) ? (1'b1) : (1'b0)) :
+     (I_IR[31:24] == `OP_BRNZP     ) ? ((!RF_VALID[0] || !RF_VALID[1] || !RF_VALID[2] || !RF_VALID[3] || !RF_VALID[4] || !RF_VALID[5] || !RF_VALID[6] || !RF_VALID[7]) ? (1'b1) : (1'b0)) :
+
      (1'b0)
     ) : (1'b0);
 
-assign O_DepStallSignal = (__DepStallSignal & !I_WriteBackEnable);
+//assign O_DepStallSignal = (__DepStallSignal & !I_WriteBackEnable);
+assign O_DepStallSignal = __DepStallSignal;
 
 // O_BranchStallSignal: Branch instruction detected (1) or not (0).
 assign O_BranchStallSignal = 
@@ -174,19 +174,16 @@ always @(posedge I_CLOCK) begin
     // TODO: Complete here 
     /////////////////////////////////////////////
     if (I_WriteBackEnable == 1) begin
-      $display("WB: R[%d] = (%d)", I_WriteBackRegIdx, I_WriteBackData);
       // write data
       RF[I_WriteBackRegIdx] <= I_WriteBackData;
       // set CC
       if ($signed(I_WriteBackData) > 0) begin
-        ConditionalCode <= 3'b001;
+        ConditionalCode = 3'b001;
       end else if ($signed(I_WriteBackData) < 0) begin
-        ConditionalCode <= 3'b100;
+        ConditionalCode = 3'b100;
       end else begin
-        ConditionalCode <= 3'b010;
+        ConditionalCode = 3'b010;
       end
-    end else begin
-      // nop
     end
   end // if (I_LOCK == 1'b1)
 end // always @(posedge I_CLOCK)
@@ -205,137 +202,111 @@ always @(negedge I_CLOCK) begin
     /////////////////////////////////////////////
     // TODO: Complete here 
     /////////////////////////////////////////////
-    O_DepStall <= 0;
-    if (I_FetchStall == 1 || __DepStallSignal == 1) begin
-      // nop
-    end else begin
-      // validate registers
-      if (I_WriteBackEnable == 1) begin
-        $display("WB: Validate RF[%d]", I_WriteBackRegIdx);
-        RF_VALID[I_WriteBackRegIdx] <= 1;
-      end
+	 // validate registers
+    if (I_WriteBackEnable == 1) begin
+		  RF_VALID[I_WriteBackRegIdx] = 1;
+		end
+    O_DepStall <= __DepStallSignal;
+		 if (I_FetchStall != 1 && __DepStallSignal != 1) begin
       // send PC on
-      O_PC <= I_PC;
-      // get Opcode
-      O_Opcode <= I_IR[31:24];
-      // decode IR
-      case (I_IR[31:24])
-        `OP_ADD_D: begin
-          $display("ID: add.d RF[%d] RF[%d] RF[%d]", I_IR[23:20], I_IR[19:16], I_IR[11:8]);
-          // read values
-          O_DestRegIdx <= I_IR[23:20];
-          O_Src1Value <= RF[I_IR[19:16]];
-          O_Src2Value <= RF[I_IR[11:8]];
-          // invalidate registers
-          $display("ID: Invalidate RF[%d]", I_IR[23:20]);
-          RF_VALID[I_IR[23:20]] <= 0;
-        end
-        `OP_ADDI_D: begin
-          $display("ID: addi.d RF[%d] RF[%d] (%d)", I_IR[23:20], I_IR[19:16], $signed(I_IR[15:0]));
-          // read values
-          O_DestRegIdx <= I_IR[23:20];
-          O_Src1Value <= RF[I_IR[19:16]];
-          O_Imm <= Imm32;
-          // invalidate registers
-          $display("ID: Invalidate RF[%d]", I_IR[23:20]);
-          RF_VALID[I_IR[23:20]] <= 0;
-        end
-        `OP_AND_D: begin
-          $display("ID: and.d RF[%d] RF[%d] RF[%d]", I_IR[23:20], I_IR[19:16], I_IR[11:8]);
-          // read values
-          O_DestRegIdx <= I_IR[23:20];
-          O_Src1Value <= RF[I_IR[19:16]];
-          O_Src2Value <= RF[I_IR[11:8]];
-          // invalidate registers
-          $display("ID: Invalidate RF[%d]", I_IR[23:20]);
-          RF_VALID[I_IR[23:20]] <= 0;
-        end
-        `OP_ANDI_D: begin
-          $display("ID: andi.d RF[%d] RF[%d] (%d)", I_IR[23:20], I_IR[19:16], $signed(I_IR[15:0]));
-          // read values
-          O_DestRegIdx <= I_IR[23:20];
-          O_Src1Value <= RF[I_IR[19:16]];
-          O_Imm <= Imm32;
-          // invalidate registers
-          $display("ID: Invalidate RF[%d]", I_IR[23:20]);
-          RF_VALID[I_IR[23:20]] <= 0;
-        end
-        `OP_MOV: begin
-          $display("ID: mov RF[%d] RF[%d]", I_IR[19:16], I_IR[11:8]);
-          // read values
-          O_DestRegIdx <= I_IR[19:16];
-          O_Src1Value <= RF[I_IR[11:8]];
-          // invalidate registers
-          $display("ID: Invalidate RF[%d]", I_IR[19:16]);
-          RF_VALID[I_IR[19:16]] <= 0;
-        end
-        `OP_MOVI_D: begin
-          $display("ID: movi.d RF[%d] (%d)", I_IR[19:16], $signed(I_IR[15:0]));
-          // read values
-          O_DestRegIdx <= I_IR[19:16];
-          O_Imm <= Imm32;
-          // invalidate registers
-          $display("ID: Invalidate RF[%d]", I_IR[19:16]);
-          RF_VALID[I_IR[19:16]] <= 0;
-        end
-        `OP_LDW: begin
-          $display("ID: ldw RF[%d] RF[%d] (%d)", I_IR[23:20], I_IR[19:16], $signed(I_IR[15:0]));
-          // read values
-          O_DestRegIdx <= I_IR[23:20];
-          O_Src1Value <= RF[I_IR[19:16]];
-          O_Imm <= Imm32;
-          // invalidate registers
-          $display("ID: Invalidate RF[%d]", I_IR[23:20]);
-          RF_VALID[I_IR[23:20]] <= 0;
-        end
-        `OP_STW: begin
-          $display("ID: stw RF[%d] RF[%d] (%d)", I_IR[23:20], I_IR[19:16], $signed(I_IR[15:0]));
-          // read values
-          O_DestValue <= RF[I_IR[23:20]];
-          O_Src1Value <= RF[I_IR[19:16]];
-          O_Imm <= Imm32;
-        end
-        `OP_BRN, `OP_BRZ, `OP_BRP, `OP_BRNZ, `OP_BRNP, `OP_BRZP, `OP_BRNZP: begin
-          $display("ID: br(%d%d%d)", I_IR[26], I_IR[25], I_IR[24]);
-          // check CC
-          if (ConditionalCode & I_IR[26:24]) begin
-            // update PC
-            $display("    branching");
-            O_DestValue <= I_PC + ($signed(Imm32) << 2);
-          end else begin
-            $display("    not branching");
-            O_DestValue <= I_PC;
-          end
-        end
-        `OP_JMP: begin
-          $display("ID: jmp RF[%d]", I_IR[19:16]);
-          // branch
-          O_DestValue <= RF[I_IR[19:16]];
-        end
-        `OP_JSR: begin
-          $display("ID: jsr (%d)", $signed(I_IR[15:0]));
-          // read registers
-          O_DestRegIdx <= 7;
-          O_Src1Value <= I_PC;
-          // branch
-          O_DestValue <= I_PC + ($signed(Imm32) << 2);
-          // invalidate registers
-          $display("ID: Invalidate RF[%d]", 7);
-          RF_VALID[7] <= 0;
-        end
-        `OP_JSRR: begin
-          $display("ID: jsrr RF[%d]", I_IR[19:16]);
-          // read registers
-          O_DestRegIdx <= 7;
-          O_Src1Value <= I_PC;
-          // branch
-          O_DestValue <= RF[I_IR[19:16]];
-          // invalidate registers
-          $display("ID: Invalidate RF[%d]", 7);
-          RF_VALID[7] <= 0;
-        end
-      endcase
-    end
+			O_PC <= I_PC;
+			// get Opcode
+			O_Opcode <= I_IR[31:24];
+			// decode IR
+			case (I_IR[31:24])
+			  `OP_ADD_D: begin
+				 // read values
+				 O_DestRegIdx <= I_IR[23:20];
+				 O_Src1Value <= RF[I_IR[19:16]];
+				 O_Src2Value <= RF[I_IR[11:8]];
+				 // invalidate registers
+				 RF_VALID[I_IR[23:20]] = 0;
+			  end
+			  `OP_ADDI_D: begin
+				 // read values
+				 O_DestRegIdx <= I_IR[23:20];
+				 O_Src1Value <= RF[I_IR[19:16]];
+				 O_Imm <= Imm32;
+				 // invalidate registers
+				 RF_VALID[I_IR[23:20]] = 0;
+			  end
+			  `OP_AND_D: begin
+				 // read values
+				 O_DestRegIdx <= I_IR[23:20];
+				 O_Src1Value <= RF[I_IR[19:16]];
+				 O_Src2Value <= RF[I_IR[11:8]];
+				 // invalidate registers
+				 RF_VALID[I_IR[23:20]] = 0;
+			  end
+			  `OP_ANDI_D: begin
+				 // read values
+				 O_DestRegIdx <= I_IR[23:20];
+				 O_Src1Value <= RF[I_IR[19:16]];
+				 O_Imm <= Imm32;
+				 // invalidate registers
+				 RF_VALID[I_IR[23:20]] = 0;
+			  end
+			  `OP_MOV: begin
+				 // read values
+				 O_DestRegIdx <= I_IR[19:16];
+				 O_Src1Value <= RF[I_IR[11:8]];
+				 // invalidate registers
+				 RF_VALID[I_IR[19:16]] = 0;
+			  end
+			  `OP_MOVI_D: begin
+				 // read values
+				 O_DestRegIdx <= I_IR[19:16];
+				 O_Imm <= Imm32;
+				 // invalidate registers
+				 RF_VALID[I_IR[19:16]] = 0;
+			  end
+			  `OP_LDW: begin
+				 // read values
+				 O_DestRegIdx <= I_IR[23:20];
+				 O_Src1Value <= RF[I_IR[19:16]];
+				 O_Imm <= Imm32;
+				 // invalidate registers
+				 RF_VALID[I_IR[23:20]] = 0;
+			  end
+			  `OP_STW: begin
+				 // read values
+				 O_DestValue <= RF[I_IR[23:20]];
+				 O_Src1Value <= RF[I_IR[19:16]];
+				 O_Imm <= Imm32;
+			  end
+			  `OP_BRN, `OP_BRZ, `OP_BRP, `OP_BRNZ, `OP_BRNP, `OP_BRZP, `OP_BRNZP: begin
+				 // check CC
+         if (ConditionalCode & I_IR[26:24]) begin
+					// update PC
+					O_DestValue <= I_PC + $signed(Imm32 << 2);
+				 end else begin
+					O_DestValue <= I_PC;
+				 end
+			  end
+			  `OP_JMP: begin
+				 // branch
+				 O_DestValue <= RF[I_IR[19:16]];
+			  end
+			  `OP_JSR: begin
+				 // read registers
+				 O_DestRegIdx = 7;
+				 O_Src1Value <= I_PC;
+				 // branch
+				 O_DestValue <= I_PC + $signed(Imm32 << 2);
+				 // invalidate registers
+				 RF_VALID[7] = 0;
+			  end
+			  `OP_JSRR: begin
+				 // read registers
+				 O_DestRegIdx <= 7;
+				 O_Src1Value <= I_PC;
+				 // branch
+				 O_DestValue <= RF[I_IR[19:16]];
+				 // invalidate registers
+				 RF_VALID[7] <= 0;
+			  end
+			endcase
+		 end
   end // if (I_LOCK == 1'b1)
 end // always @(negedge I_CLOCK)
 

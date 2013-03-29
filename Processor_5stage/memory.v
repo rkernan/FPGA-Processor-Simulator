@@ -92,9 +92,7 @@ always @(negedge I_CLOCK) begin
     // TODO: Complete here 
     /////////////////////////////////////////////
     O_BranchAddrSelect <= 0;
-	  if (I_DepStall == 1 || I_FetchStall == 1) begin
-      // nop
-    end else begin
+    if (I_DepStall != 1 || I_FetchStall != 1) begin
       // send Opcode on
       O_Opcode <=I_Opcode;
       // memory access IR
@@ -130,14 +128,12 @@ always @(negedge I_CLOCK) begin
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_LDW: begin
-          $display("MEM: RF[%d] = (%d)", I_DestRegIdx, DataMem[I_ALUOut]);
           // load memory value
           O_MemOut <= DataMem[I_ALUOut];
           // pass values on
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_STW: begin
-          $display("MEM: DataMem[%d] = (%d)", I_ALUOut, I_DestValue);
           // store value in memory
           DataMem[I_ALUOut] <= I_DestValue;
         end

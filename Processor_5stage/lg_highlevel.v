@@ -27,7 +27,7 @@ reg test_clock;
 initial begin
   test_clock = 1;
 //  #10000 $finish;
-  #200 $finish;
+  #10000 $finish;
 end
 
 always begin 
