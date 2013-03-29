@@ -89,7 +89,7 @@ always @(negedge I_CLOCK) begin
 		 O_FetchStall <= 0;
 		 PC <= I_BranchPC;
 		 O_IR <= InstMem[I_BranchPC[`PC_WIDTH-1:2]];
-		 O_PC <= PC + 16'h4;
+		 O_PC <= I_BranchPC + 16'h4;
 	 end else if (I_BranchStallSignal == 0 && I_DepStallSignal == 0) begin
 		 O_FetchStall <= 0;
 		 PC <= PC + 16'h4;

@@ -92,7 +92,7 @@ always @(negedge I_CLOCK) begin
     // TODO: Complete here 
     /////////////////////////////////////////////
     O_BranchAddrSelect <= 0;
-    if (I_DepStall != 1 || I_FetchStall != 1) begin
+    if (I_DepStall != 1 && I_FetchStall != 1) begin
       // send Opcode on
       O_Opcode <=I_Opcode;
       // memory access IR
