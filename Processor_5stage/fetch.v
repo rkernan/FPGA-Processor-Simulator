@@ -85,9 +85,9 @@ always @(negedge I_CLOCK) begin
     // TODO: Complete here
     /////////////////////////////////////////////
 	 if (I_BranchAddrSelect == 1) begin
-     __BranchStallSignal = 0;
+     __BranchStallSignal <= 0;
 		 O_FetchStall <= 0;
-		 PC <= I_BranchPC;
+		 PC <= I_BranchPC + 16'h4;
 		 O_IR <= InstMem[I_BranchPC[`PC_WIDTH-1:2]];
 		 O_PC <= I_BranchPC + 16'h4;
 	 end else if (I_BranchStallSignal == 0 && I_DepStallSignal == 0) begin
@@ -99,7 +99,7 @@ always @(negedge I_CLOCK) begin
      O_FetchStall <= 0;
 	 end else if (I_BranchStallSignal == 1 || __BranchStallSignal == 1) begin
      O_FetchStall <= 1;
-     __BranchStallSignal = 1;
+     __BranchStallSignal <= 1;
    end else begin
      O_FetchStall <= 0;
    end

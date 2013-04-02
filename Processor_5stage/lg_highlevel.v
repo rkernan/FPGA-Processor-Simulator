@@ -26,7 +26,6 @@ output [6:0] HEX0, HEX1, HEX2, HEX3;
 reg test_clock;
 initial begin
   test_clock = 1;
-//  #10000 $finish;
   #10000 $finish;
 end
 
@@ -43,8 +42,8 @@ wire pll_c0;
 wire pll_locked;
 
 pll pll0(
-  .inclk0 ( CLOCK_50 ),
-//  .inclk0 ( test_clock ),
+//  .inclk0 ( CLOCK_50 ),
+  .inclk0 ( test_clock ),
   .c0     ( pll_c0 ),
   .locked ( pll_locked )
 );

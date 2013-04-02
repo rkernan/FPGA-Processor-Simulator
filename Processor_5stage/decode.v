@@ -118,13 +118,13 @@ assign __DepStallSignal =
      /////////////////////////////////////////////
      // TODO: Complete other instructions
      /////////////////////////////////////////////
-     (I_IR[31:24] == `OP_ADD_D) ? ((I_WriteBackEnable == 1) ? (((I_WriteBackRegIdx == I_IR[19:16] && RF_VALID[I_IR[11:8]] == 1) || (I_WriteBackRegIdx == I_IR[11:8] && RF_VALID[I_IR[19:16]] == 1)) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1 || RF_VALID[I_IR[11:8]] != 1)) : (RF_VALID[I_IR[19:16]] != 1 || RF_VALID[I_IR[11:8]] != 1)) :
+     (I_IR[31:24] == `OP_ADD_D     ) ? ((I_WriteBackEnable == 1) ? (((I_WriteBackRegIdx == I_IR[19:16] && RF_VALID[I_IR[11:8]] == 1) || (I_WriteBackRegIdx == I_IR[11:8] && RF_VALID[I_IR[19:16]] == 1)) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1 || RF_VALID[I_IR[11:8]] != 1)) : (RF_VALID[I_IR[19:16]] != 1 || RF_VALID[I_IR[11:8]] != 1)) :
      (I_IR[31:24] == `OP_ADDI_D    ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
-     (I_IR[31:24] == `OP_AND_D) ? ((I_WriteBackEnable == 1) ? (((I_WriteBackRegIdx == I_IR[19:16] && RF_VALID[I_IR[11:8]] == 1) || (I_WriteBackRegIdx == I_IR[11:8] && RF_VALID[I_IR[19:16]] == 1)) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1 || RF_VALID[I_IR[11:8]] != 1)) : (RF_VALID[I_IR[19:16]] != 1 || RF_VALID[I_IR[11:8]] != 1)) :
+     (I_IR[31:24] == `OP_AND_D     ) ? ((I_WriteBackEnable == 1) ? (((I_WriteBackRegIdx == I_IR[19:16] && RF_VALID[I_IR[11:8]] == 1) || (I_WriteBackRegIdx == I_IR[11:8] && RF_VALID[I_IR[19:16]] == 1)) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1 || RF_VALID[I_IR[11:8]] != 1)) : (RF_VALID[I_IR[19:16]] != 1 || RF_VALID[I_IR[11:8]] != 1)) :
      (I_IR[31:24] == `OP_ANDI_D    ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
      (I_IR[31:24] == `OP_MOV       ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[11:8 ]) ? (1'b0) : (RF_VALID[I_IR[11:8 ]] != 1)) : (RF_VALID[I_IR[11:8 ]] != 1)) :
      (I_IR[31:24] == `OP_LDW       ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
-     (I_IR[31:24] == `OP_STW) ? ((I_WriteBackEnable == 1) ? (((I_WriteBackRegIdx == I_IR[19:16] && RF_VALID[I_IR[11:8]] == 1) || (I_WriteBackRegIdx == I_IR[11:8] && RF_VALID[I_IR[19:16]] == 1)) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1 || RF_VALID[I_IR[11:8]] != 1)) : (RF_VALID[I_IR[19:16]] != 1 || RF_VALID[I_IR[11:8]] != 1)) :
+     (I_IR[31:24] == `OP_STW       ) ? ((I_WriteBackEnable == 1) ? (((I_WriteBackRegIdx == I_IR[19:16] && RF_VALID[I_IR[11:8]] == 1) || (I_WriteBackRegIdx == I_IR[11:8] && RF_VALID[I_IR[19:16]] == 1)) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1 || RF_VALID[I_IR[11:8]] != 1)) : (RF_VALID[I_IR[19:16]] != 1 || RF_VALID[I_IR[11:8]] != 1)) :
      (I_IR[31:24] == `OP_JMP       ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
      (I_IR[31:24] == `OP_JSRR      ) ? ((I_WriteBackEnable == 1) ? ((I_WriteBackRegIdx == I_IR[19:16]) ? (1'b0) : (RF_VALID[I_IR[19:16]] != 1)) : (RF_VALID[I_IR[19:16]] != 1)) :
      (I_IR[31:24] == `OP_BRN       ) ? ((!RF_VALID[0] || !RF_VALID[1] || !RF_VALID[2] || !RF_VALID[3] || !RF_VALID[4] || !RF_VALID[5] || !RF_VALID[6] || !RF_VALID[7]) ? (1'b1) : (1'b0)) :
@@ -134,7 +134,6 @@ assign __DepStallSignal =
      (I_IR[31:24] == `OP_BRNP      ) ? ((!RF_VALID[0] || !RF_VALID[1] || !RF_VALID[2] || !RF_VALID[3] || !RF_VALID[4] || !RF_VALID[5] || !RF_VALID[6] || !RF_VALID[7]) ? (1'b1) : (1'b0)) :
      (I_IR[31:24] == `OP_BRZP      ) ? ((!RF_VALID[0] || !RF_VALID[1] || !RF_VALID[2] || !RF_VALID[3] || !RF_VALID[4] || !RF_VALID[5] || !RF_VALID[6] || !RF_VALID[7]) ? (1'b1) : (1'b0)) :
      (I_IR[31:24] == `OP_BRNZP     ) ? ((!RF_VALID[0] || !RF_VALID[1] || !RF_VALID[2] || !RF_VALID[3] || !RF_VALID[4] || !RF_VALID[5] || !RF_VALID[6] || !RF_VALID[7]) ? (1'b1) : (1'b0)) :
-
      (1'b0)
     ) : (1'b0);
 
@@ -204,7 +203,7 @@ always @(negedge I_CLOCK) begin
     /////////////////////////////////////////////
 	 // validate registers
     if (I_WriteBackEnable == 1) begin
-		  RF_VALID[I_WriteBackRegIdx] = 1;
+		  RF_VALID[I_WriteBackRegIdx] <= 1;
 		end
     O_DepStall <= __DepStallSignal;
 		 if (I_FetchStall != 1 && __DepStallSignal != 1) begin
@@ -220,7 +219,7 @@ always @(negedge I_CLOCK) begin
 				 O_Src1Value <= RF[I_IR[19:16]];
 				 O_Src2Value <= RF[I_IR[11:8]];
 				 // invalidate registers
-				 RF_VALID[I_IR[23:20]] = 0;
+				 RF_VALID[I_IR[23:20]] <= 0;
 			  end
 			  `OP_ADDI_D: begin
 				 // read values
@@ -228,7 +227,7 @@ always @(negedge I_CLOCK) begin
 				 O_Src1Value <= RF[I_IR[19:16]];
 				 O_Imm <= Imm32;
 				 // invalidate registers
-				 RF_VALID[I_IR[23:20]] = 0;
+				 RF_VALID[I_IR[23:20]] <= 0;
 			  end
 			  `OP_AND_D: begin
 				 // read values
@@ -236,7 +235,7 @@ always @(negedge I_CLOCK) begin
 				 O_Src1Value <= RF[I_IR[19:16]];
 				 O_Src2Value <= RF[I_IR[11:8]];
 				 // invalidate registers
-				 RF_VALID[I_IR[23:20]] = 0;
+				 RF_VALID[I_IR[23:20]] <= 0;
 			  end
 			  `OP_ANDI_D: begin
 				 // read values
@@ -244,21 +243,21 @@ always @(negedge I_CLOCK) begin
 				 O_Src1Value <= RF[I_IR[19:16]];
 				 O_Imm <= Imm32;
 				 // invalidate registers
-				 RF_VALID[I_IR[23:20]] = 0;
+				 RF_VALID[I_IR[23:20]] <= 0;
 			  end
 			  `OP_MOV: begin
 				 // read values
 				 O_DestRegIdx <= I_IR[19:16];
 				 O_Src1Value <= RF[I_IR[11:8]];
 				 // invalidate registers
-				 RF_VALID[I_IR[19:16]] = 0;
+				 RF_VALID[I_IR[19:16]] <= 0;
 			  end
 			  `OP_MOVI_D: begin
 				 // read values
 				 O_DestRegIdx <= I_IR[19:16];
 				 O_Imm <= Imm32;
 				 // invalidate registers
-				 RF_VALID[I_IR[19:16]] = 0;
+				 RF_VALID[I_IR[19:16]] <= 0;
 			  end
 			  `OP_LDW: begin
 				 // read values
@@ -266,7 +265,7 @@ always @(negedge I_CLOCK) begin
 				 O_Src1Value <= RF[I_IR[19:16]];
 				 O_Imm <= Imm32;
 				 // invalidate registers
-				 RF_VALID[I_IR[23:20]] = 0;
+				 RF_VALID[I_IR[23:20]] <= 0;
 			  end
 			  `OP_STW: begin
 				 // read values
@@ -289,12 +288,12 @@ always @(negedge I_CLOCK) begin
 			  end
 			  `OP_JSR: begin
 				 // read registers
-				 O_DestRegIdx = 7;
+				 O_DestRegIdx <= 7;
 				 O_Src1Value <= I_PC;
 				 // branch
 				 O_DestValue <= I_PC + $signed(Imm32 << 2);
 				 // invalidate registers
-				 RF_VALID[7] = 0;
+				 RF_VALID[7] <= 0;
 			  end
 			  `OP_JSRR: begin
 				 // read registers
