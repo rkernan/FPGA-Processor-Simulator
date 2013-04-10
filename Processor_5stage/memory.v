@@ -62,7 +62,7 @@ output [6:0] O_HEX0, O_HEX1, O_HEX2, O_HEX3;
 // WIRE/REGISTER DECLARATION GOES HERE
 /////////////////////////////////////////
 //
-reg[`DATA_WIDTH-1:0] DataMem[0:`INST_MEM_SIZE-1];
+reg[`DATA_WIDTH-1:0] DataMem[0:`DATA_MEM_SIZE-1];
 
 /////////////////////////////////////////
 // INITIAL STATEMENT GOES HERE

@@ -30,20 +30,33 @@ initial begin
 end
 
 always begin 
-  #1 test_clock = ~test_clock;
+  #20 test_clock = ~test_clock;
 end
 
 /////////////////////////////////////////
 // WIRE/REGISTER DECLARATION GOES HERE
 /////////////////////////////////////////
 //
+/*
 
-wire pll_c0;
+// Clock for ModelSim
+wire clk;
 wire pll_locked;
 
 pll pll0(
 //  .inclk0 ( CLOCK_50 ),
   .inclk0 ( test_clock ),
+  .c0     ( clk ),
+  .locked ( pll_locked )
+);
+*/
+// Clock for DE1 Board
+wire pll_c0;
+wire pll_locked;
+
+pll pll0(
+  .inclk0 ( CLOCK_50 ),
+//  .inclk0 ( test_clock ),
   .c0     ( pll_c0 ),
   .locked ( pll_locked )
 );
@@ -57,12 +70,14 @@ always @(posedge pll_c0) begin
     clk <= 0;
   end else begin 
     counter <= counter + 1;
-    if (counter == 32'd1) begin
+    if (counter == 32'd1000000) begin
       counter <= 0;
       clk <= ~clk;
     end
   end
 end
+
+
 
 wire LOCK_FD;
 wire [`PC_WIDTH-1:0] PC_FD;
