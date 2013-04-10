@@ -1,0 +1,3 @@
+[submodule "lg-graphics"]
+	path = lg-graphics
+	url = https://github.com/hamGT/lg-graphics.git
