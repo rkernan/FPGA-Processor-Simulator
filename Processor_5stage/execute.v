@@ -70,9 +70,7 @@ always @(negedge I_CLOCK) begin
     /////////////////////////////////////////////
     // TODO: Complete here 
     /////////////////////////////////////////////
-    if (I_FetchStall == 1 || I_DepStall == 1) begin
-      // nop
-    end else begin
+    if (I_FetchStall != 1 && I_DepStall != 1) begin
       // send Opcode on
       O_Opcode <= I_Opcode;
       // execute IR
@@ -84,7 +82,6 @@ always @(negedge I_CLOCK) begin
           O_DestRegIdx <= I_DestRegIdx;
         end
         `OP_ADDI_D: begin
-          $display("EX: (%d) + (%d) = (%d)", $signed(I_Src1Value), $signed(I_Imm), $signed(I_Src1Value) + $signed(I_Imm));
           // add immediate
           O_ALUOut <= $signed(I_Src1Value) + $signed(I_Imm);
           // pass values in

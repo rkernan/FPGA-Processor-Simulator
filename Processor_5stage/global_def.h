@@ -1,6 +1,6 @@
-`define ADDRLEDR 1020 // 10'h3FC
-`define ADDRLEDG 1021 // 10'h3FD
-`define ADDRHEX  1022 // 10'h3FE
+`define ADDRLEDR 97 // 1020 // 10'h3FC
+`define ADDRLEDG 98 // 1021 // 10'h3FD
+`define ADDRHEX  99 // 1022 // 10'h3FE
 
 `define BUS_WIDTH 32
 
@@ -16,8 +16,8 @@
 
 `define INST_WIDTH 32
 `define DATA_WIDTH 16
-`define INST_MEM_SIZE 1024 
-`define DATA_MEM_SIZE 1024
+`define INST_MEM_SIZE 130//1024 
+`define DATA_MEM_SIZE 130
 
 /////////////////////////////////////////
 // OPCODE DEFINITIONS GO HERE 

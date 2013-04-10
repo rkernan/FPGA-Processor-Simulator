@@ -47,6 +47,7 @@ output reg O_FetchStall;
 //
 reg[`INST_WIDTH-1:0] InstMem[0:`INST_MEM_SIZE-1];
 reg[`PC_WIDTH-1:0] PC;  
+reg __BranchStallSignal;
 
 /////////////////////////////////////////
 // INITIAL/ASSIGN STATEMENT GOES HERE
@@ -59,6 +60,7 @@ initial begin
   O_LOCK = 1'b0;
   O_PC = 16'h4;
   O_IR = 32'hFF000000;
+  __BranchStallSignal = 0;
 end
 
 /////////////////////////////////////////
@@ -82,30 +84,25 @@ always @(negedge I_CLOCK) begin
     /////////////////////////////////////////////
     // TODO: Complete here
     /////////////////////////////////////////////
-    $display("");
-    O_FetchStall <= ((I_BranchStallSignal == 1 && I_BranchAddrSelect != 1) || I_DepStallSignal == 1) ? (1'b1) : (1'b0);
-    if ((I_BranchStallSignal == 1  && I_BranchAddrSelect != 1) || I_DepStallSignal == 1) begin
-      //nop
-    end else begin
-      if (I_DepStallSignal == 1) begin
-        // don't increment PC
-        $display("IF: PC = PC");
-        O_PC <= PC + 16'h4;
-        O_IR <= InstMem[PC[`PC_WIDTH-1:2]];
-      end else begin
-        if (I_BranchAddrSelect == 1) begin
-          $display("IF: PC = BranchPC + (1 << 2)");
-          O_PC <= I_BranchPC + 16'h4;
-          O_IR <= InstMem[PC[`PC_WIDTH-1:2]];
-          PC <= I_BranchPC;
-        end else begin
-          $display("IF: PC = PC + (1 << 2)");
-          O_PC <= PC + 16'h8;
-          O_IR <= InstMem[PC[`PC_WIDTH-1:2]];
-          PC <= PC + 16'h4;
-        end
-      end
-    end
+	 if (I_BranchAddrSelect == 1) begin
+     __BranchStallSignal <= 0;
+		 O_FetchStall <= 0;
+		 PC <= I_BranchPC + 16'h4;
+		 O_IR <= InstMem[I_BranchPC[`PC_WIDTH-1:2]];
+		 O_PC <= I_BranchPC + 16'h4;
+	 end else if (I_BranchStallSignal == 0 && I_DepStallSignal == 0) begin
+		 O_FetchStall <= 0;
+		 PC <= PC + 16'h4;
+		 O_IR <= InstMem[PC[`PC_WIDTH-1:2]];
+		 O_PC <= PC + 16'h4;
+   end else if (I_DepStallSignal == 1) begin
+     O_FetchStall <= 0;
+	 end else if (I_BranchStallSignal == 1 || __BranchStallSignal == 1) begin
+     O_FetchStall <= 1;
+     __BranchStallSignal <= 1;
+   end else begin
+     O_FetchStall <= 0;
+   end
   end // if (I_LOCK == 0)
 end // always @(negedge I_CLOCK)
 
